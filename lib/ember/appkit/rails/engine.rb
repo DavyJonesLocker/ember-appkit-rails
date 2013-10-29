@@ -2,7 +2,10 @@ module Ember
   module Appkit
     module Rails
       class Engine < ::Rails::Engine
-        # Engine definition is required for assets to appear in asset pipeline
+        config.handlebars ||= ActiveSupport::OrderedOptions.new
+
+        config.handlebars.output_type = :amd
+        config.handlebars.amd_namespace = 'appkit'
       end
     end
   end

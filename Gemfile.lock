@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/emberjs/ember-rails.git
+  revision: a28163c8547a283d101f44773ea984f6dd74794f
+  branch: master
+  specs:
+    ember-rails (0.13.0)
+      active_model_serializers
+      barber (>= 0.4.1)
+      ember-data-source
+      ember-source
+      execjs (>= 1.2)
+      handlebars-source
+      railties (>= 3.1)
+
 PATH
   remote: .
   specs:
@@ -56,14 +70,6 @@ GEM
     debugger-linecache (1.2.0)
     ember-data-source (0.14)
       ember-source
-    ember-rails (0.13.0)
-      active_model_serializers
-      barber (>= 0.4.1)
-      ember-data-source
-      ember-source
-      execjs (>= 1.2)
-      handlebars-source
-      railties (>= 3.1)
     ember-source (1.2.0.beta.2)
       handlebars-source (= 1.0.12)
     erubis (2.7.0)
@@ -138,5 +144,6 @@ DEPENDENCIES
   byebug
   capybara
   ember-appkit-rails!
+  ember-rails!
   jquery-rails
   poltergeist
