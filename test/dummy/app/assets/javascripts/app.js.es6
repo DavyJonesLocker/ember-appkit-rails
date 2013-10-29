@@ -1,7 +1,6 @@
 import Resolver from 'ember-appkit/resolver';
 import registerComponents from 'ember-appkit/register_components';
 
-debugger;
 var App = Ember.Application.extend({
   LOG_ACTIVE_GENERATION: true,
   LOG_MODULE_RESOLVER: true,
@@ -18,6 +17,5 @@ App.initializer({
     registerComponents(container);
   }
 });
-
 
 export default App;
