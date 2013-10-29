@@ -31,6 +31,8 @@ TODO: Add details about writing es6 modules
 * [Alex Navasardyan](http://twitter.com/twokul)
 * [Robert Jackson](http://twitter.com/rwjblue)
 
+A lot of the "real work" was done by [Steffan Penner](http://twitter.com/steffanpenner) with the original [Ember Appkit](https://github.com/stefanpenner/ember-app-kit) project
+
 [We are very thankful for the many contributors](https://github.com/dockyard/ember-appkit-rails/graphs/contributors)
 
 ## Versioning ##
