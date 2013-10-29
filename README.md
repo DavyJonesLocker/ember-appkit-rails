@@ -11,7 +11,7 @@ Ember Appkit for the Asset Pipeline
 Include the gem in your `Gemfile`
 
 ```ruby
-gem 'ember-appkit-rails`
+gem 'ember-appkit-rails'
 ```
 
 You should not need to specify any additional core Ember depdendencies.
