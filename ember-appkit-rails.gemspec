@@ -1,12 +1,12 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require 'ember_app_kit/version'
+require 'ember/appkit/rails/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = 'ember_app_kit-rails'
-  s.version     = EmberAppKit::VERSION
+  s.name        = 'ember-appkit-rails'
+  s.version     = Ember::Appkit::Rails::VERSION
   s.authors     = ['Brian Cardarella']
   s.email       = ['bcardarella@gmail.com']
   s.homepage    = 'https://github.com/dockyard/ember_app_kit-rails'

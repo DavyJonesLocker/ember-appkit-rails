@@ -1,5 +1,5 @@
-import Resolver from 'ember-app_kit/resolver';
-import registerComponents from 'ember-app_kit/register_components';
+import Resolver from 'ember-appkit/resolver';
+import registerComponents from 'ember-appkit/register_components';
 
 debugger;
 var App = Ember.Application.extend({

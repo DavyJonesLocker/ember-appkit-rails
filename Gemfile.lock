@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ember_app_kit-rails (0.0.1)
+    ember-appkit-rails (0.0.1)
       es6_module_transpiler-rails (~> 0.0.3)
       rails (~> 4.0.0)
 
@@ -135,8 +135,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara
+  ember-appkit-rails!
   ember-rails
   ember-source
-  ember_app_kit-rails!
   jquery-rails
   poltergeist

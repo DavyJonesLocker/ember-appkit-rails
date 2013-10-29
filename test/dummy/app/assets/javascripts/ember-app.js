@@ -1,6 +1,6 @@
 //= require handlebars
 //= require ember
-//= require ember-app_kit
+//= require ember-appkit
 //= require app
 //= require_self
 //= require router
