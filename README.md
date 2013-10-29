@@ -25,7 +25,7 @@ TODO: Add generator details once they are complete.
 
 TODO: Add details about writing es6 modules
 
-uthors ##
+## Authors ##
 
 * [Brian Cardarella](http://twitter.com/bcardarella)
 * [Alex Navasardyan](http://twitter.com/twokul)
