@@ -6,6 +6,7 @@ require 'rails/test_unit/railtie'
 
 Bundler.require(*Rails.groups)
 require 'ember/appkit/rails'
+require 'jquery-rails'
 
 module Dummy
   class Application < Rails::Application; end
