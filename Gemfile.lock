@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     ember_app_kit-rails (0.0.1)
-      es6_module_transpiler-rails
+      es6_module_transpiler-rails (~> 0.0.3)
       rails (~> 4.0.0)
 
 GEM
@@ -65,7 +65,7 @@ GEM
     ember-source (1.1.1)
       handlebars-source (= 1.0.12)
     erubis (2.7.0)
-    es6_module_transpiler-rails (0.0.2)
+    es6_module_transpiler-rails (0.0.3)
       execjs
     eventmachine (1.0.3)
     execjs (2.0.2)

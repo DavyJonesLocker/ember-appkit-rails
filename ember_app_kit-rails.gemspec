@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency 'rails', '~> 4.0.0'
-  s.add_dependency 'es6_module_transpiler-rails'
+  s.add_dependency 'es6_module_transpiler-rails', '~> 0.0.3'
 
   s.add_development_dependency 'jquery-rails'
   s.add_development_dependency 'ember-rails'

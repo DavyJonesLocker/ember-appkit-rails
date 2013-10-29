@@ -1,3 +1,7 @@
-var Router = Ember.Router.map();
+var Router = Ember.Router.extend();
 
-export default = Router;
+Router.map(function() {
+  this.route('about');
+});
+
+export default Router;
