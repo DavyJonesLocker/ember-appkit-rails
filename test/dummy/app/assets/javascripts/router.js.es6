@@ -4,4 +4,4 @@ Router.map(function() {
   this.route('about');
 });
 
-export default = Router;
+export default Router;
