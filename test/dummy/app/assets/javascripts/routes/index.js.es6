@@ -2,8 +2,11 @@ import Person from 'appkit/models/person';
 
 var IndexRoute = Ember.Route.extend({
   model: function() {
-    debugger;
-    return Person.create({name: 'Brian Cardarella'});
+    return Person.create({
+      name: 'Joe Doe',
+      company: 'B&W',
+      job: 'Sound Engineer'
+    });
   }
 });
 

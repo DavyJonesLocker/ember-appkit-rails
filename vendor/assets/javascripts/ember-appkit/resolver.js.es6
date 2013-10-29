@@ -83,7 +83,6 @@ function resolveOther(parsedName) {
   var normalizedModuleName = chooseModuleName(requirejs._eak_seen, moduleName);
 
   if (requirejs._eak_seen[normalizedModuleName]) {
-    debugger
     var module = require(normalizedModuleName, null, null, true /* force sync */).default;
 
     if (module === undefined) {
