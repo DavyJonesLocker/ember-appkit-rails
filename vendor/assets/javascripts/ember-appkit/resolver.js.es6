@@ -124,4 +124,4 @@ var Resolver = Ember.DefaultResolver.extend({
   }
 });
 
-export default Resolver;
+export default = Resolver;
