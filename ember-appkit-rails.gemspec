@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 4.0.0'
   s.add_dependency 'es6_module_transpiler-rails', '~> 0.0.3'
   s.add_dependency 'ember-rails'
-  s.add_dependency 'ember-source'
+  s.add_dependency 'ember-source', '~> 1.2.0.beta.2'
 
   s.add_development_dependency 'jquery-rails'
   s.add_development_dependency 'capybara'
