@@ -12,7 +12,20 @@ module GeneratorTestSupport
     File.write(dest.join('custom/application.js'), "")
   end
 
-  private
+  def with_config(options = {})
+    original_values = ::Rails.configuration.ember.to_h
+
+    options.each do |(key, value)|
+      ::Rails.configuration.ember[key] = value
+    end
+
+    yield
+  ensure
+    ::Rails.configuration.ember.clear
+    original_values.each do |(key, value)|
+      ::Rails.configuration.ember[key] = value
+    end
+  end
 
   def assert_new_dirs(options = {})
     path = options[:in_path] || ember_path

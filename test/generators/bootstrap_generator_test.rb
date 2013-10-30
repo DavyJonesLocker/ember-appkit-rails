@@ -32,4 +32,22 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     assert_file "#{ember_path}/ember-app.js.es6", /MyApp = /
     assert_file "#{ember_path}/router.js.es6"
   end
+
+  test "Uses config.ember.app_name" do
+    with_config app_name: 'Blazorz' do
+      run_generator
+      assert_file "#{ember_path}/ember-app.js.es6", /Blazorz = /
+      assert_file "#{ember_path}/router.js.es6"
+    end
+  end
+
+  test "Uses config.ember.ember_path" do
+    custom_path = ember_path("custom")
+
+    with_config ember_path: custom_path do
+      run_generator
+      assert_file "#{custom_path}/ember-app.js.es6"
+      assert_file "#{custom_path}/router.js.es6"
+    end
+  end
 end
