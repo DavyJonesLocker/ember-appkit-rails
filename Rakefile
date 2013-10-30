@@ -23,12 +23,20 @@ Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
 
-Rake::TestTask.new(:test) do |t|
+Rake::TestTask.new(:integration_test) do |t|
   t.libs << 'lib'
   t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
+  t.pattern = 'test/integration/**/*_test.rb'
   t.verbose = false
 end
 
+Rake::TestTask.new(:generators_test) do |t|
+  t.libs << 'lib'
+  t.libs << 'test'
+  t.pattern = 'test/generators/**/*_test.rb'
+  t.verbose = false
+end
+
+task :test => [:generators_test, :integration_test]
 
 task default: :test
