@@ -43,6 +43,16 @@ Ember Appkit Rails provides the following generators:
 
   * `--ember-path` - This is the root path to be used for your Ember application. Default value: `/app/assets/javascripts`.
 
+* `ember:controller NAME`
+
+  Creates a route using the provided name in `app/assets/javascripts/routes`.
+
+  The following options are supported:
+
+  * `--array` - Used to generate an `Ember.ArrayController`.
+  * `--object` - Used to generate an `Ember.ObjectController`.
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `/app/assets/javascripts`.
+
 TODO: Add details about writing es6 modules
 
 ## Authors ##
