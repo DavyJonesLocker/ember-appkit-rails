@@ -23,5 +23,3 @@ class TemplateGeneratorTest < Rails::Generators::TestCase
     end
   end
 end
-
-
