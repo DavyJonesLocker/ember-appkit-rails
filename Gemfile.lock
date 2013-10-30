@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/emberjs/ember-rails.git
-  revision: a28163c8547a283d101f44773ea984f6dd74794f
+  revision: b1db252c3ad49c05c4c325dc71ce50285c000937
   branch: master
   specs:
     ember-rails (0.13.0)

@@ -39,4 +39,13 @@ class ControllerGeneratorTest < Rails::Generators::TestCase
     run_generator [ "ember", "-d", custom_path ]
     assert_file "#{custom_path}/controllers/ember.js.es6"
   end
+
+  test "Uses config.ember.ember_path" do
+    custom_path = ember_path("custom")
+
+    with_config ember_path: custom_path do
+      run_generator ["post", "--object"]
+      assert_file "#{custom_path}/controllers/post.js.es6"
+    end
+  end
 end
