@@ -21,7 +21,19 @@ TODO: Add generator details once they are complete.
 
 ## Usage ##
 
-TODO: Add generator details once they are complete.
+### Generators ###
+
+Ember Appkit Rails provides the following generators:
+
+* `ember:bootstrap`
+
+  Initializes Ember Appkit Rails into your project by creating the required files
+  (`router.js.es6`, `ember-app.js.es6`, and the directory structure).
+
+  The following options are supported:
+
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `/app/assets/javascripts`.
+  * `--app-name` - This will be used to name the global variable referencing your application. Default value: `App`.
 
 TODO: Add details about writing es6 modules
 
