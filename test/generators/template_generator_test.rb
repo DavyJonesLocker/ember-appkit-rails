@@ -14,6 +14,12 @@ class TemplateGeneratorTest < Rails::Generators::TestCase
     assert_file "app/assets/javascripts/templates/post.hbs"
   end
 
+  test "Assert files are properly created with custom path" do
+    custom_path = ember_path("custom")
+    run_generator [ "post", "-d", custom_path ]
+    assert_file "#{custom_path}/templates/post.hbs"
+  end
+
   test "Uses config.ember.ember_path" do
     custom_path = ember_path("custom")
 
