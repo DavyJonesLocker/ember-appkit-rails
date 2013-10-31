@@ -32,26 +32,72 @@ Ember Appkit Rails provides the following generators:
 
   The following options are supported:
 
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `/app/assets/javascripts`.
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `app/assets/javascripts/`.
   * `--app-name` - This will be used to name the global variable referencing your application. Default value: `App`.
 
 * `ember:route NAME`
 
-  Creates a route using the provided name in `app/assets/javascripts/routes`.
+  Creates a route using the provided name in `app/assets/javascripts/routes/`.
 
   The following options are supported:
 
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `/app/assets/javascripts`.
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `app/assets/javascripts/`.
 
 * `ember:controller NAME`
 
-  Creates a route using the provided name in `app/assets/javascripts/routes`.
+  Creates a route using the provided name in `app/assets/javascripts/routes/`.
 
   The following options are supported:
 
   * `--array` - Used to generate an `Ember.ArrayController`.
   * `--object` - Used to generate an `Ember.ObjectController`.
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `app/assets/javascripts/`.
+
+* `ember:view NAME`
+
+  Creates a view using the provided name in `app/assets/javascripts/views/'.
+
+  The following options are supported:
+
+  * `--without-template` - Used to prevent creating a template for the generated view.
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `app/assets/javascripts/`.
+
+* `ember:component NAME`
+
+  Creates a component in `app/assets/javascripts/components/` and a template in `app/assets/javascripts/templates/components/`.
+
+  The following options are supported:
+
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `app/assets/javascripts/`.
+
+* `ember:template NAME`
+
+  Creates a template using the provided name in `app/assets/javascripts/templates/`.
+
+  The following options are supported:
+
   * `--ember-path` - This is the root path to be used for your Ember application. Default value: `/app/assets/javascripts`.
+
+* `ember:model NAME [ATTRIBUTES]`
+
+  Creates a model using the provided name in `app/assets/javascripts/models/`.
+
+  Accepts a list of a attributes to setup on the generated model.
+
+  The following options are supported:
+
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `app/assets/javascripts/`.
+
+* `ember:resource NAME`
+
+  Creates a route, controller, and template for the provided name.
+
+  The following options are supported:
+
+  * `--array` - Used to generate an `Ember.ArrayController`.
+  * `--object` - Used to generate an `Ember.ObjectController`.
+  * `--skip-route` - When present a route will not be generated.
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `app/assets/javascripts/`.
 
 TODO: Add details about writing es6 modules
 
