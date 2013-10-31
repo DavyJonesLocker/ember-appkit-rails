@@ -45,7 +45,7 @@ Ember Appkit Rails provides the following generators:
 
 * `ember:controller NAME`
 
-  Creates a route using the provided name in `app/assets/javascripts/routes/`.
+  Creates a controller using the provided name in `app/assets/javascripts/controllers/`.
 
   The following options are supported:
 
@@ -55,7 +55,7 @@ Ember Appkit Rails provides the following generators:
 
 * `ember:view NAME`
 
-  Creates a view using the provided name in `app/assets/javascripts/views/'.
+  Creates a view using the provided name in `app/assets/javascripts/views/`.
 
   The following options are supported:
 
