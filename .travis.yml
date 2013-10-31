@@ -1,3 +1,7 @@
 language: ruby
 rvm:
  - 2.0.0
+env:
+  matrix:
+    - UPDATE_RESOLVER=false
+    - UPDATE_RESOLVER=true
