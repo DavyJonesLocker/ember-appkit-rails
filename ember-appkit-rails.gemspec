@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Ember::Appkit::Rails::VERSION
   s.authors     = ['Brian Cardarella']
   s.email       = ['bcardarella@gmail.com']
-  s.homepage    = 'https://github.com/dockyard/ember_app_kit-rails'
+  s.homepage    = 'https://github.com/dockyard/ember-appkit-rails'
   s.summary     = 'Ember App Kit for Rails'
   s.description = 'Ember App Kit for Rails'
 
