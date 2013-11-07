@@ -1,4 +1,4 @@
-import Person from 'appkit/models/person';
+import Person from 'dummy/models/person';
 
 var IndexRoute = Ember.Route.extend({
   model: function() {

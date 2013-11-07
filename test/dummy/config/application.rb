@@ -9,6 +9,8 @@ require 'ember/appkit/rails'
 require 'jquery-rails'
 
 module Dummy
-  class Application < Rails::Application; end
+  class Application < Rails::Application
+    config.ember_appkit.namespace = 'dummy'
+  end
 end
 
