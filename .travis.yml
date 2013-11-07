@@ -1,7 +1,11 @@
 language: ruby
 rvm:
- - 2.0.0
+- 2.0.0
 env:
   matrix:
-    - UPDATE_RESOLVER=false
-    - UPDATE_RESOLVER=true
+  - UPDATE_RESOLVER=false
+  - UPDATE_RESOLVER=true
+notifications:
+  hipchat:
+    rooms:
+      secure: n3ArFKsX1HmKseQm+K471o/5EPfTnAQJvvjtcbko0TrReXgUtEzuw7hR6JTWEBMqec+CyvhJfu/Pf/Pf3pkcIHEGoLxlxMdzU1cJoo9MMgFRyp1lHCSw9yz9uHlkLrulewSx6sq37NSp56RkUThVatqa+maO8oNbIbvdb/LRwEg=
