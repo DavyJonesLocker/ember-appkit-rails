@@ -29,7 +29,7 @@ module Ember
       end
 
       def create_ember_app_file
-        template "ember-app.js.es6", "#{ember_path}/ember-app.js.es6"
+        template "ember-app.js", "#{ember_path}/ember-app.js"
       end
 
       private
