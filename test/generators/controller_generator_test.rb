@@ -24,11 +24,6 @@ class ControllerGeneratorTest < Rails::Generators::TestCase
     assert_file "app/assets/javascripts/controllers/post.js.es6"
   end
 
-  test "default_controller namespaced" do
-    run_generator ["post/index"]
-    assert_file "#{ember_path}/controllers/post/index.js.es6", /PostIndexController/
-  end
-
   test "Assert files are properly created" do
     run_generator %w(ember)
     assert_file "#{ember_path}/controllers/ember.js.es6"
