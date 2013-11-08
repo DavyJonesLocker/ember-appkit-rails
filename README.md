@@ -99,6 +99,10 @@ Ember Appkit Rails provides the following generators:
   * `--skip-route` - When present a route will not be generated.
   * `--ember-path` - This is the root path to be used for your Ember application. Default value: `app/assets/javascripts/`.
 
+* `ember:helper NAME`
+
+  Creates a helper using the provided name in `app/assets/javascripts/helpers/`.
+
 TODO: Add details about writing es6 modules
 
 ## Authors ##
