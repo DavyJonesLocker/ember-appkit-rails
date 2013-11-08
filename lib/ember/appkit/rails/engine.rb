@@ -13,8 +13,8 @@ module Ember
           ES6ModuleTranspiler.prefix_pattern = [config.ember_appkit.prefix_pattern, config.ember_appkit.namespace]
 
           config.handlebars ||= ActiveSupport::OrderedOptions.new
-          config.handlebars.output_type   ||= :amd
-          config.handlebars.amd_namespace ||= config.ember_appkit.namespace
+          config.handlebars.output_type   = :amd
+          config.handlebars.amd_namespace = config.ember_appkit.namespace
         end
       end
     end
