@@ -17,7 +17,11 @@ gem 'ember-appkit-rails'
 You should not need to specify any additional core Ember depdendencies.
 `EmberAppkitRails` includes all you need to get going.
 
-TODO: Add generator details once they are complete.
+## Prerequisites
+
+[Node.js](http://nodejs.org) is required. You can either download the
+package from the website or run `brew install node` (for Mac users
+only).
 
 ## Usage ##
 
