@@ -133,4 +133,4 @@ Please do! We are always looking to improve this gem.
 
 [@dockyard](http://twitter.com/dockyard)
 
-[Licensed under the MIT license](http://www.opensource.org/licenses/mit-license.php)i
+[Licensed under the MIT license](http://www.opensource.org/licenses/mit-license.php)
