@@ -16,6 +16,12 @@ module Ember
           config.handlebars.output_type   = :amd
           config.handlebars.amd_namespace = config.ember_appkit.namespace
         end
+
+        initializer :add_builtin_route do |app|
+          app.routes.append do
+            get '/' => "rails/welcome#index"
+          end
+        end
       end
     end
   end
