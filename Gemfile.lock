@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     ember-appkit-rails (0.1.1)
+      ember-data-source (~> 1.0.0.beta.3)
       ember-rails (>= 0.14.0)
       ember-source (~> 1.2.0.beta.2)
       es6_module_transpiler-rails (~> 0.0.3)
@@ -56,7 +57,7 @@ GEM
     coderay (1.0.9)
     columnize (0.3.6)
     debugger-linecache (1.2.0)
-    ember-data-source (0.14)
+    ember-data-source (1.0.0.beta.3)
       ember-source
     ember-rails (0.14.0)
       active_model_serializers

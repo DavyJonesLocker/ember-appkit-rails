@@ -18,6 +18,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     run_generator []
     assert_file "#{ember_path}/ember-app.js"
     assert_file "#{ember_path}/router.js.es6"
+    assert_file "#{ember_path}/store.js"
   end
 
   test "create bootstrap with and custom path" do
@@ -25,12 +26,14 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     run_generator ["-d", custom_path]
     assert_file "#{custom_path}/ember-app.js"
     assert_file "#{custom_path}/router.js.es6"
+    assert_file "#{custom_path}/store.js"
   end
 
   test "create bootstrap with custom app name" do
     run_generator ["-n", "MyApp"]
     assert_file "#{ember_path}/ember-app.js", /MyApp = /
     assert_file "#{ember_path}/router.js.es6"
+    assert_file "#{ember_path}/store.js"
   end
 
   test "Uses config.ember.app_name" do
@@ -38,6 +41,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
       run_generator
       assert_file "#{ember_path}/ember-app.js", /Blazorz = /
       assert_file "#{ember_path}/router.js.es6"
+      assert_file "#{ember_path}/store.js"
     end
   end
 
@@ -48,8 +52,10 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
       run_generator
       assert_file "#{custom_path}/ember-app.js"
       assert_file "#{custom_path}/router.js.es6"
+      assert_file "#{custom_path}/store.js"
     end
   end
+<<<<<<< HEAD
 
   test "Removes turbolinks" do
     run_generator
