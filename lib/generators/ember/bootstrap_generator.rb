@@ -11,6 +11,7 @@ module Ember
 
       class_option :ember_path, :type => :string, :aliases => "-d", :default => false, :desc => "Custom ember app path"
       class_option :app_name, :type => :string, :aliases => "-n", :default => false, :desc => "Custom ember app name"
+      class_option :leave_turbolinks, :type => :boolean, :default => false, :desc => "Leave 'turbolinks' in Gemfile"
 
       def inject_ember
         inject_into_application_file
@@ -32,7 +33,37 @@ module Ember
         template "ember-app.js", "#{ember_path}/ember-app.js"
       end
 
+      def remove_turbolinks
+        return if options[:leave_turbolinks]
+
+        remove_turbolinks_from_gemfile
+        remove_turbolinks_from_layout
+        remove_turbolinks_from_application_js
+      end
+
       private
+
+      def remove_turbolinks_from_application_js
+        path = Pathname.new(destination_root).join('app','assets','javascripts','application.js')
+        return unless path.exist?
+
+        gsub_file path, /(?:\/\/= require turbolinks)/, ''
+      end
+
+      def remove_turbolinks_from_layout
+        path = Pathname.new(destination_root).join('app','views','layouts','application.html.erb')
+        return unless path.exist?
+
+        gsub_file path, /(?:, "data-turbolinks-track" => true)/, ''
+      end
+
+      def remove_turbolinks_from_gemfile
+        path = Pathname.new(destination_root).join('Gemfile')
+        return unless path.exist?
+
+        gsub_file path, /(?:#.+$\n)?gem 'turbolinks'/, ''
+      end
+
 
       def inject_into_application_file
         application_file = "#{ember_path}/application.js"

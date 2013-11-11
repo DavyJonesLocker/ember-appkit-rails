@@ -1,15 +1,22 @@
+require 'pathname'
+
 module GeneratorTestSupport
   def prepare_destination
     super
 
-    dir = 'app/assets/javascripts'
-    dest = Rails.root.join("tmp", "generator_test_output", dir)
+    tmp_destination = Pathname.new(destination_root)
+    javascript_destination = tmp_destination.join('app','assets','javascripts')
 
-    FileUtils.mkdir_p dest
-    File.write(dest.join('application.js'), "")
+    FileUtils.mkdir_p javascript_destination
+    FileUtils.cp "test/fixtures/rails_4-0-0_application.js", javascript_destination.join('application.js')
 
-    FileUtils.mkdir_p dest.join('custom')
-    File.write(dest.join('custom/application.js'), "")
+    FileUtils.mkdir_p javascript_destination.join('custom')
+    FileUtils.cp "test/fixtures/rails_4-0-0_application.js", javascript_destination.join('custom', 'application.js')
+
+    FileUtils.cp 'test/fixtures/rails_4-0-0_Gemfile', tmp_destination.join('Gemfile')
+
+    FileUtils.mkdir_p tmp_destination.join('app','views', 'layouts')
+    FileUtils.cp 'test/fixtures/rails_4-0-0_application_layout', tmp_destination.join('app','views','layouts', 'application.html.erb')
   end
 
   def with_config(options = {})
