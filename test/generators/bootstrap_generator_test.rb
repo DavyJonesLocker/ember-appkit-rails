@@ -50,4 +50,39 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
       assert_file "#{custom_path}/router.js.es6"
     end
   end
+
+  test "Removes turbolinks" do
+    run_generator
+
+    confirm_turbolinks_removed "Gemfile"
+    confirm_turbolinks_removed "app/views/layouts/application.html.erb"
+    confirm_turbolinks_removed "app/assets/javascripts/application.js"
+  end
+
+  test "Leaves turbolinks if --leave-turbolinks" do
+    run_generator ['--leave-turbolinks']
+
+    confirm_turbolinks_not_removed "Gemfile"
+    confirm_turbolinks_not_removed "app/views/layouts/application.html.erb"
+    confirm_turbolinks_not_removed "app/assets/javascripts/application.js"
+  end
+
+  test "Does not error if Gemfile is missing" do
+    FileUtils.rm destination_root + '/Gemfile'
+    run_generator
+  end
+
+  private
+
+  def confirm_turbolinks_removed(file)
+    assert_file file do |content|
+      assert_no_match(/turbolinks/, content)
+    end
+  end
+
+  def confirm_turbolinks_not_removed(file)
+    assert_file file do |content|
+      assert_match(/turbolinks/, content)
+    end
+  end
 end
