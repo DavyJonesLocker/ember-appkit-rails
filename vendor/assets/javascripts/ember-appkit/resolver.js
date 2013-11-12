@@ -1,5 +1,5 @@
 // Fetched from: https://raw.github.com/stefanpenner/ember-jj-abrams-resolver/master/dist/ember-resolver.js
-// Fetched on: 2013-10-31T03:00:41Z
+// Fetched on: 2013-11-12T14:02:59Z
 // ==========================================================================
 // Project:   Ember - JavaScript Application Framework
 // Copyright: Copyright 2013 Stefan Penner and Ember App Kit Contributors
@@ -14,8 +14,8 @@
 /*globals define registry requirejs */
 
 define("resolver",
-  ["exports"],
-  function(__exports__) {
+  [],
+  function() {
     "use strict";
   /*
    * This module defines a subclass of Ember.DefaultResolver that adds two
@@ -115,7 +115,7 @@ define("resolver",
     if (requirejs._eak_seen[normalizedModuleName]) {
       var module = require(normalizedModuleName, null, null, true /* force sync */);
 
-      if (module.default) { module = module.default };
+      if (module.default) { module = module.default; }
 
       if (module === undefined) {
         throw new Error(" Expected to find: '" + parsedName.fullName + "' within '" + normalizedModuleName + "' but got 'undefined'. Did you forget to `export default` within '" + normalizedModuleName + "'?");
@@ -143,6 +143,9 @@ define("resolver",
     resolveTemplate: resolveOther,
     resolveOther: resolveOther,
     resolveRouter: resolveRouter,
+    makeToString: function(factory, fullName) {
+      return '' + this.namespace.modulePrefix + '@' + fullName + ':';
+    },
     parseName: parseName,
     shouldWrapInClassFactory: function(module, parsedName){
       return false;
@@ -156,7 +159,8 @@ define("resolver",
     }
   });
 
-  __exports__.default = Resolver;
+  Resolver.default = Resolver;
+  return Resolver;
 });
 
 })();
