@@ -1,6 +1,10 @@
 <% config = Rails.application.config.ember_appkit %>
 import Resolver from 'resolver';
 
+<% unless config.enable_logging %>
+  Ember.LOG_VERSION = false;
+<% end %>
+
 var App = Ember.Application.extend({
 
 <% if config.enable_logging %>
