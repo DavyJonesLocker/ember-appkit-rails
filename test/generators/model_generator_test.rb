@@ -21,7 +21,7 @@ class ModelGeneratorTest < Rails::Generators::TestCase
 
   test "leave parentheses when create model w/o attributes" do
     run_generator ["post"]
-    assert_file "app/assets/javascripts/models/post.js.es6", /export default = DS.Model.extend/
+    assert_file "app/assets/javascripts/models/post.js.es6", /export default DS.Model.extend/
   end
 
   test "Assert files are properly created" do

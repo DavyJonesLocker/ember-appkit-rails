@@ -1,4 +1,4 @@
-export default = Ember.ArrayController.extend({
+export default Ember.ArrayController.extend({
 
 });
 
