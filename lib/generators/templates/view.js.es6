@@ -1,3 +1,3 @@
-export default = Ember.View.extend({
+export default Ember.View.extend({
 
 });

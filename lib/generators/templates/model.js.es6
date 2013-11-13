@@ -1,4 +1,4 @@
-export default = DS.Model.extend({
+export default DS.Model.extend({
 <% attributes.each_with_index do |attribute, idx| -%>
   <%= attribute[:name].camelize(:lower) %>: <%=
   if %w(references belongs_to).member?(attribute[:type])
