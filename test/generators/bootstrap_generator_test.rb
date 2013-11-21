@@ -16,32 +16,31 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
 
   test "create bootstrap" do
     run_generator []
-    assert_file "#{ember_path}/ember-app.js"
-    assert_file "#{ember_path}/router.js.es6"
-    assert_file "#{ember_path}/store.js"
+
+    assert_files
   end
 
   test "create bootstrap with and custom path" do
     custom_path = ember_path("custom")
     run_generator ["-d", custom_path]
-    assert_file "#{custom_path}/ember-app.js"
-    assert_file "#{custom_path}/router.js.es6"
-    assert_file "#{custom_path}/store.js"
+
+    assert_files custom_path
   end
 
   test "create bootstrap with custom app name" do
     run_generator ["-n", "MyApp"]
+
     assert_file "#{ember_path}/ember-app.js", /MyApp = /
-    assert_file "#{ember_path}/router.js.es6"
-    assert_file "#{ember_path}/store.js"
+
+    assert_files
   end
 
   test "Uses config.ember.app_name" do
     with_config app_name: 'Blazorz' do
       run_generator
+
+      assert_files
       assert_file "#{ember_path}/ember-app.js", /Blazorz = /
-      assert_file "#{ember_path}/router.js.es6"
-      assert_file "#{ember_path}/store.js"
     end
   end
 
@@ -50,9 +49,8 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
 
     with_config ember_path: custom_path do
       run_generator
-      assert_file "#{custom_path}/ember-app.js"
-      assert_file "#{custom_path}/router.js.es6"
-      assert_file "#{custom_path}/store.js"
+
+      assert_files custom_path
     end
   end
 
@@ -78,6 +76,13 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
   end
 
   private
+
+  def assert_files(path = ember_path)
+    assert_file "#{path}/ember-env.js"
+    assert_file "#{path}/ember-app.js"
+    assert_file "#{path}/router.js.es6"
+    assert_file "#{path}/store.js"
+  end
 
   def confirm_turbolinks_removed(file)
     assert_file file do |content|
