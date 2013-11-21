@@ -41,6 +41,10 @@ module Ember
         remove_turbolinks_from_application_js
       end
 
+      def create_ember_store_file
+        template "store.js", "#{ember_path}/store.js"
+      end
+
       private
 
       def remove_turbolinks_from_application_js
