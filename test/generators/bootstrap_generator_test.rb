@@ -55,7 +55,6 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
       assert_file "#{custom_path}/store.js"
     end
   end
-<<<<<<< HEAD
 
   test "Removes turbolinks" do
     run_generator
