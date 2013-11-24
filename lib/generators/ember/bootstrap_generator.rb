@@ -17,7 +17,6 @@ module Ember
         inject_into_application_file
       end
 
-
       def create_dir_layout
         %W{models controllers views routes helpers components templates templates/components mixins}.each do |dir|
           empty_directory "#{ember_path}/#{dir}"

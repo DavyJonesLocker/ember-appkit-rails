@@ -19,5 +19,3 @@ module Ember
     end
   end
 end
-
-
