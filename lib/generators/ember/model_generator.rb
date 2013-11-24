@@ -16,7 +16,8 @@ module Ember
         template "model.js.es6", file_path
       end
 
-    private
+      private
+
       EMBER_TYPE_LOOKUP = {
         nil  => 'string',
         :binary => 'string',
