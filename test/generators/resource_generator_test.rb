@@ -8,7 +8,6 @@ class ResourceGeneratorTest < Rails::Generators::TestCase
   destination File.join(Rails.root, "tmp")
   setup :prepare_destination
 
-
   test "create template" do
     run_generator ["post"]
     assert_file "app/assets/javascripts/templates/post.hbs"
@@ -39,5 +38,3 @@ class ResourceGeneratorTest < Rails::Generators::TestCase
     end
   end
 end
-
-
