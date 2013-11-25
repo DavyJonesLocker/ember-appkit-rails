@@ -33,6 +33,14 @@ module Ember
         template "ember-app.js", "#{ember_path}/ember-app.js"
       end
 
+      def create_ember_adapter_file
+        template "adapter.js", "#{ember_path}/adapter.js"
+      end
+
+      def create_ember_env_file
+        template "ember-env.js", "#{ember_path}/ember-env.js"
+      end
+
       def remove_turbolinks
         return if options[:leave_turbolinks]
 
@@ -48,14 +56,6 @@ module Ember
         return unless path.exist?
 
         gsub_file path, /(?:\/\/= require jquery_ujs)\n/, ''
-      end
-
-      def create_ember_store_file
-        template "store.js", "#{ember_path}/store.js"
-      end
-
-      def create_ember_env_file
-        template "ember-env.js", "#{ember_path}/ember-env.js"
       end
 
       private
