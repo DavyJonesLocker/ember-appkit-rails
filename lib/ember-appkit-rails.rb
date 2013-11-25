@@ -6,4 +6,5 @@
 $:.delete(File.expand_path('..', __FILE__))
 $:.unshift(File.expand_path('..', __FILE__))
 
+require 'ember/appkit'
 require 'ember/appkit/rails'
