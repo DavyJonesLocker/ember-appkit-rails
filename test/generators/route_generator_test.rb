@@ -22,4 +22,3 @@ class RouteGeneratorTest < Rails::Generators::TestCase
     assert_file "#{custom_path}/routes/index.js.es6"
   end
 end
-

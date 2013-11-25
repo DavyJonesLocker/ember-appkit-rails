@@ -109,6 +109,16 @@ Ember Appkit Rails provides the following generators:
 
   Creates a helper using the provided name in `app/assets/javascripts/helpers/`.
 
+#### Rails Generators ####
+
+The regular Rails generators `resource` and `scaffold` can also generate
+the match ember templates if you profile the `--ember` switch to the
+command:
+
+```
+rails g resource post title:string --ember
+```
+
 TODO: Add details about writing es6 modules
 
 ## Authors ##

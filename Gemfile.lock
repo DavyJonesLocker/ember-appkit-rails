@@ -5,7 +5,7 @@ PATH
       ember-data-source (~> 1.0.0.beta.3)
       ember-rails (>= 0.14.0)
       ember-source (~> 1.2.0)
-      es6_module_transpiler-rails (~> 0.0.3)
+      es6_module_transpiler-rails (~> 0.1.0)
       rails (~> 4.0.0)
 
 GEM
@@ -71,7 +71,7 @@ GEM
     ember-source (1.2.0)
       handlebars-source (= 1.1.1)
     erubis (2.7.0)
-    es6_module_transpiler-rails (0.0.3)
+    es6_module_transpiler-rails (0.1.0)
       execjs
     execjs (2.0.2)
     handlebars-source (1.1.1)
