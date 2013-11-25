@@ -17,4 +17,13 @@ class ResourceOverrideTest < Rails::Generators::TestCase
     run_generator ["post", '--ember']
     assert_file "app/assets/javascripts/templates/post.hbs"
   end
+
+  private
+
+  def copy_routes
+    routes = File.expand_path("../../dummy/config/routes.rb", __FILE__)
+    destination = File.expand_path('../../dummy/tmp/config', __FILE__)
+    FileUtils.mkdir_p(destination)
+    FileUtils.cp routes, destination
+  end
 end

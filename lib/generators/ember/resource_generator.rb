@@ -14,9 +14,21 @@ module Ember
       class_option :object, :type => :boolean, :default => false, :desc => "Create an Ember.ObjectController to represent a single object"
 
       def create_resource_files
-        invoke('ember:route', [ name ], options) unless options[:skip_route]
+        unless options[:skip_route]
+          invoke('ember:route', [ name ], options)
+          inject_into_router_file(name)
+        end
         invoke('ember:controller', [ name ], options)
         invoke('ember:template', [ name ], options)
+      end
+
+      private
+
+      def inject_into_router_file(name)
+        router_file = "#{ember_path}/router.js.es6"
+        inject_into_file(router_file, :after => /^.*Router.map\(function\(\) \{*$/) do
+          "\n  this.resource('#{name.pluralize}');"
+        end
       end
     end
   end
