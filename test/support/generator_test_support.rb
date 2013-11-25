@@ -50,11 +50,4 @@ module GeneratorTestSupport
   def ember_path(custom_path = nil)
    "app/assets/javascripts/#{custom_path}".chomp('/')
   end
-
-  def copy_routes
-    routes = File.expand_path("../../dummy/config/routes.rb", __FILE__)
-    destination = File.expand_path('../../dummy/tmp/config', __FILE__)
-    FileUtils.mkdir_p(destination)
-    FileUtils.cp routes, destination
-  end
 end
