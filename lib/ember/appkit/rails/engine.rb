@@ -2,7 +2,7 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
   config.ember_appkit = ActiveSupport::OrderedOptions.new
 
   config.ember_appkit.namespace = 'appkit'
-  config.ember_appkit.prefix_pattern = /^(controllers|models|views|helpers|routes|router|store)/
+  config.ember_appkit.prefix_pattern = /^(controllers|models|views|helpers|routes|router|adapter)/
 
   config.ember_appkit.enable_logging = ::Rails.env.development?
 
