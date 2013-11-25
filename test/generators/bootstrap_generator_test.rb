@@ -92,6 +92,12 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     run_generator
   end
 
+  test "Does not add jquery twice" do
+    run_generator
+    content = File.read(File.expand_path("app/assets/javascripts/application.js", destination_root))
+    assert_equal 1, content.scan(/jquery/).size, "should only contain jquery once"
+  end
+
   private
 
   def assert_files(path = ember_path)
