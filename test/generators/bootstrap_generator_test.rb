@@ -70,6 +70,23 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     confirm_turbolinks_not_removed "app/assets/javascripts/application.js"
   end
 
+  test "Removes jquery-ujs" do
+    run_generator
+
+    assert_file 'app/assets/javascripts/application.js' do |content|
+      assert_no_match /jquery_ujs/, content
+    end
+  end
+
+  test "Leaves jquery-ujs if --leave-jqueryujs" do
+    run_generator ['--leave-jqueryujs']
+
+
+    assert_file 'app/assets/javascripts/application.js' do |content|
+      assert_match /jquery_ujs/, content
+    end
+  end
+
   test "Does not error if Gemfile is missing" do
     FileUtils.rm destination_root + '/Gemfile'
     run_generator

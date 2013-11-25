@@ -5,3 +5,4 @@
 * Resource is injected into router during resource generator - Brian Cardarella
 * Updated es6\_module\_transpiler-rails gem - Wouter Willaert
 * Corrected Title in in Welcome Page - Lin Reid
+* Remove jquery\_ujs from application.js on bootstrap - Brian Cardarella

@@ -12,6 +12,7 @@ module Ember
       class_option :ember_path, :type => :string, :aliases => "-d", :default => false, :desc => "Custom ember app path"
       class_option :app_name, :type => :string, :aliases => "-n", :default => false, :desc => "Custom ember app name"
       class_option :leave_turbolinks, :type => :boolean, :default => false, :desc => "Leave 'turbolinks' in Gemfile"
+      class_option :leave_jqueryujs, :type => :boolean, :default => false, :desc => "Leave 'jquery_ujs' in application.js"
 
       def inject_ember
         inject_into_application_file
@@ -38,6 +39,15 @@ module Ember
         remove_turbolinks_from_gemfile
         remove_turbolinks_from_layout
         remove_turbolinks_from_application_js
+      end
+
+      def remove_jquery_ujs
+        return if options[:leave_jqueryujs]
+
+        path = Pathname.new(destination_root).join('app','assets','javascripts','application.js')
+        return unless path.exist?
+
+        gsub_file path, /(?:\/\/= require jquery_ujs)/, ''
       end
 
       def create_ember_store_file
