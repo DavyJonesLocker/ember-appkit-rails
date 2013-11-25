@@ -71,7 +71,6 @@ module Ember
         gsub_file path, /(?:#.+$\n)?gem 'turbolinks'/, ''
       end
 
-
       def inject_into_application_file
         application_file = "#{ember_path}/application.js"
         inject_into_file( application_file, :before => /^.*require_tree.*$/) do

@@ -18,7 +18,6 @@ module Ember
         invoke('ember:controller', [ name ], options)
         invoke('ember:template', [ name ], options)
       end
-
     end
   end
 end
