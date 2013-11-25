@@ -39,5 +39,3 @@ class ResourceGeneratorTest < Rails::Generators::TestCase
     end
   end
 end
-
-
