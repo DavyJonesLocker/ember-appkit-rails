@@ -47,7 +47,7 @@ module Ember
         path = Pathname.new(destination_root).join('app','assets','javascripts','application.js')
         return unless path.exist?
 
-        gsub_file path, /(?:\/\/= require jquery_ujs)/, ''
+        gsub_file path, /(?:\/\/= require jquery_ujs)\n/, ''
       end
 
       def create_ember_store_file
@@ -64,7 +64,7 @@ module Ember
         path = Pathname.new(destination_root).join('app','assets','javascripts','application.js')
         return unless path.exist?
 
-        gsub_file path, /(?:\/\/= require turbolinks)/, ''
+        gsub_file path, /(?:\/\/= require turbolinks)\n/, ''
       end
 
       def remove_turbolinks_from_layout
@@ -78,7 +78,7 @@ module Ember
         path = Pathname.new(destination_root).join('Gemfile')
         return unless path.exist?
 
-        gsub_file path, /(?:#.+$\n)?gem 'turbolinks'/, ''
+        gsub_file path, /(?:#.+$\n)?gem 'turbolinks'\n/, ''
       end
 
       def inject_into_application_file
