@@ -1,3 +1,7 @@
+module Ember
+  module Appkit; end
+end
+
 require 'ember-rails'
 require 'ember/appkit/rails/resource_override'
 require 'ember/source'
