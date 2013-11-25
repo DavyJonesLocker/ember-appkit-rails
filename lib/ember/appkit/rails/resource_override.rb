@@ -12,4 +12,3 @@ Rails::Generators::ResourceGenerator.class_eval do
   prepend Ember::Appkit::Rails::ResourceOverride
   class_option :ember, aliases: '-e', desc: 'force ember resource to generate', optional: true, type: 'boolean', default: false, banner: '--ember'
 end
-
