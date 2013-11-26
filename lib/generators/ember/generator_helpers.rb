@@ -12,7 +12,7 @@ module Ember
         elsif rails_engine?
           "app/assets/javascripts/#{engine_name}"
         else
-          "app/assets/javascripts"
+          'appkit'
         end
       end
 
@@ -32,7 +32,7 @@ module Ember
         elsif rails_engine?
           engine_name
         else
-          "App"
+          'App'
         end
       end
 
@@ -42,6 +42,10 @@ module Ember
 
       def handlebars_template_path
         File.join(class_path, file_name).gsub(/^\//, '')
+      end
+
+      def javascript_assets_path
+        File.join(::Rails.root, 'app/assets/javascripts')
       end
 
       def configuration

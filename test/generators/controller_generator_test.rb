@@ -11,17 +11,17 @@ class ControllerGeneratorTest < Rails::Generators::TestCase
 
   test "array_controller" do
     run_generator ["post", "--array"]
-    assert_file "app/assets/javascripts/controllers/post.js.es6"
+    assert_file "appkit/controllers/post.js.es6"
   end
 
   test "object_controller" do
     run_generator ["post", "--object"]
-    assert_file "app/assets/javascripts/controllers/post.js.es6"
+    assert_file "appkit/controllers/post.js.es6"
   end
 
   test "default_controller" do
     run_generator ["post"]
-    assert_file "app/assets/javascripts/controllers/post.js.es6"
+    assert_file "appkit/controllers/post.js.es6"
   end
 
   test "Assert files are properly created" do
