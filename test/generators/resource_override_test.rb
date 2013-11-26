@@ -10,12 +10,12 @@ class ResourceOverrideTest < Rails::Generators::TestCase
 
   test "create template without ember" do
     run_generator ["post"]
-    assert_no_file "app/assets/javascripts/templates/post.hbs"
+    assert_no_file "appkit/templates/post.hbs"
   end
 
   test "create template with ember" do
     run_generator ["post", '--ember']
-    assert_file "app/assets/javascripts/templates/post.hbs"
+    assert_file "appkit/templates/post.hbs"
   end
 
   private

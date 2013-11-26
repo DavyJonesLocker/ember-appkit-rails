@@ -10,6 +10,8 @@ module GeneratorTestSupport
     FileUtils.mkdir_p javascript_destination
     FileUtils.cp "test/fixtures/rails_4-0-0_application.js", javascript_destination.join('application.js')
 
+    FileUtils.mkdir_p tmp_destination.join('appkit')
+
     FileUtils.mkdir_p javascript_destination.join('custom')
     FileUtils.cp "test/fixtures/rails_4-0-0_application.js", javascript_destination.join('custom', 'application.js')
 
@@ -48,6 +50,6 @@ module GeneratorTestSupport
   end
 
   def ember_path(custom_path = nil)
-   "app/assets/javascripts/#{custom_path}".chomp('/')
+    custom_path || "appkit" 
   end
 end

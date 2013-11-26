@@ -82,8 +82,8 @@ module Ember
       end
 
       def inject_into_application_file
-        application_file = "#{ember_path}/application.js"
-        inject_into_file( application_file, :before => /^.*require_tree.*$/) do
+        application_file = File.join(javascript_assets_path, 'application.js')
+        inject_into_file(application_file, :before => /^.*require_tree.*$/) do
           context = instance_eval('binding')
           source  = File.expand_path(find_in_source_paths("application.js.erb"))
           ERB.new(::File.binread(source), nil, '-', '@output_buffer').result(context)
@@ -91,7 +91,7 @@ module Ember
       end
 
       def jquery?
-        content  = File.read(File.expand_path("#{ember_path}/application.js", destination_root))
+        content = File.read(File.join(javascript_assets_path, 'application.js'))
         content.scan(/\/\/= require jquery\n/).size > 0
       end
     end
