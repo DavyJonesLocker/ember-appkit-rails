@@ -17,7 +17,7 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
 
   initializer :add_builtin_route do |app|
     app.routes.append do
-      get '/' => "rails/welcome#index"
+      get '/' => "landing#index"
     end
   end
 
