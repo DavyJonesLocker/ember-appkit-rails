@@ -78,7 +78,7 @@ module Ember
         path = Pathname.new(destination_root).join('Gemfile')
         return unless path.exist?
 
-        gsub_file path, /(?:#.+$\n)?gem 'turbolinks'\n/, ''
+        gsub_file path, /(?:#.+$\n)?gem 'turbolinks'\n\n/, ''
       end
 
       def inject_into_application_file
