@@ -7,3 +7,5 @@
 * Corrected Title in in Welcome Page - Lin Reid
 * Remove jquery\_ujs from application.js on bootstrap - Brian Cardarella
 * Bootstrap into top-level `appkit/` directory - Brian Cardarella
+* Replaced Rails::WelcomeController with LandingController. Now uses
+  the application layout with an empty template. - Brian Cardarella
