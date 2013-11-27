@@ -10,3 +10,4 @@
 * Replaced Rails::WelcomeController with LandingController. Now uses
   the application layout with an empty template. - Brian Cardarella
 * Added utils/csrf.js to autoset csrf token in $.ajaxPrefilter - Brian Cardarella
+* Added cache buster for in-gem application.hbs for Sprockets - Brian Cardarella & Lin Reid
