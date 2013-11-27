@@ -1,0 +1,20 @@
+<h3>Index</h3>
+
+<p>{{#link-to '<%= file_name.pluralize -%>.new'}}New <%= file_name.singularize -%>{{/link-to}}</p>
+
+<table>
+  <tr>
+    <th>id</th>
+<% attributes.each do |attribute| -%>
+    <th><%= attribute[:name].titleize -%></th>
+<% end -%>
+  </tr>
+  {{#each}}
+    <tr>
+      <td>{{#link-to '<%= file_name.pluralize -%>.show' this}}{{id}}{{/link-to}}</td>
+<% attributes.each do |attribute| -%>
+      <td>{{<%= attribute[:name] -%>}}</td>
+<% end -%>
+    </tr>
+  {{/each}}
+</table>

@@ -41,13 +41,4 @@ class ResourceGeneratorTest < Rails::Generators::TestCase
       assert_file "#{custom_path}/routes/post.js.es6"
     end
   end
-
-  private
-
-  def copy_router(custom_path = 'appkit')
-    router = File.expand_path("../../../lib/generators/templates/router.js.es6", __FILE__)
-    destination = File.expand_path("../../dummy/tmp/#{custom_path}", __FILE__)
-    FileUtils.mkdir_p(destination)
-    FileUtils.cp router, destination
-  end
 end
