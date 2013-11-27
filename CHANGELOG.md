@@ -9,3 +9,4 @@
 * Bootstrap into top-level `appkit/` directory - Brian Cardarella
 * Replaced Rails::WelcomeController with LandingController. Now uses
   the application layout with an empty template. - Brian Cardarella
+* Added utils/csrf.js to autoset csrf token in $.ajaxPrefilter - Brian Cardarella

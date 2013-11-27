@@ -105,6 +105,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     assert_file "#{path}/ember-app.js"
     assert_file "#{path}/router.js.es6"
     assert_file "#{path}/adapter.js"
+    assert_file "#{path}/utils/csrf.js"
   end
 
   def confirm_turbolinks_removed(file)
