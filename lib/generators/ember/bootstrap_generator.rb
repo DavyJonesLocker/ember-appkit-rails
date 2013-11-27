@@ -41,6 +41,10 @@ module Ember
         template "ember-env.js", "#{ember_path}/ember-env.js"
       end
 
+      def create_utils_csrf_file
+        template "csrf.js", "#{ember_path}/utils/csrf.js"
+      end
+
       def remove_turbolinks
         return if options[:leave_turbolinks]
 
