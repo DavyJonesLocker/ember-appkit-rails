@@ -1,0 +1,9 @@
+<h3>{{id}}</h3>
+
+<p>{{#link-to '<%= file_name.pluralize -%>.edit' this}}Edit{{/link-to}} <button {{action destroyRecord}}>Destroy</button></p>
+
+<ul>
+<% attributes.each do |attribute| -%>
+  <li><%= attribute[:name].titleize -%>: {{<%= attribute[:name] -%>}}</li>
+<% end -%>
+</ul>

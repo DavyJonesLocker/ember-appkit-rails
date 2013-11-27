@@ -1,0 +1,9 @@
+<% attributes.each do |attribute| -%>
+<div>
+  <label for=""><%= attribute[:name].titleize -%></label>
+  {{input value=<%= attribute[:name].camelize(:lower) -%>}}
+</div>
+<% end -%>
+
+<button type="submit" {{action save}}>Save</button>
+<button type="submit" {{action cancel}}>Cancel</button>

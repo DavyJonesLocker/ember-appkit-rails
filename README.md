@@ -132,6 +132,19 @@ Ember Appkit Rails provides the following generators:
   * `--skip-route` - When present a route will not be generated.
   * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
 
+* `ember:scaffold NAME [ATTRIBUTES]`
+
+  Creates the following:
+
+  * Model of type name with the attributes provided
+  * `edit`, `index`, `new`, `show` routes and templates
+  * Injected the named resource into `router.js.es6` along with the
+    correct nested routes.
+
+  The following options are supported:
+
+  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
+
 * `ember:helper NAME`
 
   Creates a helper using the provided name in `appkit/helpers/`.

@@ -52,4 +52,11 @@ module GeneratorTestSupport
   def ember_path(custom_path = nil)
     custom_path || "appkit" 
   end
+
+  def copy_router(custom_path = 'appkit')
+    router = File.expand_path("../../../lib/generators/templates/router.js.es6", __FILE__)
+    destination = File.expand_path("../../dummy/tmp/#{custom_path}", __FILE__)
+    FileUtils.mkdir_p(destination)
+    FileUtils.cp router, destination
+  end
 end
