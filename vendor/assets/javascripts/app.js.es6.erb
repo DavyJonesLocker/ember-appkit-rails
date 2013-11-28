@@ -1,6 +1,10 @@
 <% config = Rails.application.config.ember_appkit %>
 import Resolver from 'resolver';
 
+if (typeof Turbolinks !== 'undefined') {
+  throw new Error("Turbolinks has been detected. Ember Appkit Rails will not function properly alongside Turbolinks.");
+}
+
 <% unless config.enable_logging %>
   Ember.LOG_VERSION = false;
 <% end %>
