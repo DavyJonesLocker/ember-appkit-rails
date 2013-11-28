@@ -3,7 +3,7 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
 
   config.ember_appkit.namespace = 'appkit'
   config.ember_appkit.asset_path = config.ember_appkit.namespace
-  config.ember_appkit.prefix_pattern = /^(controllers|models|views|helpers|routes|router|adapter)/
+  config.ember_appkit.prefix_pattern = /^(controllers|components|models|views|helpers|routes|router|adapter)/
 
   config.ember_appkit.enable_logging = ::Rails.env.development?
 
