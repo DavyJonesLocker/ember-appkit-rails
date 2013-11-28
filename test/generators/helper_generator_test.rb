@@ -11,6 +11,6 @@ class HelperGeneratorTest < Rails::Generators::TestCase
 
   test 'Generates helper correctly' do
     run_generator ['catdog']
-    assert_file 'appkit/helpers/catdog.js', /catdog/
+    assert_file "#{ember_path}/helpers/catdog.js", /catdog/
   end
 end

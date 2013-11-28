@@ -10,25 +10,25 @@ class ResourceGeneratorTest < Rails::Generators::TestCase
 
   test "create template" do
     run_generator ["post"]
-    assert_file "appkit/templates/post.hbs"
+    assert_file "#{ember_path}/templates/post.hbs"
   end
 
   test "create controller" do
     run_generator ["post"]
-    assert_file "appkit/controllers/post.js.es6"
+    assert_file "#{ember_path}/controllers/post.js.es6"
   end
 
   test "create route" do
     run_generator ["post"]
-    assert_file "appkit/routes/post.js.es6"
-    assert_file "appkit/router.js.es6" do |content|
+    assert_file "#{ember_path}/routes/post.js.es6"
+    assert_file "#{ember_path}/router.js.es6" do |content|
       assert_match(%r{this.resource\('posts'\);}, content)
     end
   end
 
   test "skip route" do
     run_generator ["post", "--skip-route"]
-    assert_no_file "appkit/routes/post.js.es6"
+    assert_no_file "#{ember_path}/routes/post.js.es6"
   end
 
   test "Uses config.ember.ember_path" do

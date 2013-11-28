@@ -11,17 +11,17 @@ class ModelGeneratorTest < Rails::Generators::TestCase
 
   test "create model" do
     run_generator ["post", "title:string"]
-    assert_file "appkit/models/post.js.es6"
+    assert_file "#{ember_path}/models/post.js.es6"
   end
 
   test "create namespaced model" do
     run_generator ["post/doineedthis", "title:string"]
-    assert_file "appkit/models/post/doineedthis.js.es6"
+    assert_file "#{ember_path}/models/post/doineedthis.js.es6"
   end
 
   test "leave parentheses when create model w/o attributes" do
     run_generator ["post"]
-    assert_file "appkit/models/post.js.es6", /export default DS.Model.extend/
+    assert_file "#{ember_path}/models/post.js.es6", /export default DS.Model.extend/
   end
 
   test "Assert files are properly created" do

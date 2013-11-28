@@ -10,7 +10,7 @@ module GeneratorTestSupport
     FileUtils.mkdir_p javascript_destination
     FileUtils.cp "test/fixtures/rails_4-0-0_application.js", javascript_destination.join('application.js')
 
-    FileUtils.mkdir_p tmp_destination.join('appkit')
+    FileUtils.mkdir_p tmp_destination.join(ember_path)
 
     FileUtils.mkdir_p javascript_destination.join('custom')
     FileUtils.cp "test/fixtures/rails_4-0-0_application.js", javascript_destination.join('custom', 'application.js')
@@ -53,7 +53,7 @@ module GeneratorTestSupport
     custom_path || "appkit" 
   end
 
-  def copy_router(custom_path = 'appkit')
+  def copy_router(custom_path = ember_path)
     router = File.expand_path("../../../lib/generators/templates/router.js.es6", __FILE__)
     destination = File.expand_path("../../dummy/tmp/#{custom_path}", __FILE__)
     FileUtils.mkdir_p(destination)

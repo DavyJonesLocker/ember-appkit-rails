@@ -11,7 +11,7 @@ class TemplateGeneratorTest < Rails::Generators::TestCase
 
   test "generates template" do
     run_generator ["post"]
-    assert_file "appkit/templates/post.hbs"
+    assert_file "#{ember_path}/templates/post.hbs"
   end
 
   test "Assert files are properly created with custom path" do

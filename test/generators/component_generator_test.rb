@@ -11,8 +11,8 @@ class ComponentGeneratorTest < Rails::Generators::TestCase
 
   test "default_component" do
     run_generator ["PostChart"]
-    assert_file "appkit/components/post-chart_component.js.es6"
-    assert_file "appkit/templates/components/post-chart.hbs"
+    assert_file "#{ember_path}/components/post-chart_component.js.es6"
+    assert_file "#{ember_path}/templates/components/post-chart.hbs"
   end
 
   test "Assert files are properly created (CamelCase)" do
