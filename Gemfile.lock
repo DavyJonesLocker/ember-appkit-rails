@@ -5,7 +5,7 @@ PATH
       ember-data-source (~> 1.0.0.beta.3)
       ember-rails (>= 0.14.0)
       ember-source (~> 1.2.0.1)
-      es6_module_transpiler-rails (~> 0.1.0)
+      es6_module_transpiler-rails (~> 0.2.0)
       rails (~> 4.0.0)
 
 GEM
@@ -54,12 +54,12 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     cliver (0.2.2)
-    coderay (1.0.9)
+    coderay (1.1.0)
     columnize (0.3.6)
     debugger-linecache (1.2.0)
     ember-data-source (1.0.0.beta.3)
       ember-source
-    ember-rails (0.14.0)
+    ember-rails (0.14.1)
       active_model_serializers
       barber (>= 0.4.1)
       ember-data-source
@@ -71,7 +71,7 @@ GEM
     ember-source (1.2.0.1)
       handlebars-source (~> 1.1.2)
     erubis (2.7.0)
-    es6_module_transpiler-rails (0.1.0)
+    es6_module_transpiler-rails (0.2.0)
       execjs
     execjs (2.0.2)
     handlebars-source (1.1.2)
@@ -80,11 +80,14 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    m (1.3.2)
+      method_source (>= 0.6.7)
+      rake (>= 0.9.2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.2)
-    mime-types (1.25)
+    mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
@@ -96,8 +99,8 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.3)
-    pry (0.9.12.2)
-      coderay (~> 1.0.5)
+    pry (0.9.12.4)
+      coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
@@ -117,7 +120,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
-    slop (3.4.6)
+    slop (3.4.7)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -147,5 +150,6 @@ DEPENDENCIES
   capybara
   ember-appkit-rails!
   jquery-rails
+  m
   poltergeist
   pry

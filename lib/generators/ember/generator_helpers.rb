@@ -4,15 +4,19 @@ module Ember
   module Generators
     module GeneratorHelpers
 
-      def ember_path
-        if options[:ember_path]
-          options[:ember_path]
-        elsif configuration.ember_path
-          configuration.ember_path
-        elsif rails_engine?
-          "app/assets/javascripts/#{engine_name}"
+      def app_path
+        if options[:app_path]
+          options[:app_path]
         else
-          'appkit'
+          configuration.paths.app
+        end
+      end
+
+      def config_path
+        if options[:config_path]
+          options[:config_path]
+        else
+          configuration.paths.config
         end
       end
 
@@ -49,7 +53,7 @@ module Ember
       end
 
       def configuration
-        ::Rails.configuration.ember
+        ::Rails.configuration.ember.appkit
       end
     end
   end

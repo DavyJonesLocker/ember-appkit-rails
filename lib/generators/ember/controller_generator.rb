@@ -11,11 +11,9 @@ module Ember
 
       class_option :array, :type => :boolean, :default => false, :desc => "Create an Ember.ArrayController to represent multiple objects."
       class_option :object, :type => :boolean, :default => false, :desc => "Create an Ember.ObjectController to represent a single object."
-      class_option :ember_path, :type => :string, :aliases => "-d", :default => false, :desc => "Custom ember app path."
-
 
       def create_controller_files
-        file_path = File.join(ember_path, 'controllers', class_path, "#{file_name}.js.es6")
+        file_path = File.join(app_path, 'controllers', class_path, "#{file_name}.js.es6")
 
         if options.array?
           template "array_controller.js.es6", file_path

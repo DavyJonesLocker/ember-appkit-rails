@@ -1,6 +1,13 @@
 require 'pathname'
 
 module GeneratorTestSupport
+  # def run_generator(args=self.default_arguments, config={})
+    # # capture(:stdout) do
+      # args += ['--skip-bundle'] unless args.include? '--dev'
+      # self.generator_class.start(args, config.reverse_merge(destination_root: destination_root))
+    # # end
+  # end
+
   def prepare_destination
     super
 
@@ -10,7 +17,8 @@ module GeneratorTestSupport
     FileUtils.mkdir_p javascript_destination
     FileUtils.cp "test/fixtures/rails_4-0-0_application.js", javascript_destination.join('application.js')
 
-    FileUtils.mkdir_p tmp_destination.join(ember_path)
+    FileUtils.mkdir_p tmp_destination.join(app_path)
+    FileUtils.mkdir_p tmp_destination.join(config_path)
 
     FileUtils.mkdir_p javascript_destination.join('custom')
     FileUtils.cp "test/fixtures/rails_4-0-0_application.js", javascript_destination.join('custom', 'application.js')
@@ -22,24 +30,31 @@ module GeneratorTestSupport
   end
 
   def with_config(options = {})
-    original_values = ::Rails.configuration.ember.to_h
+    original_values = ::Rails.configuration.ember.appkit.clone
+    original_values.paths = original_values.paths.clone
+    original_values.paths.app = original_values.paths.app.clone
+    original_values.paths.config = original_values.paths.config.clone
 
-    options.each do |(key, value)|
-      ::Rails.configuration.ember[key] = value
+    options.each do |key, value|
+      if Hash === value
+        value.each do |k, v|
+          ::Rails.configuration.ember.appkit[key][k] = v
+        end
+      else
+        ::Rails.configuration.ember.appkit[key] = value
+      end
     end
 
     yield
   ensure
-    ::Rails.configuration.ember.clear
-    original_values.each do |(key, value)|
-      ::Rails.configuration.ember[key] = value
-    end
+    ::Rails.configuration.ember.appkit.clear
+    ::Rails.configuration.ember.appkit = original_values
   end
 
   def assert_new_dirs(options = {})
-    path = options[:in_path] || ember_path
+    path = options[:in_path] || app_path
 
-    %W{models controllers views helpers components templates templates/components routes}.each do |dir|
+    %W{components templates templates/components routes}.each do |dir|
       assert_directory "#{path}/#{dir}"
       assert_file "#{path}/#{dir}/.gitkeep"
     end
@@ -49,14 +64,25 @@ module GeneratorTestSupport
     "App"
   end
 
-  def ember_path(custom_path = nil)
-    custom_path || "appkit" 
+  def app_path(path = 'app')
+    path 
   end
 
-  def copy_router(custom_path = ember_path)
-    router = File.expand_path("../../../lib/generators/templates/router.js.es6", __FILE__)
-    destination = File.expand_path("../../dummy/tmp/#{custom_path}", __FILE__)
+  def config_path(path = 'config')
+    path
+  end
+
+  def copy_router(path = config_path)
+    source = File.expand_path("../../../lib/generators/templates/router.js.es6", __FILE__)
+    destination = File.join(destination_root, path)
     FileUtils.mkdir_p(destination)
-    FileUtils.cp router, destination
+    FileUtils.cp source, File.join(destination, 'router.js.es6')
+  end
+
+  def copy_application(path = config_path)
+    source = File.expand_path("../../dummy/config/application.rb", __FILE__)
+    destination = File.join(destination_root, path)
+    FileUtils.mkdir_p(destination)
+    copy_file source, File.join(destination, 'application.rb')
   end
 end

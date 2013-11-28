@@ -35,7 +35,7 @@ generators will write files to that directory by default instead of
 configuration:
 
 ```ruby
-config.ember_appkit.asset_path = 'app/assets/javascripts'
+config.ember.appkit.paths.app = 'app/assets/javascripts'
 ``` 
 
 Adding this to your `config/application.rb` file will generate your
@@ -43,12 +43,19 @@ assets into `app/assets/javascripts` instead of `appkit/`
 
 #### AMD Module Namespacing ####
 
-The default AMD namespace is `appkit`. Modify this in your
+The default AMD namespace is `app`. Modify this in your
 `config/application.rb`
 
 ```ruby
-config.ember_appkit.namespace = 'ember'
+config.ember.appkit.namespaces.app = 'ember'
 ``` 
+
+The AMD namespace for the router is `config/` you can change this in
+your `config/application.rb` file as well:
+
+```ruby
+config.ember.appkit.namespaces.config = 'ember_config'
+```
 
 ### Generators ###
 
@@ -58,68 +65,50 @@ Ember Appkit Rails provides the following generators:
 
   Initializes Ember Appkit Rails into your project by creating the required files
   (`router.js.es6`, `ember-app.js.es6`, and the directory structure). Also, removes
-  `turbolinks` from `Gemfile`, `appkit/application.js`, and `app/views/layouts/application.html.erb`
-  and `jquery_js` from `appkit/application.js`.
+  `turbolinks` from `Gemfile` and `app/views/layouts/application.html.erb`.
+  The `app/assets/javascripts/` directory from your app is removed.
 
   The following options are supported:
 
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
+  * `--app-path` - This is the root path to be used for your Ember application. Default value: `app/`.
+  * `--config-path` - This is the root path for your configuration files
+    used by your Ember Application. Default value: `config/`
   * `--app-name` - This will be used to name the global variable referencing your application. Default value: `App`.
-  * `--leave-turbolinks` - This will prevent the removal of `turbolinks`.
-  * `--leave-jqueryujs` - This will prevent the removal of `jquery_ujs`.
 
 * `ember:route NAME`
 
-  Creates a route using the provided name in `appkit/routes/`.
-
-  The following options are supported:
-
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
+  Creates a route using the provided name in `app/routes/`.
 
 * `ember:controller NAME`
 
-  Creates a controller using the provided name in `appkit/controllers/`.
+  Creates a controller using the provided name in `app/controllers/`.
 
   The following options are supported:
 
   * `--array` - Used to generate an `Ember.ArrayController`.
   * `--object` - Used to generate an `Ember.ObjectController`.
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
 
 * `ember:view NAME`
 
-  Creates a view using the provided name in `appkit/views/`.
+  Creates a view using the provided name in `app/views/`.
 
   The following options are supported:
 
   * `--without-template` - Used to prevent creating a template for the generated view.
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
 
 * `ember:component NAME`
 
-  Creates a component in `appkit/components/` and a template in `appkit/templates/components/`.
-
-  The following options are supported:
-
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
+  Creates a component in `app/components/` and a template in `app/templates/components/`.
 
 * `ember:template NAME`
 
-  Creates a template using the provided name in `appkit/templates/`.
-
-  The following options are supported:
-
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `/appkit`.
+  Creates a template using the provided name in `app/templates/`.
 
 * `ember:model NAME [ATTRIBUTES]`
 
-  Creates a model using the provided name in `appkit/models/`.
+  Creates a model using the provided name in `app/models/`.
 
   Accepts a list of a attributes to setup on the generated model.
-
-  The following options are supported:
-
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
 
 * `ember:resource NAME`
 
@@ -130,7 +119,6 @@ Ember Appkit Rails provides the following generators:
   * `--array` - Used to generate an `Ember.ArrayController`.
   * `--object` - Used to generate an `Ember.ObjectController`.
   * `--skip-route` - When present a route will not be generated.
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
 
 * `ember:scaffold NAME [ATTRIBUTES]`
 
@@ -141,13 +129,9 @@ Ember Appkit Rails provides the following generators:
   * Injected the named resource into `router.js.es6` along with the
     correct nested routes.
 
-  The following options are supported:
-
-  * `--ember-path` - This is the root path to be used for your Ember application. Default value: `appkit/`.
-
 * `ember:helper NAME`
 
-  Creates a helper using the provided name in `appkit/helpers/`.
+  Creates a helper using the provided name in `app/helpers/`.
 
 #### Rails Generators ####
 

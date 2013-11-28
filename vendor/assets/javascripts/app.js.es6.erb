@@ -1,4 +1,4 @@
-<% config = Rails.application.config.ember_appkit %>
+<% config = Rails.application.config.ember.appkit %>
 import Resolver from 'resolver';
 
 if (typeof Turbolinks !== 'undefined') {
@@ -19,7 +19,8 @@ var App = Ember.Application.extend({
   LOG_VIEW_LOOKUPS: true,
 <% end %>
 
-  modulePrefix: '<%= config.namespace %>',
+  modulePrefix: '<%= config.namespaces.app %>',
+  configPrefix: '<%= config.namespaces.config %>',
   Resolver: Resolver
 });
 

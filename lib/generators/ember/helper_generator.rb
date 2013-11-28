@@ -9,7 +9,7 @@ module Ember
       argument :name, :type => :string, :desc => 'Create an Ember.Handlebars.helper'
 
       def create_helper_files
-        file_path = File.join(ember_path, 'helpers', class_path, "#{file_name}.js")
+        file_path = File.join(app_path, 'helpers', class_path, "#{file_name}.js")
         template 'helper.js', file_path
       end
     end

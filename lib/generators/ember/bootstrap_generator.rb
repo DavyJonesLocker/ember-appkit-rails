@@ -9,67 +9,64 @@ module Ember
 
       desc "Creates a default Ember.js folder layout in app/assets/javascripts"
 
-      class_option :ember_path, :type => :string, :aliases => "-d", :default => false, :desc => "Custom ember app path"
+      class_option :app_path, :type => :string, :aliases => "-a", :default => false, :desc => "Custom ember app path"
+      class_option :config_path, :type => :string, :aliases => "-c", :default => false, :desc => "Custom ember config path"
       class_option :app_name, :type => :string, :aliases => "-n", :default => false, :desc => "Custom ember app name"
-      class_option :leave_turbolinks, :type => :boolean, :default => false, :desc => "Leave 'turbolinks' in Gemfile"
-      class_option :leave_jqueryujs, :type => :boolean, :default => false, :desc => "Leave 'jquery_ujs' in application.js"
-
-      def inject_ember
-        inject_into_application_file
-      end
 
       def create_dir_layout
-        %W{models controllers views routes helpers components templates templates/components mixins}.each do |dir|
-          empty_directory "#{ember_path}/#{dir}"
-          create_file "#{ember_path}/#{dir}/.gitkeep" unless options[:skip_git]
+        %W{routes components templates templates/components mixins}.each do |dir|
+          empty_directory "#{app_path}/#{dir}"
+          create_file "#{app_path}/#{dir}/.gitkeep" unless options[:skip_git]
         end
       end
 
-      def create_router_file
-        template "router.js.es6", "#{ember_path}/router.js.es6"
+      def remove_javascript_assets_directory
+        remove_dir "app/assets/javascripts"
       end
 
-      def create_ember_app_file
-        template "ember-app.js", "#{ember_path}/ember-app.js"
+      def create_router_file
+        template "router.js.es6", "#{config_path}/router.js.es6"
+      end
+
+      def create_application_file
+        template "application.js.erb", "#{config_path}/application.js"
       end
 
       def create_ember_adapter_file
-        template "adapter.js", "#{ember_path}/adapter.js"
+        template "adapter.js", "#{config_path}/adapter.js"
       end
 
-      def create_ember_env_file
-        template "ember-env.js", "#{ember_path}/ember-env.js"
+      def create_ember_environment_files
+        template "environment.js", "#{config_path}/environment.js"
+        template "environments/development.js", "#{config_path}/environments/development.js"
+        template "environments/production.js", "#{config_path}/environments/production.js"
+        template "environments/test.js", "#{config_path}/environments/test.js"
       end
 
       def create_utils_csrf_file
-        template "csrf.js", "#{ember_path}/utils/csrf.js"
+        template "csrf.js", "#{config_path}/initializers/csrf.js"
       end
 
       def remove_turbolinks
-        return if options[:leave_turbolinks]
-
         remove_turbolinks_from_gemfile
         remove_turbolinks_from_layout
-        remove_turbolinks_from_application_js
       end
 
-      def remove_jquery_ujs
-        return if options[:leave_jqueryujs]
+      def add_custom_paths
+        if app_path != configuration.paths.app
+          insert_into_file 'config/application.rb', before: /\s\send\nend/ do
+            "    config.ember.appkit.paths.app = '#{app_path}'\n"
+          end
+        end
 
-        path = Pathname.new(destination_root).join('app','assets','javascripts','application.js')
-        return unless path.exist?
-
-        gsub_file path, /(?:\/\/= require jquery_ujs)\n/, ''
+        if config_path != configuration.paths.config
+          insert_into_file 'config/application.rb', before: /\s\send\nend/ do
+            "    config.ember.appkit.paths.config = '#{config_path}'\n"
+          end
+        end
       end
 
       private
-
-      def remove_turbolinks_from_application_js
-        path = Pathname.new(destination_root).join('app','assets','javascripts','application.js')
-        return unless path.exist?
-
-        gsub_file path, /(?:\/\/= require turbolinks)\n/, ''
-      end
 
       def remove_turbolinks_from_layout
         path = Pathname.new(destination_root).join('app','views','layouts','application.html.erb')
@@ -83,20 +80,6 @@ module Ember
         return unless path.exist?
 
         gsub_file path, /(?:#.+$\n)?gem 'turbolinks'\n\n/, ''
-      end
-
-      def inject_into_application_file
-        application_file = File.join(javascript_assets_path, 'application.js')
-        inject_into_file(application_file, :before => /^.*require_tree.*$/) do
-          context = instance_eval('binding')
-          source  = File.expand_path(find_in_source_paths("application.js.erb"))
-          ERB.new(::File.binread(source), nil, '-', '@output_buffer').result(context)
-        end
-      end
-
-      def jquery?
-        content = File.read(File.join(javascript_assets_path, 'application.js'))
-        content.scan(/\/\/= require jquery\n/).size > 0
       end
     end
   end

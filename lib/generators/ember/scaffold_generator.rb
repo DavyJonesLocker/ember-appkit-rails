@@ -17,8 +17,8 @@ module Ember
 
       def create_template_files
         create_resource_files_for(:template, 'hbs')
-        template "scaffold/template.hbs", File.join(ember_path, 'templates', "#{file_name.pluralize}.hbs")
-        template "scaffold/template/form.hbs", File.join(ember_path, 'templates', file_name.pluralize, 'form.hbs')
+        template "scaffold/template.hbs", File.join(app_path, 'templates', "#{file_name.pluralize}.hbs")
+        template "scaffold/template/form.hbs", File.join(app_path, 'templates', file_name.pluralize, 'form.hbs')
       end
 
       private
@@ -28,12 +28,12 @@ module Ember
         resource = file_name.pluralize
 
         [:edit, :index, :new, :show].each do |action|
-          template "scaffold/#{type}/#{action}.#{extension}", File.join(ember_path, dir, "#{resource}/#{action}.#{extension}")
+          template "scaffold/#{type}/#{action}.#{extension}", File.join(app_path, dir, "#{resource}/#{action}.#{extension}")
         end
       end
 
       def inject_into_router_file(name)
-        router_file = "#{ember_path}/router.js.es6"
+        router_file = "#{config_path}/router.js.es6"
         js = <<-JS
 
   this.resource('#{name.pluralize}', function() {
