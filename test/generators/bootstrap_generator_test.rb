@@ -7,7 +7,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
   tests Ember::Generators::BootstrapGenerator
   destination File.join(Rails.root, "tmp", "generator_test_output")
 
-  setup :prepare_destination
+  setup :prepare_destination, :copy_application
 
   test "Assert folder layout and .gitkeep files are properly created" do
     run_generator []
@@ -20,17 +20,26 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     assert_files
   end
 
-  test "create bootstrap with and custom path" do
-    custom_path = ember_path("custom")
-    run_generator ["-d", custom_path]
+  test "create bootstrap with and custom app path" do
+    custom_path = app_path("custom")
+    run_generator ["-a", custom_path]
 
-    assert_files custom_path
+    assert_files custom_path, config_path
+    assert_file 'config/application.rb', /config\.ember\.appkit\.paths\.app = '#{custom_path}'/
+  end
+
+  test "create bootstrap with and custom config path" do
+    custom_path = config_path("custom")
+    run_generator ["-c", custom_path]
+
+    assert_files app_path, custom_path
+    assert_file 'config/application.rb', /config\.ember\.appkit\.paths\.config = '#{custom_path}'/
   end
 
   test "create bootstrap with custom app name" do
     run_generator ["-n", "MyApp"]
 
-    assert_file "#{ember_path}/ember-app.js", /MyApp = /
+    assert_file "#{config_path}/application.js", /MyApp = /
 
     assert_files
   end
@@ -40,17 +49,18 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
       run_generator
 
       assert_files
-      assert_file "#{ember_path}/ember-app.js", /Blazorz = /
+      assert_file "#{config_path}/application.js", /Blazorz = /
     end
   end
 
-  test "Uses config.ember.ember_path" do
-    custom_path = ember_path("custom")
+  test "Uses config.ember.appkit.paths.app" do
+    custom_app_path = app_path("custom_app")
+    custom_config_path = app_path("custom_config")
 
-    with_config ember_path: custom_path do
+    with_config paths: {app: custom_app_path, config: custom_config_path}  do
       run_generator
 
-      assert_files custom_path
+      assert_files custom_app_path, custom_config_path
     end
   end
 
@@ -59,32 +69,11 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
 
     confirm_turbolinks_removed "Gemfile"
     confirm_turbolinks_removed "app/views/layouts/application.html.erb"
-    confirm_turbolinks_removed "app/assets/javascripts/application.js"
   end
 
-  test "Leaves turbolinks if --leave-turbolinks" do
-    run_generator ['--leave-turbolinks']
-
-    confirm_turbolinks_not_removed "Gemfile"
-    confirm_turbolinks_not_removed "app/views/layouts/application.html.erb"
-    confirm_turbolinks_not_removed "app/assets/javascripts/application.js"
-  end
-
-  test "Removes jquery-ujs" do
+  test "Removed app/assets/javascript directory" do
     run_generator
-
-    assert_file 'app/assets/javascripts/application.js' do |content|
-      assert_no_match /jquery_ujs/, content
-    end
-  end
-
-  test "Leaves jquery-ujs if --leave-jqueryujs" do
-    run_generator ['--leave-jqueryujs']
-
-
-    assert_file 'app/assets/javascripts/application.js' do |content|
-      assert_match /jquery_ujs/, content
-    end
+    assert_no_directory "app/assets/javascripts"
   end
 
   test "Does not error if Gemfile is missing" do
@@ -92,20 +81,17 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     run_generator
   end
 
-  test "Does not add jquery twice" do
-    run_generator
-    content = File.read(File.expand_path("app/assets/javascripts/application.js", destination_root))
-    assert_equal 1, content.scan(/jquery/).size, "should only contain jquery once"
-  end
-
   private
 
-  def assert_files(path = ember_path)
-    assert_file "#{path}/ember-env.js"
-    assert_file "#{path}/ember-app.js"
-    assert_file "#{path}/router.js.es6"
-    assert_file "#{path}/adapter.js"
-    assert_file "#{path}/utils/csrf.js"
+  def assert_files(app_path = app_path, config_path = config_path)
+    assert_file "#{config_path}/environment.js"
+    assert_file "#{config_path}/environments/development.js"
+    assert_file "#{config_path}/environments/production.js"
+    assert_file "#{config_path}/environments/test.js"
+    assert_file "#{config_path}/application.js"
+    assert_file "#{config_path}/router.js.es6"
+    assert_file "#{config_path}/adapter.js"
+    assert_file "#{config_path}/initializers/csrf.js"
   end
 
   def confirm_turbolinks_removed(file)

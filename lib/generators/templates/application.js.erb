@@ -1,4 +1,11 @@
-<% unless jquery? -%>
 //= require jquery
-<% end %>
-//= require ember-app
+//= require environment
+//= require ember-appkit
+//= require ember-data
+//= require_self
+//= require adapter
+//= require router
+//= require_tree ../<%= app_path %>
+//= require_tree ./initializers
+
+window.<%= application_name.camelize %> = require('app').default.create();

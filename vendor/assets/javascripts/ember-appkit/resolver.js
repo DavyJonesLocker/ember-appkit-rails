@@ -83,7 +83,7 @@ define("resolver",
   function resolveRouter(parsedName) {
     /*jshint validthis:true */
 
-    var prefix = this.namespace.modulePrefix,
+    var prefix = this.namespace.configPrefix,
         routerModule;
 
     if (parsedName.fullName === 'router:main') {
