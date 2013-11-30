@@ -40,8 +40,12 @@ Rails application files.
 
 The bootstrap will also delete the `app/assets/javascripts/` directory
 You should not put JavaScript into that directory as all business logic
-you need should be written into `app/`. If you need to add a 3rd party
-library these should go into `vendor/assets/javascripts/`
+you need should be added to `app/`. If you need to add a 3rd party
+library these should go into `vendor/assets/javascripts/`. In order for
+the resolver to work properly Ember application files need to go into
+the correct directories. For example, models **must** go into
+`app/models`, controllers **must** go into `app/controller`, routers
+**must** go into `app/routes`, etc...
 
 `jquery-ujs` and `turbolinks` are also be removed from your
 application.
@@ -60,16 +64,18 @@ The folowing is added to your `config/` directory:
 * `config/application.js` the main loader referenced in your Rails layout view. (replaces `app/assets/javascripts/application.js`)
 * `config/adapter.js` configure the ember-data adapter. Pre-set for
   `ActiveModelAdapter`
-* `config/router.js` your Embrer Router. The actual routers will go in
+* `config/router.js` your Ember Router. The actual routers will go in
   `app/routes`
 * `config/initializers` any files that compile to JavaScript in this directory will be
   automatically required.
 * `config/initializers/csrf.js` sets up the `CSRF` token for doing
   `POST` requests back to the Rails backend via AJAX.
 * `config/environment.js` the general environment settings object. You
-  should putt settings in here that will be common across all environments.
+  should put settings in here that will be common across all environments.
 * `config/environments/` hold environment specific settings. The correct
-  environment file will be loaded. Name matches value of `Rails.env`
+  environment file will be loaded. Name matches value of `Rails.env`.
+  Settings added to these files will overwrite settings in
+  `config/environment.js`
 * `config/environments/development.js` development environment settings
 * `config/environments/production.js` production environment settings
 * `config/environments/test.js` test environment settings
