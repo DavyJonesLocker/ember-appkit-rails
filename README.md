@@ -35,7 +35,7 @@ Then run your rails server and visit `http://localhost:3000`. If you see `Welcom
 
 `ember-appkit-rails` will add the `app/` and `config/` directories in
 your Rails application to the asset pipeline. We want  you to
-think of your Ember applicaiton files with as much precedence as your
+think of your Ember application files with as much precedence as your
 Rails application files.
 
 The bootstrap will also delete the `app/assets/javascripts/` directory
@@ -49,8 +49,7 @@ the correct directories. For example, models **must** go into
 logical path for those files when creating the AMD namespace. The Ember
 Appkit Resolver relies upon this namespacing for the lookups.
 
-`jquery-ujs` and `turbolinks` are also be removed from your
-application.
+`jquery-ujs` and `turbolinks` will be removed from your application.
 
 Any files in the `app/` directory that compile to JavaScript will be
 automatically required.
@@ -163,7 +162,7 @@ Ember Appkit Rails provides the following generators:
 #### Rails Generators ####
 
 The regular Rails generators `resource` and `scaffold` can also generate
-the match ember templates if you profile the `--ember` switch to the
+the matching ember templates if you provide the `--ember` switch to the
 command:
 
 ```
