@@ -66,7 +66,7 @@ The folowing is added to your `config/` directory:
 * `config/application.js` the main loader referenced in your Rails layout view. (replaces `app/assets/javascripts/application.js`)
 * `config/adapter.js` configure the ember-data adapter. Pre-set for
   `ActiveModelAdapter`
-* `config/router.js` your Ember Router. The actual routers will go in
+* `config/router.js` your Ember Router. The actual routes will go in
   `app/routes`
 * `config/initializers` any files that compile to JavaScript in this directory will be
   automatically required.
