@@ -17,6 +17,14 @@ gem 'ember-appkit-rails'
 You should not need to specify any additional core Ember depdendencies.
 `EmberAppkitRails` includes all you need to get going.
 
+Run the bootstrap generator to prepare your application:
+
+```
+rails g ember:bootstrap
+```
+
+Then run your rails server and visit `http://localhost:3000`. If you see `Welcome to Ember!` then you are good to go!
+
 ## Prerequisites
 
 [Node.js](http://nodejs.org) is required. You can either download the
