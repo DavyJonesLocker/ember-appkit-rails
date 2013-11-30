@@ -45,7 +45,9 @@ library these should go into `vendor/assets/javascripts/`. In order for
 the resolver to work properly Ember application files need to go into
 the correct directories. For example, models **must** go into
 `app/models`, controllers **must** go into `app/controller`, routers
-**must** go into `app/routes`, etc...
+**must** go into `app/routes`, etc... The transpiler makes use of the
+logical path for those files when creating the AMD namespace. The Ember
+Appkit Resolver relies upon this namespacing for the lookups.
 
 `jquery-ujs` and `turbolinks` are also be removed from your
 application.
