@@ -49,15 +49,15 @@ application.
 Any files in the `app/` directory that compile to JavaScript will be
 automatically required.
 
-You *must* use `es6` modules in your application files.
+You **must** use `es6` modules in your application files.
 `ember-appkit-rails` handles the transpiling for you via the
 `es6_module_transpiler-rails` gem as long as you add the `.es6`
-extension to the end of the file. The generators will create these
+extension to the end of the file. The [generators](#generators) will create these
 files for you.
 
 The folowing is added to your `config/` directory:
 
-* `config/application.js` the main loader referenced in your Rails layout view.
+* `config/application.js` the main loader referenced in your Rails layout view. (replaces `app/assets/javascripts/application.js`)
 * `config/adapter.js` configure the ember-data adapter. Pre-set for
   `ActiveModelAdapter`
 * `config/router.js` your Embrer Router. The actual routers will go in
@@ -161,8 +161,6 @@ command:
 ```
 rails g resource post title:string --ember
 ```
-
-TODO: Add details about writing es6 modules
 
 ### Configuration ###
 
