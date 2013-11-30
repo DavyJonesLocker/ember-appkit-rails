@@ -31,6 +31,43 @@ rails g ember:bootstrap
 
 Then run your rails server and visit `http://localhost:3000`. If you see `Welcome to Ember!` then you are good to go!
 
+### What do you get? ###
+
+`ember-appkit-rails` will add the `app/` and `config/` directories in
+your Rails application to the asset pipeline. We do to force you to
+think of your Ember applicaiton files with as much precedence as your
+Rails application files.
+
+The bootstrap will also delete the `app/assets/javascripts/` directory
+You should not put JavaScript into that directory as all business logic
+you need should be written into `app/`. If you need to add a 3rd party
+library these should go into `vendor/assets/javascripts/`
+
+`jquery-ujs` and `turbolinks` will also be removed from your
+application.
+
+Any files in the `app/` directory that compile to JavaScript will be
+automatically required.
+
+The folowing is added to your `config/` directory:
+
+* `config/application.js` the main loader referenced in your Rails layout view.
+* `config/adapter.js` configure the ember-data adapter. Pre-set for
+  `ActiveModelAdapter`
+* `config/router.js` your Embrer Router. The actual routers will go in
+  `app/routes`
+* `config/initializers` any `.js` files but into this directory will be
+  automatically required.
+* `config/initializers/csrf.js` sets up the `CSRF` token for doing
+  `POST` requests back to the Rails backend via AJAX.
+* `config/environment.js` the general environment settings object. You
+  should putt settings in here that will be common across all environments.
+* `config/environments/` hold environment specific settings. The correct
+  environment file will be loaded. Name matches value of `Rails.env`
+* `config/environments/development.js` development environment settings
+* `config/environments/production.js` production environment settings
+* `config/environments/test.js` test environment settings
+
 ## Usage ##
 
 ### Generators ###
