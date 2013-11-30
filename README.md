@@ -29,7 +29,7 @@ only).
 
 #### Asset Path ####
 
-The default file asset path for `eak-rails` files is `appkit/`. The
+The default file asset path for `eak-rails` files is `app/`. The
 generators will write files to that directory by default instead of
 `app/assets/javascripts`. To change this you'll have to modify the
 configuration:
@@ -39,7 +39,7 @@ config.ember.appkit.paths.app = 'app/assets/javascripts'
 ``` 
 
 Adding this to your `config/application.rb` file will generate your
-assets into `app/assets/javascripts` instead of `appkit/`
+assets into `app/assets/javascripts` instead of `app/`
 
 #### AMD Module Namespacing ####
 
