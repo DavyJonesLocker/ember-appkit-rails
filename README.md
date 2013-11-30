@@ -6,6 +6,12 @@ Ember Appkit for the Asset Pipeline
 [![Dependency Status](https://gemnasium.com/dockyard/ember-appkit-rails.png?travis)](https://gemnasium.com/dockyard/ember-appkit-rails)
 [![Code Climate](https://codeclimate.com/github/dockyard/ember-appkit-rails.png)](https://codeclimate.com/github/dockyard/ember-appkit-rails)
 
+## Prerequisites
+
+[Node.js](http://nodejs.org) is required. You can either download the
+package from the website or run `brew install node` (for Mac users
+only).
+
 ## Installation ##
 
 Include the gem in your `Gemfile`
@@ -25,45 +31,7 @@ rails g ember:bootstrap
 
 Then run your rails server and visit `http://localhost:3000`. If you see `Welcome to Ember!` then you are good to go!
 
-## Prerequisites
-
-[Node.js](http://nodejs.org) is required. You can either download the
-package from the website or run `brew install node` (for Mac users
-only).
-
 ## Usage ##
-
-### Configuration ###
-
-#### Asset Path ####
-
-The default file asset path for `eak-rails` files is `app/`. The
-generators will write files to that directory by default instead of
-`app/assets/javascripts`. To change this you'll have to modify the
-configuration:
-
-```ruby
-config.ember.appkit.paths.app = 'app/assets/javascripts'
-``` 
-
-Adding this to your `config/application.rb` file will generate your
-assets into `app/assets/javascripts` instead of `app/`
-
-#### AMD Module Namespacing ####
-
-The default AMD namespace is `app`. Modify this in your
-`config/application.rb`
-
-```ruby
-config.ember.appkit.namespaces.app = 'ember'
-``` 
-
-The AMD namespace for the router is `config/` you can change this in
-your `config/application.rb` file as well:
-
-```ruby
-config.ember.appkit.namespaces.config = 'ember_config'
-```
 
 ### Generators ###
 
@@ -152,6 +120,38 @@ rails g resource post title:string --ember
 ```
 
 TODO: Add details about writing es6 modules
+
+### Configuration ###
+
+#### Asset Path ####
+
+The default file asset path for `eak-rails` files is `app/`. The
+generators will write files to that directory by default instead of
+`app/assets/javascripts`. To change this you'll have to modify the
+configuration:
+
+```ruby
+config.ember.appkit.paths.app = 'app/assets/javascripts'
+``` 
+
+Adding this to your `config/application.rb` file will generate your
+assets into `app/assets/javascripts` instead of `app/`
+
+#### AMD Module Namespacing ####
+
+The default AMD namespace is `app`. Modify this in your
+`config/application.rb`
+
+```ruby
+config.ember.appkit.namespaces.app = 'ember'
+``` 
+
+The AMD namespace for the router is `config/` you can change this in
+your `config/application.rb` file as well:
+
+```ruby
+config.ember.appkit.namespaces.config = 'ember_config'
+```
 
 ## Authors ##
 
