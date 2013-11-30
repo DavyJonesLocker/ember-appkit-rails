@@ -34,7 +34,7 @@ Then run your rails server and visit `http://localhost:3000`. If you see `Welcom
 ### What do you get? ###
 
 `ember-appkit-rails` will add the `app/` and `config/` directories in
-your Rails application to the asset pipeline. We do to force you to
+your Rails application to the asset pipeline. We want  you to
 think of your Ember applicaiton files with as much precedence as your
 Rails application files.
 
@@ -43,11 +43,17 @@ You should not put JavaScript into that directory as all business logic
 you need should be written into `app/`. If you need to add a 3rd party
 library these should go into `vendor/assets/javascripts/`
 
-`jquery-ujs` and `turbolinks` will also be removed from your
+`jquery-ujs` and `turbolinks` are also be removed from your
 application.
 
 Any files in the `app/` directory that compile to JavaScript will be
 automatically required.
+
+You *must* use `es6` modules in your application files.
+`ember-appkit-rails` handles the transpiling for you via the
+`es6_module_transpiler-rails` gem as long as you add the `.es6`
+extension to the end of the file. The generators will create these
+files for you.
 
 The folowing is added to your `config/` directory:
 
@@ -56,7 +62,7 @@ The folowing is added to your `config/` directory:
   `ActiveModelAdapter`
 * `config/router.js` your Embrer Router. The actual routers will go in
   `app/routes`
-* `config/initializers` any `.js` files but into this directory will be
+* `config/initializers` any files that compile to JavaScript in this directory will be
   automatically required.
 * `config/initializers/csrf.js` sets up the `CSRF` token for doing
   `POST` requests back to the Rails backend via AJAX.
