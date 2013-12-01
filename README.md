@@ -2,7 +2,7 @@
 
 Ember Appkit for the Asset Pipeline
 
-** This gem is still pre-1.0 and as such its public API will likely change over the course of heading towards 1.0 **
+**This gem is still pre-1.0 and as such its public API will likely change over the course of heading towards 1.0**
 
 [![Build Status](https://secure.travis-ci.org/dockyard/ember-appkit-rails.png?branch=master)](http://travis-ci.org/dockyard/ember-appkit-rails)
 [![Dependency Status](https://gemnasium.com/dockyard/ember-appkit-rails.png?travis)](https://gemnasium.com/dockyard/ember-appkit-rails)
