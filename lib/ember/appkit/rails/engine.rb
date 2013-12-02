@@ -19,6 +19,7 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
 
     ES6ModuleTranspiler.add_prefix_pattern config.ember.appkit.prefix_patterns.app, config.ember.appkit.namespaces.app
     ES6ModuleTranspiler.add_prefix_pattern config.ember.appkit.prefix_patterns.config, config.ember.appkit.namespaces.config
+    ES6ModuleTranspiler.transform = lambda { |name| name.split('/').map { |n| n.underscore.dasherize }.join('/') }
   end
 
   initializer :appkit_handlebars do
