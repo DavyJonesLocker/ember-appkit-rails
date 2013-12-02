@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Force camelcased es6 module names to dasherized
+
 ## 0.2.0
 
 * Ember-Data setting up - Brian Cardarella

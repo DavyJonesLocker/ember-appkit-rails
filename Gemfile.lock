@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ember-appkit-rails (0.2.0)
+    ember-appkit-rails (0.2.1)
       ember-data-source (~> 1.0.0.beta.3)
       ember-rails (>= 0.14.0)
       ember-source (~> 1.2.0.1)
