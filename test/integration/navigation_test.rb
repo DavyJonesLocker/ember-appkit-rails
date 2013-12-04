@@ -5,7 +5,7 @@ class NavigationTest < ActionDispatch::IntegrationTest
 
   test 'can render default landing page' do
     visit '/'
-    assert page.has_text? "That was easy, wasn't it?"
+    assert page.has_text? "Welcome to Ember on Rails!"
   end
 
   test 'can using simple "ember magic"' do
