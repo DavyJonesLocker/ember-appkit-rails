@@ -1,6 +1,7 @@
 ## 0.3.0
 
 * Fix issue with asset path ordering. See [#96](https://github.com/dockyard/ember-appkit-rails/issues/96) for details.
+* Fix component generator to not add \_component suffix
 
 ## 0.2.0
 

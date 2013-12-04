@@ -11,7 +11,7 @@ module Ember
 
       def create_component_files
         dashed_file_name = file_name.gsub(/_/, '-')
-        component_path = File.join(app_path, 'components', class_path, "#{dashed_file_name}_component.js.es6")
+        component_path = File.join(app_path, 'components', class_path, "#{dashed_file_name}.js.es6")
         template "component.js.es6", component_path
 
         template_path = File.join(app_path, 'templates/components', class_path, "#{dashed_file_name}.hbs")
