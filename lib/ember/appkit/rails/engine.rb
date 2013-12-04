@@ -35,7 +35,13 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
   end
 
   initializer :appkit_sprockets do
-    Sprockets::Railtie.config.assets.paths.unshift(File.join(::Rails.root, config.ember.appkit.paths.config))
-    Sprockets::Railtie.config.assets.paths.unshift(File.join(::Rails.root, config.ember.appkit.paths.app))
+    assets = Sprockets::Railtie.config.assets
+
+    assets_javascript = assets.paths.delete(::Rails.root.join('app','assets','javascripts').to_s)
+
+    index_of_last_app_assets = assets.paths.rindex{|s| s.start_with?(::Rails.root.join('app').to_s) } + 1
+    assets.paths.insert(index_of_last_app_assets, assets_javascript) if assets_javascript
+    assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, config.ember.appkit.paths.config))
+    assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, config.ember.appkit.paths.app))
   end
 end
