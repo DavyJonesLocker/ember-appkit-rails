@@ -52,6 +52,10 @@ module Ember
         remove_turbolinks_from_layout
       end
 
+      def remove_jbuilder
+        remove_jbuilder_from_gemfile
+      end
+
       def add_custom_paths
         if app_path != configuration.paths.app
           insert_into_file 'config/application.rb', before: /\s\send\nend/ do
@@ -75,11 +79,19 @@ module Ember
         gsub_file path, /(?:, "data-turbolinks-track" => true)/, ''
       end
 
-      def remove_turbolinks_from_gemfile
+      def remove_gem_from_gemfile(gem)
         path = Pathname.new(destination_root).join('Gemfile')
         return unless path.exist?
 
-        gsub_file path, /(?:#.+$\n)?gem 'turbolinks'\n\n/, ''
+        gsub_file path, /(?:#.+$\n)?gem '#{gem}.*'\n\n/, ''
+      end
+
+      def remove_turbolinks_from_gemfile
+        remove_gem_from_gemfile(:turbolinks)
+      end
+
+      def remove_jbuilder_from_gemfile
+        remove_gem_from_gemfile(:jbuilder)
       end
     end
   end

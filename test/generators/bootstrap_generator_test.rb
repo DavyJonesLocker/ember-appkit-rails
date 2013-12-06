@@ -71,6 +71,14 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     confirm_turbolinks_removed "app/views/layouts/application.html.erb"
   end
 
+  test "Removed jbuilder" do
+    run_generator
+
+    assert_file 'Gemfile' do |content|
+      assert_no_match(/jbuilder/, content)
+    end
+  end
+
   test "Removed app/assets/javascript directory" do
     run_generator
     assert_no_directory "app/assets/javascripts"
