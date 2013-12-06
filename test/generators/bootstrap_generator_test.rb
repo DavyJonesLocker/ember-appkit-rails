@@ -71,6 +71,15 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     confirm_turbolinks_removed "app/views/layouts/application.html.erb"
   end
 
+  test "configures generators to not create views, helpers, layout" do
+    run_generator
+    assert_file "config/application.rb", /config\.generators do \|generate\|/
+    assert_file "config/application.rb", /generate\.helper false/
+    assert_file "config/application.rb", /generate\.assets false/
+    assert_file "config/application.rb", /generate\.jbuilder false/
+    assert_file "config/application.rb", /generate\.template_engine false/
+  end
+
   test "Removed app/assets/javascript directory" do
     run_generator
     assert_no_directory "app/assets/javascripts"

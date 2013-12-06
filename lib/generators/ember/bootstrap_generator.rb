@@ -66,6 +66,17 @@ module Ember
         end
       end
 
+      def add_generator_options
+        insert_into_file 'config/application.rb', before: /\s\send\nend/ do
+          "    config.generators do |generate|\n" +
+          "      generate.assets false\n" +
+          "      generate.helper false\n" +
+          "      generate.jbuilder false\n" +
+          "      generate.template_engine false\n" +
+          "    end\n"
+        end
+      end
+
       private
 
       def remove_turbolinks_from_layout
