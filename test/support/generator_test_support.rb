@@ -2,10 +2,8 @@ require 'pathname'
 
 module GeneratorTestSupport
   # def run_generator(args=self.default_arguments, config={})
-    # # capture(:stdout) do
-      # args += ['--skip-bundle'] unless args.include? '--dev'
-      # self.generator_class.start(args, config.reverse_merge(destination_root: destination_root))
-    # # end
+    # args += ['--skip-bundle'] unless args.include? '--dev'
+    # self.generator_class.start(args, config.reverse_merge(destination_root: destination_root))
   # end
 
   def prepare_destination

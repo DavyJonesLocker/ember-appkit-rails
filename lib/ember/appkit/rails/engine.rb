@@ -28,6 +28,14 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
     config.handlebars.amd_namespace = config.ember.appkit.namespaces.app
   end
 
+  initializer :appkit_remove_generators do
+    ::Rails.configuration.generators do |generate|
+      generate.helper false
+      generate.assets false
+      generate.template_engine false
+    end
+  end
+
   initializer :appkit_router do |app|
     app.routes.append do
       get '/' => "landing#index"
