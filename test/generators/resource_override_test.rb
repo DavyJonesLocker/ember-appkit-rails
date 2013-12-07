@@ -18,6 +18,13 @@ class ResourceOverrideTest < Rails::Generators::TestCase
     assert_file "#{app_path}/templates/post.hbs"
   end
 
+  test "does not create non-essential files for ember apps" do
+    run_generator ["post", "title:string"]
+    assert_no_file "#{app_path}/assets/javascripts/posts.js"
+    assert_no_file "#{app_path}/helpers/posts_helper.rb"
+    assert_no_directory "#{app_path}/views/posts"
+  end
+
   private
 
   def copy_routes
