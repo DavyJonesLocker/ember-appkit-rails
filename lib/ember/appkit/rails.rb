@@ -1,5 +1,17 @@
-module Ember::Appkit::Rails; end
+require 'ember/source'
+require 'es6_module_transpiler/rails'
+require 'active_model_serializers'
+require 'sprockets/railtie'
+require 'ember/source'
+require 'ember/data/source'
+require 'handlebars/source'
+
+module Ember
+  module Appkit
+    module Rails; end
+  end
+end
 
 require 'ember/appkit/rails/engine'
 require 'ember/appkit/rails/sprockets'
-require 'ember/appkit/rails/resource_override'
+require 'ember/appkit/rails/template'

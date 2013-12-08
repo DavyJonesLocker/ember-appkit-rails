@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'ember/appkit/rails/scaffold_override'
 
 class ScaffoldOverrideTest < Rails::Generators::TestCase
   include GeneratorTestSupport

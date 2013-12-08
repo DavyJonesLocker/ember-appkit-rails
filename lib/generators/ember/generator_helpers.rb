@@ -53,7 +53,7 @@ module Ember
       end
 
       def configuration
-        ::Rails.configuration.ember.appkit
+        ::Rails.configuration.ember
       end
     end
   end

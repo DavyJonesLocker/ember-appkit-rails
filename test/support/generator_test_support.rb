@@ -28,7 +28,7 @@ module GeneratorTestSupport
   end
 
   def with_config(options = {})
-    original_values = ::Rails.configuration.ember.appkit.clone
+    original_values = ::Rails.configuration.ember.clone
     original_values.paths = original_values.paths.clone
     original_values.paths.app = original_values.paths.app.clone
     original_values.paths.config = original_values.paths.config.clone
@@ -36,17 +36,17 @@ module GeneratorTestSupport
     options.each do |key, value|
       if Hash === value
         value.each do |k, v|
-          ::Rails.configuration.ember.appkit[key][k] = v
+          ::Rails.configuration.ember[key][k] = v
         end
       else
-        ::Rails.configuration.ember.appkit[key] = value
+        ::Rails.configuration.ember[key] = value
       end
     end
 
     yield
   ensure
-    ::Rails.configuration.ember.appkit.clear
-    ::Rails.configuration.ember.appkit = original_values
+    ::Rails.configuration.ember.clear
+    ::Rails.configuration.ember = original_values
   end
 
   def assert_new_dirs(options = {})

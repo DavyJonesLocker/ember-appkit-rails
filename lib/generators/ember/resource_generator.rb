@@ -1,4 +1,3 @@
-require 'ember/appkit/rails/resource_override'
 require 'generators/ember/generator_helpers'
 
 module Ember
