@@ -5,6 +5,8 @@
 * Bootstrap generator remove jbuilder
 * Don't generate views, helpers, or javascript assets with rails
   resource generator
+* Removed ember-rails
+* Moved config namespace from config.ember.appkit to config.ember
 
 ## 0.2.0
 
