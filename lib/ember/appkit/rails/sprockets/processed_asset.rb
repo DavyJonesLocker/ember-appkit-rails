@@ -16,7 +16,7 @@ module Ember::Appkit::Rails::Sprockets::ProcessedAsset
   private
 
   def _make_ember_application_template_stale(pathname)
-    if pathname.to_s =~ /ember-appkit-rails.+\/app\/assets\/javascripts\/templates\/application.hbs/
+    if pathname.to_s =~ /(ember-appkit-rails.+\/app\/assets\/javascripts\/templates\/application.hbs)|(.*\.erb)/
       def self.fresh?(environment)
         false
       end

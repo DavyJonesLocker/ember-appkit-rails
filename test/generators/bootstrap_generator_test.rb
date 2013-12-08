@@ -93,7 +93,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     assert_file "#{config_path}/environments/test.js"
     assert_file "#{config_path}/application.js"
     assert_file "#{config_path}/router.js.es6"
-    assert_file "#{config_path}/adapter.js"
+    assert_file "#{config_path}/adapter.js.erb"
     assert_file "#{config_path}/initializers/csrf.js"
   end
 

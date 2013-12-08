@@ -79,8 +79,9 @@ The following is added to your `app/` directory:
 The following is added to your `config/` directory:
 
 * `config/application.js` the main loader referenced in your Rails layout view. (replaces `app/assets/javascripts/application.js`)
-* `config/adapter.js` configure the ember-data adapter. Pre-set for
-  `ActiveModelAdapter`
+* `config/adapter.js.erb` configure the ember-data adapter. Pre-set for
+  `ActiveModelAdapter` and will set the API version to
+`Rails.application.confg.ember.api_version`
 * `config/router.js` your Ember Router. The actual routes will go in
   `app/routes`
 * `config/initializers` any files that compile to JavaScript in this directory will be
@@ -185,7 +186,47 @@ command:
 rails g resource post title:string --ember
 ```
 
+The default behavior of the following Rails generators have been
+modified:
+
+* `scaffold NAME [ATTRIBUTES]`
+
+   * Will generate a controller with only `json` response types.
+   * Controller and route are namespaced under `api/vX` where `X` = the
+     values of `::Rails.application.config.ember.api_version`
+
 ### Configuration ###
+
+#### API Versioning ####
+
+Ember Data expect to work with a namespace of `api/vX` where `X` is the
+current version of the backend API. To update this value you can
+override the the value of `config.ember.api_version` in 
+`config/application.rb`. 
+
+The routing to the API endpoints in your application need to match
+`api/vX`. For example, you can do the following in `config/routes.rb`
+
+```ruby
+namespace :api do
+  namespace :v1 do
+    resources :users
+    resources :documents
+  end
+end
+```
+
+Then the controller files need to be under `app/controllers/api/v1` and
+the classes should be namespaced properly:
+
+```ruby
+class Api::V1::UsersController < ApplicationController
+  ...
+end
+```
+
+Using the rails `scaffold` generator will automatically inject resource
+route into the correct versioned api namespace.
 
 #### Asset Path ####
 
