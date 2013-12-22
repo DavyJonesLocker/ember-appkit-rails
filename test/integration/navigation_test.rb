@@ -14,4 +14,3 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert page.has_text? "EMBER ROCKS!"
   end
 end
-

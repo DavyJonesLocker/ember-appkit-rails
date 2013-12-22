@@ -7,6 +7,8 @@
   resource generator
 * Removed ember-rails
 * Moved config namespace from config.ember.appkit to config.ember
+* Don't auto-create modules in app/ for directories that don't contain
+  \*.rb files
 
 ## 0.2.0
 
