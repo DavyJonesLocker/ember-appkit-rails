@@ -15,13 +15,19 @@ class ModelGeneratorTest < Rails::Generators::TestCase
   end
 
   test "create namespaced model" do
-    run_generator ["post/doineedthis", "title:string"]
-    assert_file "#{app_path}/models/post/doineedthis.js.es6"
+    run_generator ["post/dog", "title:string"]
+    assert_file "#{app_path}/models/post/dog.js.es6"
   end
 
   test "leave parentheses when create model w/o attributes" do
     run_generator ["post"]
     assert_file "#{app_path}/models/post.js.es6", /export default DS.Model.extend/
+  end
+
+  test "forces pluarl names to singular" do
+    run_generator ["posts"]
+    assert_file "#{app_path}/models/post.js.es6"
+    assert_no_file "#{app_path}/models/posts.js.es6"
   end
 
   test "Assert files are properly created" do
