@@ -9,6 +9,10 @@
 * Moved config namespace from config.ember.appkit to config.ember
 * Don't auto-create modules in app/ for directories that don't contain
   \*.rb files
+* Remove local variant `vendor/assets/ember`. It should just go into
+  `vendor/assets/javascripts`
+* Force ember-source, ember-data-source, and handlebars-source to end of
+  assets load path
 
 ## 0.2.0
 

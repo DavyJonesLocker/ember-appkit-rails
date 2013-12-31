@@ -68,13 +68,9 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
     assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, config.ember.paths.app))
   end
 
-  initializer :appkit_setup_vendor, :group => :all do |app|
-    # Allow a local variant override
-    override_path = app.root.join("vendor/assets/ember/")
-    app.assets.append_path(override_path.to_s) if override_path.exist?
-
-    app.assets.append_path(File.dirname(::Ember::Source.bundled_path_for("ember.js")))
-    app.assets.append_path(File.dirname(::Ember::Data::Source.bundled_path_for("ember-data.js")))
-    app.assets.append_path(File.expand_path('../', ::Handlebars::Source.bundled_path))
+  initializer :appkit_setup_vendor, after: :append_assets_path, :group => :all do |app|
+    app.config.assets.paths.append(File.dirname(::Ember::Source.bundled_path_for("ember.js")))
+    app.config.assets.paths.append(File.dirname(::Ember::Data::Source.bundled_path_for("ember-data.js")))
+    app.config.assets.paths.append(File.expand_path('../', ::Handlebars::Source.bundled_path))
   end
 end
