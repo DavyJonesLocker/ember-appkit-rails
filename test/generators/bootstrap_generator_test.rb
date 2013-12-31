@@ -79,11 +79,6 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  test "Removed app/assets/javascript directory" do
-    run_generator
-    assert_no_directory "app/assets/javascripts"
-  end
-
   test "Does not error if Gemfile is missing" do
     FileUtils.rm destination_root + '/Gemfile'
     run_generator
