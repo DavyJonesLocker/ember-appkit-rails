@@ -15,6 +15,7 @@
 * Ensure correct ember-data is loaded
 * Force ember-source, ember-data-source, and handlebars-source to end of
   assets load path
+* Replaced default `application.hbs` with Rails-like default page
 
 ## 0.2.0
 
