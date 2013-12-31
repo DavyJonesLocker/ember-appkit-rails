@@ -11,6 +11,8 @@
   \*.rb files
 * Remove local variant `vendor/assets/ember`. It should just go into
   `vendor/assets/javascripts`
+* Force model generator to singularize file name
+* Ensure correct ember-data is loaded
 * Force ember-source, ember-data-source, and handlebars-source to end of
   assets load path
 
