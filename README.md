@@ -68,7 +68,15 @@ files for you.
 
 #### Directory Structure ####
 
-The folowing is added to your `config/` directory:
+The following is added to your `app/` directory:
+
+* `app/components` your component files
+* `app/mxins` names Ember mixins
+* `app/routes` route files go here
+* `app/templates` your `.hbs` files go here
+* `app/templates/components` any component templates go here
+
+The following is added to your `config/` directory:
 
 * `config/application.js` the main loader referenced in your Rails layout view. (replaces `app/assets/javascripts/application.js`)
 * `config/adapter.js` configure the ember-data adapter. Pre-set for
