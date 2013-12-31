@@ -7,7 +7,7 @@ module Ember
 
       source_root File.expand_path("../../templates", __FILE__)
 
-      desc "Creates a default Ember.js folder layout in app/assets/javascripts"
+      desc "Creates a default Ember.js folder layout in app/ and config/"
 
       class_option :app_path, :type => :string, :aliases => "-a", :default => false, :desc => "Custom ember app path"
       class_option :config_path, :type => :string, :aliases => "-c", :default => false, :desc => "Custom ember config path"
@@ -18,10 +18,6 @@ module Ember
           empty_directory "#{app_path}/#{dir}"
           create_file "#{app_path}/#{dir}/.gitkeep" unless options[:skip_git]
         end
-      end
-
-      def remove_javascript_assets_directory
-        remove_dir "app/assets/javascripts"
       end
 
       def create_router_file

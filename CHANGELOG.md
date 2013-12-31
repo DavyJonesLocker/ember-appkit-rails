@@ -16,6 +16,8 @@
 * Force ember-source, ember-data-source, and handlebars-source to end of
   assets load path
 * Replaced default `application.hbs` with Rails-like default page
+* Don't remove `app/assets/javascripts` in bootstrap but ignore the path
+  in the asset loadpath
 
 ## 0.2.0
 

@@ -40,11 +40,15 @@ your Rails application to the asset pipeline. We want  you to
 think of your Ember application files with as much precedence as your
 Rails application files.
 
-The bootstrap will also delete the `app/assets/javascripts/` directory
-You should not put JavaScript into that directory as all business logic
+`ember-appkit-rails` **completely removes `app/assets/javascripts` from
+the asset loadpath.** Any files put into this directory will be ignored
+during asset complication. All business logic
 you need should be added to `app/`. If you need to add a 3rd party
-library these should go into `vendor/assets/javascripts/`. In order for
-the resolver to work properly Ember application files need to go into
+library these should go into `vendor/assets/javascripts/`.
+
+#### Resolving ####
+
+In order for the resolver to work properly Ember application files need to go into
 the correct directories. For example, models **must** go into
 `app/models`, controllers **must** go into `app/controller`, routes
 **must** go into `app/routes`, etc... The transpiler makes use of the
@@ -61,6 +65,8 @@ You **must** use `es6` modules in your application files.
 `es6_module_transpiler-rails` gem as long as you add the `.es6`
 extension to the end of the file. The [generators](#generators) will create these
 files for you.
+
+#### Directory Structure ####
 
 The folowing is added to your `config/` directory:
 

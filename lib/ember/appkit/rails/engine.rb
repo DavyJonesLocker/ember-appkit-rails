@@ -63,9 +63,8 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
     assets_javascript = assets.paths.delete(::Rails.root.join('app','assets','javascripts').to_s)
 
     index_of_last_app_assets = assets.paths.rindex{|s| s.start_with?(::Rails.root.join('app').to_s) } + 1
-    assets.paths.insert(index_of_last_app_assets, assets_javascript) if assets_javascript
-    assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, config.ember.paths.config))
     assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, config.ember.paths.app))
+    assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, config.ember.paths.config))
   end
 
   initializer :appkit_setup_vendor, after: :append_assets_path, :group => :all do |app|
