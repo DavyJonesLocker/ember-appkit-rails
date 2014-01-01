@@ -63,7 +63,7 @@ module GeneratorTestSupport
   end
 
   def app_path(path = 'app')
-    path 
+    path
   end
 
   def config_path(path = 'config')

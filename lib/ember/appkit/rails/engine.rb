@@ -10,6 +10,7 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
   config.ember.namespaces.config = 'config'
 
   config.ember.enable_logging = ::Rails.env.development?
+  config.ember.api_version = 1
 
   generators do |app|
     app.config.generators.helper false
@@ -20,6 +21,7 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
     ::Rails::Generators.hidden_namespaces.uniq!
     require 'generators/ember/resource_override'
     require 'generators/ember/scaffold_override'
+    require 'generators/ember/scaffold_controller_override'
   end
 
   initializer :appkit_transpiler do
