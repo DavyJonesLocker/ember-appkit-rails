@@ -5,16 +5,16 @@ class ScaffoldOverrideTest < Rails::Generators::TestCase
 
   tests Rails::Generators::ScaffoldGenerator
   destination File.join(Rails.root, "tmp")
-  setup :prepare_destination, :copy_routes, :reset_api_version
+  setup :prepare_destination, :copy_routes, :copy_router, :reset_api_version
 
   test "create template without ember" do
     run_generator ["post"]
-    assert_no_file "#{app_path}/templates/post.hbs"
+    assert_no_file "#{app_path}/templates/posts.hbs"
   end
 
   test "create template with ember" do
-    run_generator ["post", '--ember']
-    assert_file "#{app_path}/templates/post.hbs"
+    run_generator ["post", 'title:string', '--ember']
+    assert_file "#{app_path}/templates/posts.hbs"
   end
 
   test "does not create non-essential files for ember apps" do
@@ -29,6 +29,11 @@ class ScaffoldOverrideTest < Rails::Generators::TestCase
     assert_file 'config/routes.rb' do |content|
       assert_match(/  namespace :api do\n    namespace :v1 do\n      resources :posts, except: \[:new, :edit\]\n    end\n  end/, content)
     end
+  end
+
+  test "creates api version namespaced controller" do
+    run_generator ["post"]
+    assert_file 'app/controllers/api/v1/posts_controller.rb'
   end
 
   test "creates properly namespaced api routes when api namespace already exists" do

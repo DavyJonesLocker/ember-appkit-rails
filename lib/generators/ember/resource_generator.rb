@@ -15,11 +15,11 @@ module Ember
 
       def create_resource_files
         unless options[:skip_route]
-          invoke('ember:route', [ name ], options)
+          invoke('ember:route', [ name.pluralize ], options)
           inject_into_router_file(name)
         end
-        invoke('ember:controller', [ name ], options)
-        invoke('ember:template', [ name ], options)
+        invoke('ember:controller', [ name.pluralize ], options)
+        invoke('ember:template', [ name.pluralize ], options)
       end
 
       private

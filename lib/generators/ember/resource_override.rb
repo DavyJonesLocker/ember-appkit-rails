@@ -10,22 +10,9 @@ module Rails
 
       def add_ember
         if options.ember
-          say_status :invoke, "ember:model", :white
+          say_status :invoke, "ember:resource", :white
           with_padding do
-            invoke "ember:model"
-          end
-
-          say_status :invoke, "ember controller and view (singular)", :white
-          with_padding do
-            invoke "ember:view", [singular_name], :object => true
-          end
-
-          @_invocations[Ember::Generators::ControllerGenerator].delete "create_controller_files"
-          @_invocations[Ember::Generators::ViewGenerator].delete "create_view_files"
-
-          say_status :invoke, "ember controller and view (plural)", :white
-          with_padding do
-            invoke "ember:view", [plural_name], :array => true
+            invoke "ember:resource", [singular_name, attributes.map { |a| "#{a.name}:#{a.type}" }].flatten
           end
         end
       end
