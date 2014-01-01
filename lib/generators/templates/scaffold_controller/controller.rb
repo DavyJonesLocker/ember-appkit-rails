@@ -1,9 +1,5 @@
-<% if namespaced? -%>
-require_dependency "<%= namespaced_file_path %>/application_controller"
-
-<% end -%>
-<% module_namespacing do -%>
-class <%= controller_class_name %>Controller < ApplicationController
+<% api_version = Rails.application.config.ember.api_version -%>
+class Api::V<%= api_version %>::<%= controller_class_name %>Controller < ApplicationController
   before_action :set_<%= singular_table_name %>, only: [:show, :update, :destroy]
 
   # GET <%= route_url %>
@@ -13,7 +9,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   # GET <%= route_url %>/1
   def show
-    render json: <%= "@#{orm_instance.errors}" %>
+    render json: <%= "@#{singular_table_name}" %>
   end
 
   # POST <%= route_url %>
@@ -21,7 +17,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
 
     if @<%= orm_instance.save %>
-      render json: <%= "@#{orm_instance.errors}" %>, status: :created, location: <%= "@#{singular_table_name}" %>
+      render json: <%= "@#{singular_table_name}" %>, status: :created, location: [:api, :v<%= api_version %>, <%= "@#{singular_table_name}" %>]
     else
       render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity
     end
@@ -30,7 +26,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   # PATCH/PUT <%= route_url %>/1
   def update
     if @<%= orm_instance.update("#{singular_table_name}_params") %>
-      render json: <%= "@#{orm_instance.errors}" %>, status: :ok, location: <%= "@#{singular_table_name}" %>
+      render json: <%= "@#{singular_table_name}" %>, status: :ok, location: [:api, :v<%= api_version %>, <%= "@#{singular_table_name}" %>]
     else
       render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity
     end
@@ -58,4 +54,3 @@ class <%= controller_class_name %>Controller < ApplicationController
     <%- end -%>
   end
 end
-<% end -%>
