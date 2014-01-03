@@ -9,7 +9,7 @@ PATH
       es6_module_transpiler-rails (~> 0.3.0)
       handlebars-source
       jquery-rails
-      rails (~> 4.0.0)
+      rails (~> 4.0)
 
 GEM
   remote: https://rubygems.org/

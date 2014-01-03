@@ -2,12 +2,16 @@ language: ruby
 rvm:
 - 2.0.0
 - 2.1.0
+gemfile:
+  - gemfiles/Gemfile.rails-4.0.x
+  - gemfiles/Gemfile.rails-4.1.x
 before_install:
 - gem install bundler -v '= 1.5.1'
-env:
-  matrix:
-  - UPDATE_RESOLVER=false
-  - UPDATE_RESOLVER=true
+matrix:
+  include:
+    - rvm: 2.1.0
+      gemfile: gemfiles/Gemfile.rails-4.0.x
+      env: UPDATE_RESOLVER=true
 notifications:
   hipchat:
     rooms:
