@@ -1,15 +1,16 @@
 <% api_version = Rails.application.config.ember.api_version -%>
 class Api::V<%= api_version %>::<%= controller_class_name %>Controller < ApplicationController
   before_action :set_<%= singular_table_name %>, only: [:show, :update, :destroy]
+  respond_to :json
 
   # GET <%= route_url %>
   def index
-    render json: <%= orm_class.all(class_name) %>
+    respond_with <%= orm_class.all(class_name) %>
   end
 
   # GET <%= route_url %>/1
   def show
-    render json: <%= "@#{singular_table_name}" %>
+    respond_with <%= "@#{singular_table_name}" %>
   end
 
   # POST <%= route_url %>
@@ -17,7 +18,7 @@ class Api::V<%= api_version %>::<%= controller_class_name %>Controller < Applica
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
 
     if @<%= orm_instance.save %>
-      render json: <%= "@#{singular_table_name}" %>, status: :created, location: [:api, :v<%= api_version %>, <%= "@#{singular_table_name}" %>]
+      respond_with <%= "@#{singular_table_name}" %>, status: :created, location: [:api, :v<%= api_version %>, <%= "@#{singular_table_name}" %>]
     else
       render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity
     end
@@ -26,7 +27,7 @@ class Api::V<%= api_version %>::<%= controller_class_name %>Controller < Applica
   # PATCH/PUT <%= route_url %>/1
   def update
     if @<%= orm_instance.update("#{singular_table_name}_params") %>
-      render json: <%= "@#{singular_table_name}" %>, status: :ok, location: [:api, :v<%= api_version %>, <%= "@#{singular_table_name}" %>]
+      respond_with <%= "@#{singular_table_name}" %>, status: :ok, location: [:api, :v<%= api_version %>, <%= "@#{singular_table_name}" %>]
     else
       render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity
     end
