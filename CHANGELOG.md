@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Changed Rails controller to use respond_with instead of render
+
 ## 0.3.0
 
 * Fix issue with asset path ordering. See [#96](https://github.com/dockyard/ember-appkit-rails/issues/96) for details.
