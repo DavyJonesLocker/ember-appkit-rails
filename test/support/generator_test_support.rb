@@ -83,4 +83,15 @@ module GeneratorTestSupport
     FileUtils.mkdir_p(destination)
     copy_file source, File.join(destination, 'application.rb')
   end
+
+  def copy_routes
+    copy_routes_file("../../dummy/config/routes.rb")
+  end
+
+  def copy_routes_file(routes_destination)
+    routes = File.expand_path(routes_destination, __FILE__)
+    destination = File.join(destination_root, 'config')
+    FileUtils.mkdir_p(destination)
+    FileUtils.cp routes, File.join(destination, 'routes.rb')
+  end
 end

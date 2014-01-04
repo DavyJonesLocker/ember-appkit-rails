@@ -73,22 +73,11 @@ class ScaffoldOverrideTest < Rails::Generators::TestCase
     ::Rails.application.config.ember.api_version = 1
   end
 
-  def copy_routes
-    copy_routes_file("../../dummy/config/routes.rb")
-  end
-
   def copy_routes_with_api_namespace
     copy_routes_file("../../fixtures/routes_with_api_namespace.rb")
   end
 
   def copy_routes_with_api_and_version_namespaces
     copy_routes_file("../../fixtures/routes_with_api_and_version_namespaces.rb")
-  end
-
-  def copy_routes_file(routes_destination)
-    routes = File.expand_path(routes_destination, __FILE__)
-    destination = File.expand_path('../../dummy/tmp/config', __FILE__)
-    FileUtils.mkdir_p(destination)
-    FileUtils.cp routes, File.join(destination, 'routes.rb')
   end
 end
