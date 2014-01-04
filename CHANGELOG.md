@@ -1,6 +1,7 @@
 ## 0.4.0
 
-* Changed Rails controller to use respond_with instead of render
+* Changed Rails controller to use respond\_with instead of render
+* Add commented out history location Router details
 
 ## 0.3.0
 
