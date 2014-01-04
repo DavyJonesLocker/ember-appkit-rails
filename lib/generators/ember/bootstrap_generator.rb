@@ -52,6 +52,14 @@ module Ember
         remove_jbuilder_from_gemfile
       end
 
+      def add_greedy_rails_route
+        insert_into_file 'config/routes.rb', before: /^end$/ do
+          "\n" +
+          "  # Uncomment when using 'history' as the location in Ember's router\n" +
+          "  # get '*foo', :to => 'landing#index'\n"
+        end
+      end
+
       def add_custom_paths
         if app_path != configuration.paths.app
           insert_into_file 'config/application.rb', before: /\s\send\nend/ do

@@ -23,13 +23,4 @@ class ResourceOverrideTest < Rails::Generators::TestCase
     assert_no_file "#{app_path}/helpers/posts_helper.rb"
     assert_no_directory "#{app_path}/views/posts"
   end
-
-  private
-
-  def copy_routes
-    routes = File.expand_path("../../dummy/config/routes.rb", __FILE__)
-    destination = File.expand_path('../../dummy/tmp/config', __FILE__)
-    FileUtils.mkdir_p(destination)
-    FileUtils.cp routes, destination
-  end
 end

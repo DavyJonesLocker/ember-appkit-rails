@@ -7,7 +7,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
   tests Ember::Generators::BootstrapGenerator
   destination File.join(Rails.root, "tmp", "generator_test_output")
 
-  setup :prepare_destination, :copy_application
+  setup :prepare_destination, :copy_application, :copy_routes
 
   test "Assert folder layout and .gitkeep files are properly created" do
     run_generator []
@@ -82,6 +82,14 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
   test "Does not error if Gemfile is missing" do
     FileUtils.rm destination_root + '/Gemfile'
     run_generator
+  end
+
+  test "Adds commented out greedy matcher to Rails routes file" do
+    run_generator
+
+    assert_file 'config/routes.rb' do |content|
+      assert_match(/^  # get '\*foo', :to => 'landing#index'$/, content)
+    end
   end
 
   private
