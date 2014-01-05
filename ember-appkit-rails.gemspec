@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'barber', '>= 0.4.1'
   s.add_dependency 'active_model_serializers'
 
-  s.add_development_dependency 'jquery-rails'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'poltergeist'
 end

@@ -143,7 +143,6 @@ DEPENDENCIES
   byebug
   capybara
   ember-appkit-rails!
-  jquery-rails
   m
   poltergeist
   pry
