@@ -3,6 +3,7 @@
 * Changed Rails controller to use respond\_with instead of render
 * Add commented out history location Router details
 * Changed scaffold to pass context rather than doing model lookup in routes
+* Make environment js files erb to enable reading values from ENV
 
 ## 0.3.0
 
