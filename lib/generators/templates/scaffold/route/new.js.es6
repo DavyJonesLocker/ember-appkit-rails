@@ -9,8 +9,7 @@ export default Ember.Route.extend({
     }
   },
   actions: {
-    save: function() {
-      var model = this.get('controller.model');
+    save: function(model) {
       var _this = this;
       model.save().then(function() {
         _this.transitionTo('<%= file_name.pluralize -%>.show', model);
