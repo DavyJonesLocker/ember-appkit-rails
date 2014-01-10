@@ -22,7 +22,7 @@ Include the gem in your `Gemfile`
 gem 'ember-appkit-rails'
 ```
 
-You should not need to specify any additional core Ember depdendencies.
+You should not need to specify any additional core Ember dependencies.
 `EmberAppkitRails` includes all you need to get going.
 
 Run the bootstrap generator to prepare your application:
