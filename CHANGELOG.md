@@ -5,6 +5,11 @@
 * Changed scaffold to pass context rather than doing model lookup in routes
 * Make environment js files erb to enable reading values from ENV
 
+## 0.3.1
+
+* Fix bug where non javascript assets in `Rails.root`/app/assets were
+  disallowed
+
 ## 0.3.0
 
 * Fix issue with asset path ordering. See [#96](https://github.com/dockyard/ember-appkit-rails/issues/96) for details.
