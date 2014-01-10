@@ -42,7 +42,7 @@ Rails application files.
 
 `ember-appkit-rails` **completely removes `app/assets/javascripts` from
 the asset loadpath.** Any files put into this directory will be ignored
-during asset complication. All business logic
+during asset compilation. All business logic
 you need should be added to `app/`. If you need to add a 3rd party
 library these should go into `vendor/assets/javascripts/`.
 
