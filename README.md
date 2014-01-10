@@ -236,7 +236,7 @@ generators will write files to that directory by default instead of
 configuration:
 
 ```ruby
-config.ember.appkit.paths.app = 'app/assets/javascripts'
+config.ember.paths.app = 'app/assets/javascripts'
 ``` 
 
 Adding this to your `config/application.rb` file will generate your
@@ -248,14 +248,14 @@ The default AMD namespace is `app`. Modify this in your
 `config/application.rb`
 
 ```ruby
-config.ember.appkit.namespaces.app = 'ember'
+config.ember.namespaces.app = 'ember'
 ``` 
 
 The AMD namespace for the router is `config/` you can change this in
 your `config/application.rb` file as well:
 
 ```ruby
-config.ember.appkit.namespaces.config = 'ember_config'
+config.ember.namespaces.config = 'ember_config'
 ```
 
 ## Authors ##
