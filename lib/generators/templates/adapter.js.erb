@@ -1,3 +1,3 @@
-window.<%= application_name.camelize %>.ApplicationAdapter = DS.ActiveModelAdapter.extend({
+export default DS.ActiveModelAdapter.extend({
   namespace: 'api/v<%%= Rails.application.config.ember.api_version %>'
 });
