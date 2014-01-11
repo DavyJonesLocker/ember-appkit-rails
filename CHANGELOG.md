@@ -4,6 +4,8 @@
 * Add commented out history location Router details
 * Changed scaffold to pass context rather than doing model lookup in routes
 * Make environment js files erb to enable reading values from ENV
+* Move config/adapter.js.erb to config/adapters/application.js.es6.erb
+  and make it resolvable by the resolver.
 
 ## 0.3.1
 
