@@ -97,6 +97,22 @@ define("resolver",
     }
   }
 
+  function resolveAdapter(parsedName) {
+    /*jshint validthis:true */
+
+    var prefix = this.namespace.configPrefix,
+        adapterModule;
+
+    if (parsedName.fullName === 'adapter:application') {
+      if (requirejs._eak_seen[prefix + '/adapters/application']) {
+        adapterModule = require(prefix + '/adapters/application');
+        if (adapterModule['default']) { adapterModule = adapterModule['default']; }
+
+        return adapterModule;
+      }
+    }
+  }
+
   function resolveOther(parsedName) {
     /*jshint validthis:true */
 
@@ -143,6 +159,7 @@ define("resolver",
     resolveTemplate: resolveOther,
     resolveOther: resolveOther,
     resolveRouter: resolveRouter,
+    resolveRouter: resolveAdapter,
     makeToString: function(factory, fullName) {
       return '' + this.namespace.modulePrefix + '@' + fullName + ':';
     },
