@@ -81,7 +81,7 @@ The following is added to your `config/` directory:
 * `config/application.js` the main loader referenced in your Rails layout view. (replaces `app/assets/javascripts/application.js`)
 * `config/adapter.js.erb` configure the ember-data adapter. Pre-set for
   `ActiveModelAdapter` and will set the API version to
-`Rails.application.confg.ember.api_version`
+`Rails.application.config.ember.api_version`
 * `config/router.js` your Ember Router. The actual routes will go in
   `app/routes`
 * `config/initializers` any files that compile to JavaScript in this directory will be
