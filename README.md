@@ -31,12 +31,12 @@ Run the bootstrap generator to prepare your application:
 rails g ember:bootstrap
 ```
 
-Then run your rails server and visit `http://localhost:3000`. If you see `Welcome to Ember!` then you are good to go!
+Then run your Rails server and visit `http://localhost:3000`. If you see `Welcome to Ember!` then you are good to go!
 
 ### What do you get? ###
 
 `ember-appkit-rails` will add the `app/` and `config/` directories in
-your Rails application to the asset pipeline. We want  you to
+your Rails application to the asset pipeline. We want you to
 think of your Ember application files with as much precedence as your
 Rails application files.
 
@@ -50,7 +50,7 @@ library these should go into `vendor/assets/javascripts/`.
 
 In order for the resolver to work properly Ember application files need to go into
 the correct directories. For example, models **must** go into
-`app/models`, controllers **must** go into `app/controller`, routes
+`app/models`, controllers **must** go into `app/controllers`, routes
 **must** go into `app/routes`, etc... The transpiler makes use of the
 logical path for those files when creating the AMD namespace. The Ember
 Appkit Resolver relies upon this namespacing for the lookups.
