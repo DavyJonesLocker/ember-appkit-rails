@@ -98,6 +98,13 @@ The following is added to your `config/` directory:
 * `config/environments/production.js` production environment settings
 * `config/environments/test.js` test environment settings
 
+The `lib/` directory is also mounted into the asset load path. You
+should use `lib/` to write any custom code that does not belong in
+`app/` or `config/` but is not 3rd part software.
+
+Any 3rd party software should be put into `vendor/assets/javascripts`
+(this may change)
+
 ## Usage ##
 
 ### Generators ###
