@@ -265,6 +265,26 @@ your `config/application.rb` file as well:
 config.ember.namespaces.config = 'ember_config'
 ```
 
+## Custom Ember Builds ##
+
+By default Ember Appkit Rails will server up the proper builds of Ember,
+Ember Data, and Handlebars depending upon the environment from their
+gems. However, you can add custom builds of each library to your project
+to override the default builds. The files you add **must** match a
+particular file name to override properly:
+
+<table>
+<tr><td>Environment<th>Ember</th><th>Ember Data</th><th>Handlebars</th></tr>
+<tr><th>development</th><td>ember.js</td><td>ember-data.js</td><td>handlebars.js</td></tr>
+<tr><th>test</th><td>ember.js</td><td>ember-data.js</td><td>handlebars.js</td></tr>
+<tr><th>production</th><td>ember.prod.js</td><td>ember-data.prod.js</td><td>handlebars.runtime.js</td></tr>
+</table>
+
+For example, if you wanted to build a new copy of Ember.js you should
+add the files `ember.js` and `ember.prod.js` to
+`vendor/assets/javascripts`. The file of the same name will override the
+copy in the gem.
+
 ## Authors ##
 
 * [Brian Cardarella](http://twitter.com/bcardarella)
