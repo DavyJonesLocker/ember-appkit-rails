@@ -63,8 +63,10 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
     assets = Sprockets::Railtie.config.assets
 
     assets_javascript = assets.paths.delete(::Rails.root.join('app','assets','javascripts').to_s)
+    assets.paths.delete(::Rails.root.join('lib', 'assets','javascript').to_s)
 
-    index_of_last_app_assets = assets.paths.rindex{|s| s.to_s.start_with?(::Rails.root.join('app').to_s) } + 1
+    index_of_last_app_assets = assets.paths.rindex { |path| path.to_s.start_with?(::Rails.root.join('app').to_s) } + 1
+    assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, 'lib'))
     assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, config.ember.paths.app))
     assets.paths.insert(index_of_last_app_assets, File.join(::Rails.root, config.ember.paths.config))
   end

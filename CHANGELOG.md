@@ -6,6 +6,7 @@
 * Make environment js files erb to enable reading values from ENV
 * Move config/adapter.js.erb to config/adapters/application.js.es6.erb
   and make it resolvable by the resolver.
+* add `lib/` to the asset load path
 
 ## 0.3.1
 
