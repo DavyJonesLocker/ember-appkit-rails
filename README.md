@@ -267,7 +267,7 @@ config.ember.namespaces.config = 'ember_config'
 
 ## Custom Ember Builds ##
 
-By default Ember Appkit Rails will server up the proper builds of Ember,
+By default Ember Appkit Rails will serve up the proper builds of Ember,
 Ember Data, and Handlebars depending upon the environment from their
 gems. However, you can add custom builds of each library to your project
 to override the default builds. The files you add **must** match a
