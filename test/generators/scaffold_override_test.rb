@@ -67,6 +67,26 @@ class ScaffoldOverrideTest < Rails::Generators::TestCase
     end
   end
 
+  test 'destroy does not remove any non-matching resources or namespaces' do
+    copy_routes_with_api_version_namespaces_and_route
+    config_content = File.read(File.expand_path('config/routes.rb', destination_root))
+    run_generator ['post'], behavior: :revoke
+
+    assert_file 'config/routes.rb' do |content|
+      assert_equal config_content, content
+    end
+  end
+
+  test 'destroy removes matching resources and namespaces' do
+    copy_routes_with_api_version_namespaces_and_route
+    config_content = File.read(File.expand_path('config/routes.rb', destination_root))
+    run_generator ['dogs'], behavior: :revoke
+
+    assert_file 'config/routes.rb' do |content|
+      refute_match(/  namespace :api do\n    namespace :v1 do\n      resource :dogs, except: \[:new, :edit\]\n    end\n  end/, content)
+    end
+  end
+
   private
 
   def reset_api_version
@@ -79,5 +99,9 @@ class ScaffoldOverrideTest < Rails::Generators::TestCase
 
   def copy_routes_with_api_and_version_namespaces
     copy_routes_file("../../fixtures/routes_with_api_and_version_namespaces.rb")
+  end
+
+  def copy_routes_with_api_version_namespaces_and_route
+    copy_routes_file("../../fixtures/routes_with_api_version_namespaces_and_route.rb")
   end
 end
