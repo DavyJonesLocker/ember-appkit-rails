@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency 'rails', '~>4.0'
+  s.add_dependency 'parser'
   s.add_dependency 'es6_module_transpiler-rails', '~> 0.3.0'
   s.add_dependency 'ember-source', '~> 1.3'
   s.add_dependency 'ember-data-source', '~> 1.0.0.beta.3'

@@ -18,7 +18,7 @@ module Rails
       end
 
       def write_resource
-        Walker.new(file_path.pluralize, File.join(destination_root, 'config/routes.rb'), ::Rails.application.config.ember.api_version).run
+        action Walker.new(file_path.pluralize, File.join(destination_root, 'config/routes.rb'), ::Rails.application.config.ember.api_version)
       end
     end
   end

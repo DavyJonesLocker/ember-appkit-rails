@@ -7,6 +7,8 @@
 * Move config/adapter.js.erb to config/adapters/application.js.es6.erb
   and make it resolvable by the resolver.
 * add `lib/` to the asset load path
+* Rewrote config/routes.rb walker to properly revoke and invoke
+  depending upon generator
 
 ## 0.3.1
 

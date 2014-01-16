@@ -9,6 +9,7 @@ PATH
       es6_module_transpiler-rails (~> 0.3.0)
       handlebars-source
       jquery-rails
+      parser
       rails (~> 4.0)
 
 GEM
@@ -41,6 +42,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.1)
+    ast (1.1.0)
     atomic (1.1.14)
     barber (0.4.2)
       ember-source
@@ -87,6 +89,9 @@ GEM
     multi_json (1.8.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    parser (2.1.4)
+      ast (~> 1.1)
+      slop (~> 3.4, >= 3.4.5)
     poltergeist (1.4.1)
       capybara (~> 2.1.0)
       cliver (~> 0.2.1)
