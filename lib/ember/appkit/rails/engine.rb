@@ -8,8 +8,6 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
   config.ember.paths.config = 'config'
   config.ember.namespaces.app = 'app'
   config.ember.namespaces.config = 'config'
-
-  config.ember.enable_logging = ::Rails.env.development?
   config.ember.api_version = 1
 
   generators do |app|
