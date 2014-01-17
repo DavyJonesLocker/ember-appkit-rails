@@ -5,23 +5,10 @@ if (typeof Turbolinks !== 'undefined') {
   throw new Error("Turbolinks has been detected. Ember Appkit Rails will not function properly alongside Turbolinks.");
 }
 
-<% unless config.enable_logging %>
-  Ember.LOG_VERSION = false;
-<% end %>
-
 var App = Ember.Application.extend({
-
-<% if config.enable_logging %>
-  LOG_ACTIVE_GENERATION: true,
-  LOG_MODULE_RESOLVER: true,
-  LOG_TRANSITIONS: true,
-  LOG_TRANSITIONS_INTERNAL: true,
-  LOG_VIEW_LOOKUPS: true,
-<% end %>
-
   modulePrefix: '<%= config.namespaces.app %>',
   configPrefix: '<%= config.namespaces.config %>',
   Resolver: Resolver
-});
+}, window.config);
 
 export default App;

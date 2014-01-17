@@ -204,6 +204,21 @@ modified:
 
 ### Configuration ###
 
+#### Environments ####
+
+The bootstrap will add environment specific files to
+`config/environemnts` that are only loaded in those environments. In
+these files the correct versions of Ember, Ember Data, and Handlebars
+are required. Any configuration settings you want passed into the
+creation of your Ember app should be added to the `config` object:
+
+```js
+config.LOG_TRANSITIONS = true
+```
+
+The `window.config` option is mixed into your application. Likewise, any
+other environment specific settings should be made in these files.
+
 #### API Versioning ####
 
 Ember Data expect to work with a namespace of `api/vX` where `X` is the
