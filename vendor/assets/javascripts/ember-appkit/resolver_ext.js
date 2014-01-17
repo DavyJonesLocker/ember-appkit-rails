@@ -18,6 +18,23 @@
     }
   }
 
+  function resolveSerializer(parsedName) {
+    /*jshint validthis:true */
+
+    var prefix = this.namespace.configPrefix,
+        serializerModule, serializerName;
+
+    if (parsedName.fullName.match(/serializer:/)) {
+      serializerName = parsedName.fullName.split(/serializer:/)[1];
+      if (requirejs._eak_seen[prefix + '/serializers/' + serializerName]) {
+        serializerModule = require(prefix + '/serializers/' + serializerName);
+        if (serializerModule['default']) { serializerModule = serializerModule['default']; }
+
+        return serializerModule;
+      }
+    }
+  }
+
   function resolveAdapter(parsedName) {
     /*jshint validthis:true */
 
