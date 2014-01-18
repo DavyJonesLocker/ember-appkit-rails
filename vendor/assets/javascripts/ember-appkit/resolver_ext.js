@@ -1,59 +1,40 @@
 (function() {
   var Resolver = require('resolver').default;
+  var originalResolveOther = Resolver
 
-  function resolveRouter(parsedName) {
+  function resolveCustomPrefix(parsedName) {
     /*jshint validthis:true */
 
-    var prefix = this.namespace.configPrefix,
-        routerModule;
+    var prefix = this.namespace.modulePrefix,
+        type = parsedName.type,
+        name = parsedName.fullNameWithoutType,
+        tmpModuleName, moduleName, module;
 
-    if (parsedName.fullName === 'router:main') {
-      // for now, lets keep the router at app/router.js
-      if (requirejs._eak_seen[prefix + '/router']) {
-        routerModule = require(prefix + '/router');
-        if (routerModule['default']) { routerModule = routerModule['default']; }
-
-        return routerModule;
-      }
+    if (this.namespace[type + 'Prefix']) {
+      prefix = this.namespace[type + 'Prefix'];
     }
-  }
 
-  function resolveSerializer(parsedName) {
-    /*jshint validthis:true */
-
-    var prefix = this.namespace.configPrefix,
-        serializerModule, serializerName;
-
-    if (parsedName.fullName.match(/serializer:/)) {
-      serializerName = parsedName.fullName.split(/serializer:/)[1];
-      if (requirejs._eak_seen[prefix + '/serializers/' + serializerName]) {
-        serializerModule = require(prefix + '/serializers/' + serializerName);
-        if (serializerModule['default']) { serializerModule = serializerModule['default']; }
-
-        return serializerModule;
-      }
+    tmpModuleName = prefix + '/' + type;
+    if (name === 'main' && requirejs._eak_seen[tmpModuleName]) {
+      moduleName = tmpModuleName;
+    } else {
     }
-  }
 
-  function resolveAdapter(parsedName) {
-    /*jshint validthis:true */
+    if (!moduleName) { moduleName = prefix + '/' + type + 's/' + name; }
 
-    var prefix = this.namespace.configPrefix,
-        adapterModule, adapterName;
+    if (requirejs._eak_seen[moduleName]) {
+      module = require(moduleName);
+      if (module['default']) { module = module['default']; }
 
-    if (parsedName.fullName.match(/adapter:/)) {
-      adapterName = parsedName.fullName.split(/adapter:/)[1];
-      if (requirejs._eak_seen[prefix + '/adapters/' + adapterName]) {
-        adapterModule = require(prefix + '/adapters/' + adapterName);
-        if (adapterModule['default']) { adapterModule = adapterModule['default']; }
-
-        return adapterModule;
-      }
+      return module;
+    } else {
+      return this.resolveOther(parsedName);
     }
   }
 
   Resolver.reopen({
-    resolveRouter: resolveRouter,
-    resolveAdapter: resolveAdapter
+    resolveRouter: resolveCustomPrefix,
+    resolveAdapter: resolveCustomPrefix,
+    resolveSerializer: resolveCustomPrefix
   });
 })();

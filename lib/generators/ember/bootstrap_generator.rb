@@ -33,10 +33,10 @@ module Ember
       end
 
       def create_ember_environment_files
-        template "environment.js", "#{config_path}/environment.js"
-        template "environments/development.js.erb", "#{config_path}/environments/development.js.erb"
-        template "environments/production.js.erb", "#{config_path}/environments/production.js.erb"
-        template "environments/test.js.erb", "#{config_path}/environments/test.js.erb"
+        copy_file "environment.js.erb", "#{config_path}/environment.js.erb"
+        copy_file "environments/development.js.erb", "#{config_path}/environments/development.js.erb"
+        copy_file "environments/production.js.erb", "#{config_path}/environments/production.js.erb"
+        copy_file "environments/test.js.erb", "#{config_path}/environments/test.js.erb"
       end
 
       def create_utils_csrf_file

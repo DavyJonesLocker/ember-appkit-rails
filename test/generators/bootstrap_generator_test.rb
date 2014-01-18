@@ -95,7 +95,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
   private
 
   def assert_files(app_path = app_path, config_path = config_path)
-    assert_file "#{config_path}/environment.js"
+    assert_file "#{config_path}/environment.js.erb"
     assert_file "#{config_path}/environments/development.js.erb"
     assert_file "#{config_path}/environments/production.js.erb"
     assert_file "#{config_path}/environments/test.js.erb"

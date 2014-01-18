@@ -9,7 +9,9 @@
 * add `lib/` to the asset load path
 * Rewrote config/routes.rb walker to properly revoke and invoke
   depending upon generator
-* App config settings now exposed in congig/environments/\*.js.erb
+* App config settings now exposed in config/environments/\*.js.erb
+* Use custom type specific prefixes in preparation for the updated Resolver.
+* Centralize resolver namespace configuration into a single place (`config/environments`).
 
 ## 0.3.1
 
