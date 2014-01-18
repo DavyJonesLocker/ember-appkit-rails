@@ -12,6 +12,7 @@
 * App config settings now exposed in config/environments/\*.js.erb
 * Use custom type specific prefixes in preparation for the updated Resolver.
 * Centralize resolver namespace configuration into a single place (`config/environments`).
+* Force asset prcompile to ignore `assets/javascripts/application.js`
 
 ## 0.3.1
 
