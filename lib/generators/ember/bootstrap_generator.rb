@@ -87,7 +87,7 @@ module Ember
         path = Pathname.new(destination_root).join('Gemfile')
         return unless path.exist?
 
-        gsub_file path, /(?:#.+$\n)?gem '#{gem}.*'\n\n/, ''
+        gsub_file path, /(?:#.+$\n)?gem ['|"]#{gem}.*['|"].*\n\n?/, ''
       end
 
       def remove_turbolinks_from_gemfile

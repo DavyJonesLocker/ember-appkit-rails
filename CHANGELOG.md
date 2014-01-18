@@ -14,6 +14,7 @@
 * Centralize resolver namespace configuration into a single place (`config/environments`).
 * Force asset prcompile to ignore `assets/javascripts/application.js`
 * Fix issue if jquery-rails is not included in application Gemfile
+* Improved matching for gem removal from Gemfile during `ember:bootstrap`
 
 ## 0.3.1
 
