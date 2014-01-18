@@ -13,6 +13,7 @@
 * Use custom type specific prefixes in preparation for the updated Resolver.
 * Centralize resolver namespace configuration into a single place (`config/environments`).
 * Force asset prcompile to ignore `assets/javascripts/application.js`
+* Fix issue if jquery-rails is not included in application Gemfile
 
 ## 0.3.1
 

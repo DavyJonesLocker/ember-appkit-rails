@@ -1,3 +1,4 @@
+require 'jquery-rails'
 require 'ember/source'
 require 'es6_module_transpiler/rails'
 require 'active_model_serializers'
