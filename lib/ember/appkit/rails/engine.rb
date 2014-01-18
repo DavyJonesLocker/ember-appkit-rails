@@ -60,6 +60,9 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
   initializer :appkit_sprockets do
     assets = Sprockets::Railtie.config.assets
 
+    precompile_index = config.assets.precompile.index { |i| i =~ File.join(Rails.root, 'app/assets/javascripts/application.js') }
+    config.assets.precompile[precompile_index] = /(?<!assets\/javascripts)(?:\/|\\|\A)application\.(css|js)$/
+
     assets_javascript = assets.paths.delete(::Rails.root.join('app','assets','javascripts').to_s)
     assets.paths.delete(::Rails.root.join('lib', 'assets','javascript').to_s)
 
