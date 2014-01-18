@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ember-appkit-rails (0.3.0)
+    ember-appkit-rails (0.4.0)
       active_model_serializers
       barber (>= 0.4.1)
       ember-data-source (~> 1.0.0.beta.3)
