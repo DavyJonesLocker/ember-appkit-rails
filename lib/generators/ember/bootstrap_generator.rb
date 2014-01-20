@@ -29,7 +29,7 @@ module Ember
       end
 
       def create_ember_adapter_file
-        template "adapter.js.erb", "#{config_path}/adapters/application.js.es6.erb"
+        copy_file "adapters/application.js.es6.erb", "#{config_path}/adapters/application.js.es6.erb"
       end
 
       def create_ember_environment_files
