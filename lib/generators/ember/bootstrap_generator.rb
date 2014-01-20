@@ -14,7 +14,7 @@ module Ember
       class_option :app_name, :type => :string, :aliases => "-n", :default => false, :desc => "Custom ember app name"
 
       def create_dir_layout
-        %W{routes components templates templates/components mixins}.each do |dir|
+        %W{routes components templates templates/components mixins ../config/serializers}.each do |dir|
           empty_directory "#{app_path}/#{dir}"
           create_file "#{app_path}/#{dir}/.gitkeep" unless options[:skip_git]
         end
