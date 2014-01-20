@@ -1,3 +1,7 @@
+## 0.5.0
+
+* Update to latest resolver. Removes need for monkey-patch.
+
 ## 0.4.0
 
 * Changed Rails controller to use respond\_with instead of render
