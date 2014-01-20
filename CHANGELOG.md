@@ -1,6 +1,7 @@
 ## 0.5.0
 
 * Update to latest resolver. Removes need for monkey-patch.
+* Update to Ember 1.4 to resolve issue with loading and error substates.
 
 ## 0.4.0
 

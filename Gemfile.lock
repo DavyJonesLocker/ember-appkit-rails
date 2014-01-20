@@ -5,7 +5,7 @@ PATH
       active_model_serializers
       barber (>= 0.4.1)
       ember-data-source (~> 1.0.0.beta.3)
-      ember-source (~> 1.3)
+      ember-source (~> 1.4.beta)
       es6_module_transpiler-rails (~> 0.3.0)
       handlebars-source
       jquery-rails
@@ -64,13 +64,13 @@ GEM
     debugger-linecache (1.2.0)
     ember-data-source (1.0.0.beta.5)
       ember-source
-    ember-source (1.3.1.1)
-      handlebars-source (~> 1.2.1)
+    ember-source (1.4.0.beta.2)
+      handlebars-source (~> 1.3.0)
     erubis (2.7.0)
     es6_module_transpiler-rails (0.3.0)
       execjs
     execjs (2.0.2)
-    handlebars-source (1.2.1)
+    handlebars-source (1.3.0)
     hike (1.2.3)
     i18n (0.6.9)
     jquery-rails (3.0.4)
