@@ -4,6 +4,10 @@ Ember Appkit for the Asset Pipeline
 
 **This gem is still pre-1.0 and as such its public API will likely change over the course of heading towards 1.0**
 
+##### Upgrade Notes #####
+
+If you are upgrading from a previous version of this gem because of the high probability of a breaking API change in some of the generated files you already have you should re-run `rails g ember:boostrap` and do a `diff` on the files that are being generated vs what you have.
+
 [![Build Status](https://secure.travis-ci.org/dockyard/ember-appkit-rails.png?branch=master)](http://travis-ci.org/dockyard/ember-appkit-rails)
 [![Dependency Status](https://gemnasium.com/dockyard/ember-appkit-rails.png?travis)](https://gemnasium.com/dockyard/ember-appkit-rails)
 [![Code Climate](https://codeclimate.com/github/dockyard/ember-appkit-rails.png)](https://codeclimate.com/github/dockyard/ember-appkit-rails)
