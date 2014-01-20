@@ -5,6 +5,8 @@ if (typeof Turbolinks !== 'undefined') {
   throw new Error("Turbolinks has been detected. Ember Appkit Rails will not function properly alongside Turbolinks.");
 }
 
+if (window.config === undefined) { window.config = {}; }
+
 var App = Ember.Application.extend({
   Resolver: Resolver
 }, window.config);
