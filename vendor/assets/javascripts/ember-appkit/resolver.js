@@ -1,5 +1,5 @@
 // Fetched from: https://raw.github.com/stefanpenner/ember-jj-abrams-resolver/master/dist/ember-resolver.js
-// Fetched on: 2014-01-11T18:12:01
+// Fetched on: 2014-01-20T04:38:35
 // ==========================================================================
 // Project:   Ember - JavaScript Application Framework
 // Copyright: Copyright 2013 Stefan Penner and Ember App Kit Contributors
@@ -80,39 +80,56 @@ define("resolver",
     }
   }
 
-  function resolveRouter(parsedName) {
-    /*jshint validthis:true */
+  function logLookup(found, parsedName, moduleName) {
+    if (Ember.ENV.LOG_MODULE_RESOLVER) {
+      var symbol;
 
-    var prefix = this.namespace.modulePrefix,
-        routerModule;
+      if (found) { symbol = '[✓]'; }
+      else       { symbol = '[ ]'; }
 
-    if (parsedName.fullName === 'router:main') {
-      // for now, lets keep the router at app/router.js
-      if (requirejs._eak_seen[prefix + '/router']) {
-        routerModule = require(prefix + '/router');
-        if (routerModule['default']) { routerModule = routerModule['default']; }
-
-        return routerModule;
-      }
+      Ember.Logger.info(symbol, parsedName.fullName, new Array(40 - parsedName.fullName.length).join('.'), moduleName);
     }
   }
 
   function resolveOther(parsedName) {
     /*jshint validthis:true */
 
-    var prefix = this.namespace.modulePrefix;
+    var moduleName, tmpModuleName, prefix, podPrefix, moduleRegistry;
+
+    prefix = this.namespace.modulePrefix;
+    podPrefix = this.namespace.podModulePrefix || prefix;
+    moduleRegistry = requirejs._eak_seen;
+
     Ember.assert('module prefix must be defined', prefix);
 
     var pluralizedType = parsedName.type + 's';
     var name = parsedName.fullNameWithoutType;
 
-    var moduleName = prefix + '/' +  pluralizedType + '/' + name;
+    // lookup using POD formatting first
+    tmpModuleName = podPrefix + '/' + name + '/' + parsedName.type;
+    if (moduleRegistry[tmpModuleName]) {
+      moduleName = tmpModuleName;
+    }
+
+    // if not using POD format, use the custom prefix
+    if (this.namespace[parsedName.type + 'Prefix']) {
+      prefix = this.namespace[parsedName.type + 'Prefix'];
+    }
+
+    // if router:main or adapter:main look for a module with just the type first
+    tmpModuleName = prefix + '/' + parsedName.type;
+    if (!moduleName && name === 'main' && moduleRegistry[tmpModuleName]) {
+      moduleName = prefix + '/' + parsedName.type;
+    }
+
+    // fallback if not type:main or POD format
+    if (!moduleName) { moduleName = prefix + '/' +  pluralizedType + '/' + name; }
 
     // allow treat all dashed and all underscored as the same thing
     // supports components with dashes and other stuff with underscores.
-    var normalizedModuleName = chooseModuleName(requirejs._eak_seen, moduleName);
+    var normalizedModuleName = chooseModuleName(moduleRegistry, moduleName);
 
-    if (requirejs._eak_seen[normalizedModuleName]) {
+    if (moduleRegistry[normalizedModuleName]) {
       var module = require(normalizedModuleName, null, null, true /* force sync */);
 
       if (module && module['default']) { module = module['default']; }
@@ -125,15 +142,12 @@ define("resolver",
         module = classFactory(module);
       }
 
-      if (Ember.ENV.LOG_MODULE_RESOLVER) {
-        Ember.Logger.info('[✓]', parsedName.fullName, new Array(40 - parsedName.fullName.length).join('.'), moduleName);
-      }
+      logLookup(true, parsedName, moduleName);
 
       return module;
     } else {
-      if (Ember.ENV.LOG_MODULE_RESOLVER) {
-        Ember.Logger.info('[ ]', parsedName.fullName, new Array(40 - parsedName.fullName.length).join('.'), moduleName);
-      }
+      logLookup(false, parsedName, moduleName);
+
       return this._super(parsedName);
     }
   }
@@ -142,7 +156,6 @@ define("resolver",
   var Resolver = Ember.DefaultResolver.extend({
     resolveTemplate: resolveOther,
     resolveOther: resolveOther,
-    resolveRouter: resolveRouter,
     makeToString: function(factory, fullName) {
       return '' + this.namespace.modulePrefix + '@' + fullName + ':';
     },
