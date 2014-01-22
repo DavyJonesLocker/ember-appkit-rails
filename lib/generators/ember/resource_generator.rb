@@ -25,7 +25,7 @@ module Ember
       private
 
       def inject_into_router_file(name)
-        router_file = "#{config_path}/router.js.es6"
+        router_file = "#{config_path}/router.es6"
         inject_into_file(router_file, :after => /^.*Router.map\(function\(\) \{*$/) do
           "\n  this.resource('#{name.pluralize}');"
         end

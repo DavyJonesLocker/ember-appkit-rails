@@ -4,6 +4,7 @@
 * Update to Ember 1.4 to resolve issue with loading and error substates.
 * Add a default value for `window.config` to prevent errors if the environment configuration is not present.
 * Ensure that the `config/serializers/` directory is mounted properly by Sprockets.
+* Updates `.js.es6` extensions to the preferred  `.es6` file extensions.
 
 ## 0.4.0
 

@@ -10,8 +10,8 @@ module Ember
       desc "Creates a new Ember.js route"
 
       def create_route_files
-        file_path = File.join(app_path, 'routes', class_path, "#{file_name}.js.es6")
-        template "route.js.es6", file_path
+        file_path = File.join(app_path, 'routes', class_path, "#{file_name}.es6")
+        template "route.es6", file_path
       end
     end
   end

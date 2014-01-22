@@ -18,12 +18,12 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
   private
 
   def assert_files
-    assert_file "#{app_path}/models/post.js.es6"
+    assert_file "#{app_path}/models/post.es6"
 
-    assert_file "#{app_path}/routes/posts/edit.js.es6"
-    assert_file "#{app_path}/routes/posts/index.js.es6"
-    assert_file "#{app_path}/routes/posts/new.js.es6"
-    assert_file "#{app_path}/routes/posts/show.js.es6"
+    assert_file "#{app_path}/routes/posts/edit.es6"
+    assert_file "#{app_path}/routes/posts/index.es6"
+    assert_file "#{app_path}/routes/posts/new.es6"
+    assert_file "#{app_path}/routes/posts/show.es6"
 
     assert_file "#{app_path}/templates/posts.hbs"
     assert_file "#{app_path}/templates/posts/edit.hbs"
@@ -41,7 +41,7 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
     this.route('edit', {path: ':post_id/edit'});
   });
 JS
-    assert_file "#{config_path}/router.js.es6" do |content|
+    assert_file "#{config_path}/router.es6" do |content|
       assert_match(/#{Regexp.escape(js.rstrip)}/m, content)
     end
   end

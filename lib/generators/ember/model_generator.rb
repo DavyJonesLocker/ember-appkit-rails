@@ -10,8 +10,8 @@ module Ember
       argument :attributes, :type => :array, :default => [], :banner => "field[:type] field[:type] ..."
 
       def create_model_files
-        file_path = File.join(app_path, 'models', class_path, "#{file_name.singularize}.js.es6")
-        template "model.js.es6", file_path
+        file_path = File.join(app_path, 'models', class_path, "#{file_name.singularize}.es6")
+        template "model.es6", file_path
       end
 
       private

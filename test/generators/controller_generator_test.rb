@@ -11,22 +11,22 @@ class ControllerGeneratorTest < Rails::Generators::TestCase
 
   test "array_controller" do
     run_generator ["post", "--array"]
-    assert_file "#{app_path}/controllers/post.js.es6"
+    assert_file "#{app_path}/controllers/post.es6"
   end
 
   test "object_controller" do
     run_generator ["post", "--object"]
-    assert_file "#{app_path}/controllers/post.js.es6"
+    assert_file "#{app_path}/controllers/post.es6"
   end
 
   test "default_controller" do
     run_generator ["post"]
-    assert_file "#{app_path}/controllers/post.js.es6"
+    assert_file "#{app_path}/controllers/post.es6"
   end
 
   test "Assert files are properly created" do
     run_generator %w(ember)
-    assert_file "#{app_path}/controllers/ember.js.es6"
+    assert_file "#{app_path}/controllers/ember.es6"
   end
 
   test "Uses config.ember.appkit.paths.app" do
@@ -34,7 +34,7 @@ class ControllerGeneratorTest < Rails::Generators::TestCase
 
     with_config paths: {app: custom_path} do
       run_generator ["post", "--object"]
-      assert_file "#{custom_path}/controllers/post.js.es6"
+      assert_file "#{custom_path}/controllers/post.es6"
     end
   end
 end

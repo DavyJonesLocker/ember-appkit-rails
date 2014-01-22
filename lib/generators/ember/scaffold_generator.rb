@@ -11,7 +11,7 @@ module Ember
       class_option :object, :type => :boolean, :default => false, :desc => "Create an Ember.ObjectController to represent a single object"
 
       def create_route_files
-        create_resource_files_for(:route, 'js.es6')
+        create_resource_files_for(:route, 'es6')
         inject_into_router_file(file_name)
       end
 
@@ -33,7 +33,7 @@ module Ember
       end
 
       def inject_into_router_file(name)
-        router_file = "#{config_path}/router.js.es6"
+        router_file = "#{config_path}/router.es6"
         js = <<-JS
 
   this.resource('#{name.pluralize}', function() {
