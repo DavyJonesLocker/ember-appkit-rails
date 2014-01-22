@@ -13,14 +13,14 @@ module Ember
       class_option :object, :type => :boolean, :default => false, :desc => "Create an Ember.ObjectController to represent a single object."
 
       def create_controller_files
-        file_path = File.join(app_path, 'controllers', class_path, "#{file_name}.js.es6")
+        file_path = File.join(app_path, 'controllers', class_path, "#{file_name}.es6")
 
         if options.array?
-          template "array_controller.js.es6", file_path
+          template "array_controller.es6", file_path
         elsif options.object?
-          template "object_controller.js.es6", file_path
+          template "object_controller.es6", file_path
         else
-          template "controller.js.es6", file_path
+          template "controller.es6", file_path
         end
       end
     end

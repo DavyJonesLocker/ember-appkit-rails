@@ -71,10 +71,10 @@ module GeneratorTestSupport
   end
 
   def copy_router(path = config_path)
-    source = File.expand_path("../../../lib/generators/templates/router.js.es6", __FILE__)
+    source = File.expand_path("../../../lib/generators/templates/router.es6", __FILE__)
     destination = File.join(destination_root, path)
     FileUtils.mkdir_p(destination)
-    FileUtils.cp source, File.join(destination, 'router.js.es6')
+    FileUtils.cp source, File.join(destination, 'router.es6')
   end
 
   def copy_application(path = config_path)

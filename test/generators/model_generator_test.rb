@@ -11,29 +11,29 @@ class ModelGeneratorTest < Rails::Generators::TestCase
 
   test "create model" do
     run_generator ["post", "title:string"]
-    assert_file "#{app_path}/models/post.js.es6"
+    assert_file "#{app_path}/models/post.es6"
   end
 
   test "create namespaced model" do
     run_generator ["post/dog", "title:string"]
-    assert_file "#{app_path}/models/post/dog.js.es6"
+    assert_file "#{app_path}/models/post/dog.es6"
   end
 
   test "leave parentheses when create model w/o attributes" do
     run_generator ["post"]
-    assert_file "#{app_path}/models/post.js.es6", /export default DS.Model.extend/
+    assert_file "#{app_path}/models/post.es6", /export default DS.Model.extend/
   end
 
   test "forces pluarl names to singular" do
     run_generator ["posts"]
-    assert_file "#{app_path}/models/post.js.es6"
-    assert_no_file "#{app_path}/models/posts.js.es6"
+    assert_file "#{app_path}/models/post.es6"
+    assert_no_file "#{app_path}/models/posts.es6"
   end
 
   test "Assert files are properly created" do
     run_generator %w(ember)
 
-    assert_file "#{app_path}/models/ember.js.es6"
+    assert_file "#{app_path}/models/ember.es6"
   end
 
   test "Uses config.ember.appkit.paths.app" do
@@ -41,7 +41,7 @@ class ModelGeneratorTest < Rails::Generators::TestCase
 
     with_config paths: {app: custom_path} do
       run_generator ["ember"]
-      assert_file "#{custom_path}/models/ember.js.es6"
+      assert_file "#{custom_path}/models/ember.es6"
     end
   end
 end

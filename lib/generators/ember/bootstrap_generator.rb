@@ -21,7 +21,7 @@ module Ember
       end
 
       def create_router_file
-        template "router.js.es6", "#{config_path}/router.js.es6"
+        template "router.es6", "#{config_path}/router.es6"
       end
 
       def create_application_file
@@ -29,7 +29,7 @@ module Ember
       end
 
       def create_ember_adapter_file
-        copy_file "adapters/application.js.es6.erb", "#{config_path}/adapters/application.js.es6.erb"
+        copy_file "adapters/application.es6.erb", "#{config_path}/adapters/application.es6.erb"
       end
 
       def create_ember_environment_files

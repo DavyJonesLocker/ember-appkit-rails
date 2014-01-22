@@ -18,6 +18,17 @@ If you are upgrading from a previous version of this gem because of the high pro
 package from the website or run `brew install node` (for Mac users
 only).
 
+### Syntax Highlighting ###
+
+It's recommended to turn on syntax highlighting for ES6 modules. There are
+numerous ways to do so. Here are a few suggestions.
+
+* Vim:
+  * Add `au BufNewFile,BufRead *.es6 set filetype=javascript` inside your `~/.vimrc`
+
+* Sublime/TextMate
+  * Check out the [JavaScript.tmLanguage](https://github.com/Benvie/JavaScriptNext.tmLanguage) project.
+
 ## Installation ##
 
 Include the gem in your `Gemfile`
@@ -118,7 +129,7 @@ Ember Appkit Rails provides the following generators:
 * `ember:bootstrap`
 
   Initializes Ember Appkit Rails into your project by creating the required files
-  (`router.js.es6`, `ember-app.js.es6`, and the directory structure). Also, removes
+  (`router.es6`, `ember-app.es6`, and the directory structure). Also, removes
   `turbolinks` from `Gemfile` and `app/views/layouts/application.html.erb`.
   The `app/assets/javascripts/` directory from your app is removed.
 
@@ -180,7 +191,7 @@ Ember Appkit Rails provides the following generators:
 
   * Model of type name with the attributes provided
   * `edit`, `index`, `new`, `show` routes and templates
-  * Injected the named resource into `router.js.es6` along with the
+  * Injected the named resource into `router.es6` along with the
     correct nested routes.
 
 * `ember:helper NAME`

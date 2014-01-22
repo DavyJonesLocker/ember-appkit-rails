@@ -11,8 +11,8 @@ module Ember
       class_option :without_template, :type => :boolean, :default => false, :desc => "Create template for this view"
 
       def create_view_files
-        file_path = File.join(app_path, 'views', class_path, "#{file_name}.js.es6")
-        template "view.js.es6", file_path
+        file_path = File.join(app_path, 'views', class_path, "#{file_name}.es6")
+        template "view.es6", file_path
         invoke('ember:template', [ name ], options) unless options[:without_template]
       end
     end

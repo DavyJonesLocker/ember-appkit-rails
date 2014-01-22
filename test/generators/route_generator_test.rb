@@ -12,6 +12,6 @@ class RouteGeneratorTest < Rails::Generators::TestCase
   test "Assert files are properly created" do
     run_generator %w(index)
 
-    assert_file "#{app_path}/routes/index.js.es6"
+    assert_file "#{app_path}/routes/index.es6"
   end
 end
