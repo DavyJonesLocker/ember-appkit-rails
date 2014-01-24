@@ -6,7 +6,7 @@ Ember Appkit for the Asset Pipeline
 
 ##### Upgrade Notes #####
 
-If you are upgrading from a previous version of this gem because of the high probability of a breaking API change in some of the generated files you already have you should re-run `rails g ember:boostrap` and do a `diff` on the files that are being generated vs what you have.
+If you are upgrading from a previous version of this gem because of the high probability of a breaking API change in some of the generated files you already have you should re-run `rails g ember:bootstrap` and do a `diff` on the files that are being generated vs what you have.
 
 [![Build Status](https://secure.travis-ci.org/dockyard/ember-appkit-rails.png?branch=master)](http://travis-ci.org/dockyard/ember-appkit-rails)
 [![Dependency Status](https://gemnasium.com/dockyard/ember-appkit-rails.png?travis)](https://gemnasium.com/dockyard/ember-appkit-rails)
