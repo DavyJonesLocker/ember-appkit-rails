@@ -112,6 +112,7 @@ The following is added to your `config/` directory:
 * `config/environments/development.js` development environment settings
 * `config/environments/production.js` production environment settings
 * `config/environments/test.js` test environment settings
+* `config/serializers/` where Rails and Ember serializers will go
 
 The `lib/` directory is also mounted into the asset load path. You
 should use `lib/` to write any custom code that does not belong in

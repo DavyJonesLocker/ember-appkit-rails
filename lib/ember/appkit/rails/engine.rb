@@ -20,6 +20,7 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
     require 'generators/ember/resource_override'
     require 'generators/ember/scaffold_override'
     require 'generators/ember/scaffold_controller_override'
+    require 'generators/ember/serializer_override'
   end
 
   initializer :appkit_transpiler do
@@ -55,6 +56,10 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
     app.routes.append do
       get '/' => "landing#index"
     end
+  end
+
+  initializer :appkit_serializer, before: :set_autoload_paths do |app|
+    app.config.paths.add File.join(Rails.root, 'config/serializers'), eager_load: true
   end
 
   initializer :appkit_sprockets do
