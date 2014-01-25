@@ -5,6 +5,10 @@ class EngineTest < ActionDispatch::IntegrationTest
     refute Rails.application.config.assets.paths.include?(File.join(Rails.root, 'app/assets/javascripts'))
   end
 
+  test 'config/serializers is added to autoload_path' do
+    assert Rails.application.config.paths.eager_load.include?(File.join(Rails.root, 'config/serializers'))
+  end
+
   test 'app is in the asset load path' do
     assert Rails.application.config.assets.paths.include?(File.join(Rails.root, 'app'))
   end

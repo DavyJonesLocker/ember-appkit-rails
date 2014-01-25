@@ -6,6 +6,7 @@
 * Ensure that the `config/serializers/` directory is mounted properly by Sprockets.
 * Updates `.js.es6` extensions to the preferred  `.es6` file extensions.
 * Changes generated Rails controller error responses
+* Rails serializers are generated under `config/serializers`.
 
 ## 0.4.0
 
