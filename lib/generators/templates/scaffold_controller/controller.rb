@@ -20,7 +20,7 @@ class Api::V<%= api_version %>::<%= controller_class_name %>Controller < Applica
     if @<%= orm_instance.save %>
       respond_with <%= "@#{singular_table_name}" %>, status: :created, location: [:api, :v<%= api_version %>, <%= "@#{singular_table_name}" %>]
     else
-      render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity
+      render json: { errors: <%= "@#{orm_instance.errors}" %> }, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class Api::V<%= api_version %>::<%= controller_class_name %>Controller < Applica
     if @<%= orm_instance.update("#{singular_table_name}_params") %>
       respond_with <%= "@#{singular_table_name}" %>, status: :ok, location: [:api, :v<%= api_version %>, <%= "@#{singular_table_name}" %>]
     else
-      render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity
+      render json: { errors: <%= "@#{orm_instance.errors}" %> }, status: :unprocessable_entity
     end
   end
 

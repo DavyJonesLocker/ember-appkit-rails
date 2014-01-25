@@ -5,6 +5,7 @@
 * Add a default value for `window.config` to prevent errors if the environment configuration is not present.
 * Ensure that the `config/serializers/` directory is mounted properly by Sprockets.
 * Updates `.js.es6` extensions to the preferred  `.es6` file extensions.
+* Changes generated Rails controller error responses
 
 ## 0.4.0
 
