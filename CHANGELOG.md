@@ -7,6 +7,7 @@
 * Updates `.js.es6` extensions to the preferred  `.es6` file extensions.
 * Changes generated Rails controller error responses
 * Rails serializers are generated under `config/serializers`.
+* Update to Ember Data 1.0.0-beta.6 to resolve adapter/serializer resolution issues.
 
 ## 0.4.0
 

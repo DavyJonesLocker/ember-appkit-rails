@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'parser'
   s.add_dependency 'es6_module_transpiler-rails', '~> 0.3.0'
   s.add_dependency 'ember-source', '~> 1.4.beta'
-  s.add_dependency 'ember-data-source', '~> 1.0.0.beta.3'
+  s.add_dependency 'ember-data-source', '~> 1.0.0.beta.6'
   s.add_dependency 'handlebars-source'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'barber', '>= 0.4.1'
