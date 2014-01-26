@@ -1,7 +1,8 @@
 <% attributes.each do |attribute| -%>
 <div>
-  <label for=""><%= attribute[:name].titleize -%></label>
-  {{input value=<%= attribute[:name].camelize(:lower) -%>}}
+  <label><%= attribute[:name].titleize -%>
+    {{input value=<%= attribute[:name].camelize(:lower) -%>}}
+  </label>
 </div>
 <% end -%>
 
