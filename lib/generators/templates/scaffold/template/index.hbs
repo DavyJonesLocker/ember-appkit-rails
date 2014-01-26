@@ -10,7 +10,7 @@
 <% end -%>
   </tr>
   {{#each}}
-    <tr>
+    <tr class='<%= file_name.dasherize -%>'>
       <td>{{link-to id '<%= file_name.pluralize -%>.show' this}}</td>
 <% attributes.each do |attribute| -%>
       <td>{{<%= attribute[:name] -%>}}</td>

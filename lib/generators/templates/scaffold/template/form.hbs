@@ -1,8 +1,6 @@
 <% attributes.each do |attribute| -%>
 <div>
-  <label><%= attribute[:name].titleize -%>
-    {{input value=<%= attribute[:name].camelize(:lower) -%>}}
-  </label>
+  <label><%= attribute[:name].titleize -%> {{input value=<%= attribute[:name].camelize(:lower) -%> class='<%= file_name.dasherize -%>-<%= attribute[:name].dasherize -%>'}}</label>
 </div>
 <% end -%>
 

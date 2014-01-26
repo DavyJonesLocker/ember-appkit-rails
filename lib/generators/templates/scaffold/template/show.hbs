@@ -4,6 +4,6 @@
 
 <ul>
 <% attributes.each do |attribute| -%>
-  <li><%= attribute[:name].titleize -%>: {{<%= attribute[:name] -%>}}</li>
+  <li class='<%= file_name.dasherize -%>-<%= attribute[:name].dasherize -%>'><%= attribute[:name].titleize -%>: {{<%= attribute[:name] -%>}}</li>
 <% end -%>
 </ul>
