@@ -10,6 +10,7 @@
 * Update to Ember Data 1.0.0-beta.6 to resolve adapter/serializer resolution issues.
 * Scaffold, put `input` inside `label` instead of having an empty `for` (#a85bde2).
 * Scaffold, add default classes to templates.
+* Scaffold: use quoted action names (prepare for bound action lookup added [here](https://github.com/emberjs/ember.js/pull/3936)).
 
 ## 0.4.0
 
