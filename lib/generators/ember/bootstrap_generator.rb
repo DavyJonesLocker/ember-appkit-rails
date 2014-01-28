@@ -63,13 +63,13 @@ module Ember
       def add_custom_paths
         if app_path != configuration.paths.app
           insert_into_file 'config/application.rb', before: /\s\send\nend/ do
-            "    config.ember.appkit.paths.app = '#{app_path}'\n"
+            "    config.ember.paths.app = '#{app_path}'\n"
           end
         end
 
         if config_path != configuration.paths.config
           insert_into_file 'config/application.rb', before: /\s\send\nend/ do
-            "    config.ember.appkit.paths.config = '#{config_path}'\n"
+            "    config.ember.paths.config = '#{config_path}'\n"
           end
         end
       end
