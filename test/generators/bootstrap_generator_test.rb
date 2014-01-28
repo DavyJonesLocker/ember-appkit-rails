@@ -25,7 +25,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     run_generator ["-a", custom_path]
 
     assert_files custom_path, config_path
-    assert_file 'config/application.rb', /config\.ember\.appkit\.paths\.app = '#{custom_path}'/
+    assert_file 'config/application.rb', /config\.ember\.paths\.app = '#{custom_path}'/
   end
 
   test "create bootstrap with and custom config path" do
@@ -33,7 +33,7 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     run_generator ["-c", custom_path]
 
     assert_files app_path, custom_path
-    assert_file 'config/application.rb', /config\.ember\.appkit\.paths\.config = '#{custom_path}'/
+    assert_file 'config/application.rb', /config\.ember\.paths\.config = '#{custom_path}'/
   end
 
   test "create bootstrap with custom app name" do
