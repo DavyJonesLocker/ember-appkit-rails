@@ -14,6 +14,11 @@ module Ember
         template "model.es6", file_path
       end
 
+      def create_test_files
+        file_path = File.join('test', 'models', class_path, "#{file_name.singularize}_test.es6")
+        template "test/model.es6", file_path
+      end
+
       private
 
       EMBER_TYPE_LOOKUP = {

@@ -19,6 +19,7 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
 
   def assert_files
     assert_file "#{app_path}/models/post.es6"
+    assert_file "test/models/post_test.es6"
 
     assert_file "#{app_path}/routes/posts/edit.es6"
     assert_file "#{app_path}/routes/posts/index.es6"

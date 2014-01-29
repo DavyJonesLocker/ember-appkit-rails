@@ -44,4 +44,26 @@ class ModelGeneratorTest < Rails::Generators::TestCase
       assert_file "#{custom_path}/models/ember.es6"
     end
   end
+
+  test "create test" do
+    run_generator ["post", "title:string"]
+    assert_file "test/models/post_test.es6"
+  end
+
+  test "imports model for test" do
+    run_generator ["post", "title:string"]
+
+    assert_file 'test/models/post_test.es6', /^import Post from 'app\/models\/post';$/
+  end
+
+  test "create namespaced test" do
+    run_generator ["post/dog", "title:string"]
+    assert_file "test/models/post/dog_test.es6"
+  end
+
+  test "imports namespaced model for test" do
+    run_generator ["post/dog", "title:string"]
+
+    assert_file 'test/models/post/dog_test.es6', /^import Dog from 'app\/models\/post\/dog';$/
+  end
 end

@@ -44,6 +44,10 @@ module Ember
         (class_path + [file_name]).map!{ |m| m.camelize }.join()
       end
 
+      def require_name
+        (class_path + [file_name]).map!{ |m| m.dasherize }.join('/')
+      end
+
       def handlebars_template_path
         File.join(class_path, file_name).gsub(/^\//, '')
       end
