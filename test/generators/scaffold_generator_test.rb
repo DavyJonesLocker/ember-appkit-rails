@@ -15,6 +15,13 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
     assert_inject_into_router
   end
 
+  test "with namespaced name" do
+    run_generator ["post/dog"]
+
+    assert_namespaced_model_find
+  end
+
+
   private
 
   def assert_files
@@ -50,6 +57,21 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
 JS
     assert_file "#{config_path}/router.es6" do |content|
       assert_match(/#{Regexp.escape(js.rstrip)}/m, content)
+    end
+  end
+
+  def assert_namespaced_model_find
+    assert_file "#{app_path}/routes/dogs/edit.es6" do |content|
+      assert_match(/return this\.store\.find\('post\/dog', params.dog_id\);/, content)
+    end
+    assert_file "#{app_path}/routes/dogs/index.es6" do |content|
+      assert_match(/return this\.store\.find\('post\/dog'\);/, content)
+    end
+    assert_file "#{app_path}/routes/dogs/new.es6" do |content|
+      assert_match(/return this\.store\.createRecord\('post\/dog'\);/, content)
+    end
+    assert_file "#{app_path}/routes/dogs/show.es6" do |content|
+      assert_match(/return this\.store\.find\('post\/dog', params.dog_id\);/, content)
     end
   end
 end

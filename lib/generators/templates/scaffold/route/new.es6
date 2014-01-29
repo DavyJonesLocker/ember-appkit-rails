@@ -1,6 +1,6 @@
 export default Ember.Route.extend({
   model: function() {
-    return this.store.createRecord('<%= file_name.singularize -%>');
+    return this.store.createRecord('<%= require_name.singularize -%>');
   },
   deactivate: function() {
     var model = this.get('controller.model');
