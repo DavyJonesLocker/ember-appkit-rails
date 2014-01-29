@@ -126,7 +126,7 @@ The following is added to your `test/` directory:
 
 * `test/test_helper.js` require the application for testing and
   declare helpers.
-* `test/teaspoon_env.js` configuration directives used when running
+* `test/teaspoon_env.rb` configuration directives used when running
   teaspoon via the rake task or command line (https://github.com/modeset/teaspoon#console-runner-specific-teaspoon-env).
 
 The `lib/` directory is also mounted into the asset load path. You
