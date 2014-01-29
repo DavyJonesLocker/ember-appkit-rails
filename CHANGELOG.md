@@ -14,6 +14,8 @@
 * [fixed] generator error for custum app and config path
 * Bootstrap generates all necessary directories when using a custom app-path
 * Make sure attributes are camelized in scaffold templates.
+* Add Teaspoon integration by default https://github.com/modeset/teaspoon.
+* Generate test automatically when running scaffold.
 
 ## 0.4.0
 
