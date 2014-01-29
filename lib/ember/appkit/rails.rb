@@ -17,4 +17,7 @@ require 'ember/appkit/rails/engine'
 require 'ember/appkit/rails/sprockets'
 require 'ember/appkit/rails/template'
 require 'ember/appkit/rails/active_support'
-require 'ember/appkit/rails/teaspoon'
+
+if [:development, :test].include?(Rails.env.to_sym)
+  require 'ember/appkit/rails/teaspoon'
+end
