@@ -25,10 +25,6 @@ Teaspoon.setup do |config|
   config.suite do |suite|
     suite.boot_partial = 'eak_rails'
 
-    suite.normalize_asset_path = lambda { |filename|
-      filename.gsub('.erb', '').gsub(/(\.es6)$/, ".js")
-    }
-
     # You can specify a file matcher and all matching files will be loaded when the suite is run. It's important that these files are serve-able from sprockets.
     #
     # Note: Can also be set to nil.
