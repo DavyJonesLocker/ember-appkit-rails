@@ -95,6 +95,11 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
   private
 
   def assert_files(app_path = app_path, config_path = config_path)
+    %W{models controllers views routes components templates templates/components mixins}.each do |dir|
+      assert_directory "#{app_path}/#{dir}"
+    end
+    assert_directory "#{config_path}/serializers"
+
     assert_file "#{config_path}/environment.js.erb"
     assert_file "#{config_path}/environments/development.js.erb"
     assert_file "#{config_path}/environments/production.js.erb"
