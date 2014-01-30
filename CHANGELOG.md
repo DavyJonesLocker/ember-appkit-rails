@@ -12,6 +12,7 @@
 * Scaffold, add default classes to templates.
 * Scaffold: use quoted action names (prepare for bound action lookup added [here](https://github.com/emberjs/ember.js/pull/3936)).
 * [fixed] generator error for custum app and config path
+* Bootstrap generates all necessary directories when using a custom app-path
 
 ## 0.4.0
 
