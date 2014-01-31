@@ -29,6 +29,9 @@ numerous ways to do so. Here are a few suggestions.
 * Sublime/TextMate
   * Check out the [JavaScript.tmLanguage](https://github.com/Benvie/JavaScriptNext.tmLanguage) project.
 
+* Emacs:
+  * Add `(add-to-list 'auto-mode-alist '("\\.es6\\'" . javascript-mode))` to your `.emacs`.
+
 ## Installation ##
 
 Include the gem in your `Gemfile`
