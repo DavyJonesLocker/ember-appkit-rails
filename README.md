@@ -128,6 +128,7 @@ The following is added to your `test/` directory:
   declare helpers.
 * `test/teaspoon_env.rb` configuration directives used when running
   teaspoon via the rake task or command line (https://github.com/modeset/teaspoon#console-runner-specific-teaspoon-env).
+* `test/integration/` where integration test will go.
 
 The `lib/` directory is also mounted into the asset load path. You
 should use `lib/` to write any custom code that does not belong in
