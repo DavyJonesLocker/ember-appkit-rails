@@ -12,6 +12,7 @@ module Ember
 
       def create_route_files
         create_resource_files_for(:route, 'es6')
+        create_route_tests
         inject_into_router_file(file_name)
       end
 
@@ -32,6 +33,15 @@ module Ember
         end
       end
 
+      def create_route_tests
+        resource = file_name.pluralize
+
+        [:edit, :index, :new, :show].each do |action|
+          route = "#{resource}_#{action}_route".camelize
+          template "test/route.es6", File.join('test', 'routes', "#{resource}/#{action}_test.es6"), route: route, action: action
+        end
+      end
+
       def inject_into_router_file(name)
         router_file = "#{config_path}/router.es6"
         js = <<-JS
@@ -49,4 +59,3 @@ module Ember
     end
   end
 end
-

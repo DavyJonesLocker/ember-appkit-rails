@@ -12,6 +12,7 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
     run_generator ["post", "published_at:date"]
 
     assert_files
+    assert_test_files
     assert_inject_into_router
   end
 
@@ -72,6 +73,25 @@ JS
     end
     assert_file "#{app_path}/routes/dogs/show.es6" do |content|
       assert_match(/return this\.store\.find\('post\/dog', params.dog_id\);/, content)
+    end
+  end
+
+  def assert_test_files
+    assert_file "test/routes/posts/edit_test.es6" do |content|
+      assert_match(/^import PostsEditRoute from 'app\/routes\/posts\/edit';/, content)
+      assert_match(/'Unit - PostsEditRoute'/, content)
+    end
+    assert_file "test/routes/posts/index_test.es6" do |content|
+      assert_match(/^import PostsIndexRoute from 'app\/routes\/posts\/index';/, content)
+      assert_match(/'Unit - PostsIndexRoute'/, content)
+    end
+    assert_file "test/routes/posts/new_test.es6" do |content|
+      assert_match(/^import PostsNewRoute from 'app\/routes\/posts\/new';/, content)
+      assert_match(/'Unit - PostsNewRoute'/, content)
+    end
+    assert_file "test/routes/posts/show_test.es6" do |content|
+      assert_match(/^import PostsShowRoute from 'app\/routes\/posts\/show';/, content)
+      assert_match(/'Unit - PostsShowRoute'/, content)
     end
   end
 end
