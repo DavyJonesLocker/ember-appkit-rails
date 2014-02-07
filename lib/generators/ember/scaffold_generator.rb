@@ -12,7 +12,6 @@ module Ember
 
       def create_route_files
         create_resource_files_for(:route, 'es6')
-        create_route_tests
         inject_into_router_file(file_name)
       end
 
@@ -20,6 +19,12 @@ module Ember
         create_resource_files_for(:template, 'hbs')
         template "scaffold/template.hbs", File.join(app_path, 'templates', "#{file_name.pluralize}.hbs")
         template "scaffold/template/form.hbs", File.join(app_path, 'templates', file_name.pluralize, 'form.hbs')
+      end
+
+      def create_tests
+        ["route", "controller"].each do |type|
+          create_test_files_for(type)
+        end
       end
 
       private
@@ -33,12 +38,12 @@ module Ember
         end
       end
 
-      def create_route_tests
+      def create_test_files_for(type)
         resource = file_name.pluralize
 
         [:edit, :index, :new, :show].each do |action|
-          route = "#{resource}_#{action}_route".camelize
-          template "test/route.es6", File.join('test', 'routes', "#{resource}/#{action}_test.es6"), route: route, action: action
+          object = "#{resource}_#{action}_#{type}".camelize
+          template "test/#{type}.es6", File.join('test', type.pluralize, "#{resource}/#{action}_test.es6"), object: object, action: action
         end
       end
 

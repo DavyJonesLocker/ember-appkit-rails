@@ -1,12 +1,12 @@
-import <%= config[:route] -%> from '<%= app_path -%>/routes/<%= require_name.dasherize.pluralize -%>/<%= config[:action] -%>';
+import <%= config[:object] -%> from '<%= app_path -%>/routes/<%= require_name.dasherize.pluralize -%>/<%= config[:action] -%>';
 
 var route, store;
 
-module('Unit - <%= config[:route] -%>', {
+module('Unit - <%= config[:object] -%>', {
   setup: function(){
     store = {};
 
-    route = <%= config[:route] -%>.create({
+    route = <%= config[:object] -%>.create({
       store: store
     });
   },
