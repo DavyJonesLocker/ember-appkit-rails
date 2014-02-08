@@ -9,7 +9,7 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
   setup :prepare_destination, :copy_router
 
   test "create template" do
-    run_generator ["post"]
+    run_generator ["post", "published_at:date"]
 
     assert_files
     assert_inject_into_router
@@ -27,10 +27,16 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
 
     assert_file "#{app_path}/templates/posts.hbs"
     assert_file "#{app_path}/templates/posts/edit.hbs"
-    assert_file "#{app_path}/templates/posts/form.hbs"
-    assert_file "#{app_path}/templates/posts/index.hbs"
+    assert_file "#{app_path}/templates/posts/form.hbs" do |content|
+      assert_match(/value=publishedAt/, content)
+    end
+    assert_file "#{app_path}/templates/posts/index.hbs" do |content|
+      assert_match(/{{publishedAt}}/, content)
+    end
     assert_file "#{app_path}/templates/posts/new.hbs"
-    assert_file "#{app_path}/templates/posts/show.hbs"
+    assert_file "#{app_path}/templates/posts/show.hbs" do |content|
+      assert_match(/{{publishedAt}}/, content)
+    end
   end
 
   def assert_inject_into_router
