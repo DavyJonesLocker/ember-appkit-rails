@@ -13,7 +13,7 @@
     <tr class='<%= file_name.dasherize -%>'>
       <td>{{link-to id '<%= file_name.pluralize -%>.show' this}}</td>
 <% attributes.each do |attribute| -%>
-      <td>{{<%= attribute[:name] -%>}}</td>
+      <td>{{<%= attribute[:name].camelize(:lower) -%>}}</td>
 <% end -%>
     </tr>
   {{/each}}
