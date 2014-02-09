@@ -4,7 +4,7 @@ module Ember::Appkit::Rails::Teaspoon::SpecController
   end
 
   def extend_view_path
-    append_view_path Ember::Appkit::Rails::Engine.root.join('lib', 'views')
+    append_view_path Ember::Appkit::Rails::Engine.root.join('lib', 'ember', 'appkit', 'rails', 'views')
   end
 end
 
