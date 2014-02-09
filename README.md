@@ -64,6 +64,10 @@ during asset compilation. All business logic
 you need should be added to `app/`. If you need to add a 3rd party
 library these should go into `vendor/assets/javascripts/`.
 
+### Testing ###
+Testing is built-in with [Teaspoon](https://github.com/modeset/teaspoon)
+and [QUnit](http://qunitjs.com).
+
 #### Resolving ####
 
 In order for the resolver to work properly Ember application files need to go into
@@ -106,6 +110,7 @@ The following is added to your `config/` directory:
   automatically required.
 * `config/initializers/csrf.js` sets up the `CSRF` token for doing
   `POST` requests back to the Rails backend via AJAX.
+* `config/initializers/teaspoon.rb` teaspoon's configuration file (https://github.com/modeset/teaspoon#configuration).
 * `config/environment.js` the general environment settings object. You
   should put settings in here that will be common across all environments.
 * `config/environments/` hold environment specific settings. The correct
@@ -116,6 +121,14 @@ The following is added to your `config/` directory:
 * `config/environments/production.js` production environment settings
 * `config/environments/test.js` test environment settings
 * `config/serializers/` where Rails and Ember serializers will go
+
+The following is added to your `test/` directory:
+
+* `test/test_helper.js` require the application for testing and
+  declare helpers.
+* `test/teaspoon_env.rb` configuration directives used when running
+  teaspoon via the rake task or command line (https://github.com/modeset/teaspoon#console-runner-specific-teaspoon-env).
+* `test/integration/` where integration test will go.
 
 The `lib/` directory is also mounted into the asset load path. You
 should use `lib/` to write any custom code that does not belong in
@@ -178,6 +191,8 @@ Ember Appkit Rails provides the following generators:
   Creates a model using the provided name in `app/models/`.
 
   Accepts a list of a attributes to setup on the generated model.
+
+  Test is also added automatically under `test/models/model_name_test.es6`.
 
 * `ember:resource NAME`
 
@@ -242,8 +257,8 @@ other environment specific settings should be made in these files.
 
 Ember Data expect to work with a namespace of `api/vX` where `X` is the
 current version of the backend API. To update this value you can
-override the the value of `config.ember.api_version` in 
-`config/application.rb`. 
+override the the value of `config.ember.api_version` in
+`config/application.rb`.
 
 The routing to the API endpoints in your application need to match
 `api/vX`. For example, you can do the following in `config/routes.rb`
@@ -278,7 +293,7 @@ configuration:
 
 ```ruby
 config.ember.paths.app = 'app/assets/javascripts'
-``` 
+```
 
 Adding this to your `config/application.rb` file will generate your
 assets into `app/assets/javascripts` instead of `app/`
@@ -290,7 +305,7 @@ The default AMD namespace is `app`. Modify this in your
 
 ```ruby
 config.ember.namespaces.app = 'ember'
-``` 
+```
 
 The AMD namespace for the router is `config/` you can change this in
 your `config/application.rb` file as well:

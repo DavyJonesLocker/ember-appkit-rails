@@ -108,6 +108,9 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     assert_file "#{config_path}/router.es6"
     assert_file "#{config_path}/adapters/application.es6.erb"
     assert_file "#{config_path}/initializers/csrf.js"
+    assert_file "config/initializers/teaspoon.rb"
+    assert_file "test/teaspoon_env.rb"
+    assert_file "test/test_helper.js"
   end
 
   def confirm_turbolinks_removed(file)

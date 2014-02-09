@@ -1,0 +1,10 @@
+<%= javascript_include_tag_for_teaspoon *@suite.spec_javascripts, @javascript_options %>
+
+<script type="text/javascript">
+  Teaspoon.onWindowLoad(function () {
+   <% @suite.spec_javascripts_for_require.map(&:dasherize).each do |test| %>
+     require(<%=raw test.to_json %>);
+   <% end %>
+   Teaspoon.execute();
+  });
+</script>

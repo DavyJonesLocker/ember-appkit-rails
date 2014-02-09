@@ -81,6 +81,13 @@ module Ember
         end
       end
 
+      def add_teaspoon_files
+        copy_file "initializers/teaspoon.rb", "config/initializers/teaspoon.rb"
+        copy_file "test/teaspoon_env.rb", "test/teaspoon_env.rb"
+        copy_file "test/test_helper.js", "test/test_helper.js"
+        empty_directory "test/integration"
+      end
+
       private
 
       def remove_turbolinks_from_layout

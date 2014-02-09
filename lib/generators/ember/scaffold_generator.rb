@@ -21,6 +21,12 @@ module Ember
         template "scaffold/template/form.hbs", File.join(app_path, 'templates', file_name.pluralize, 'form.hbs')
       end
 
+      def create_tests
+        ["route", "controller"].each do |type|
+          create_test_files_for(type)
+        end
+      end
+
       private
 
       def create_resource_files_for(type, extension)
@@ -29,6 +35,15 @@ module Ember
 
         [:edit, :index, :new, :show].each do |action|
           template "scaffold/#{type}/#{action}.#{extension}", File.join(app_path, dir, "#{resource}/#{action}.#{extension}")
+        end
+      end
+
+      def create_test_files_for(type)
+        resource = file_name.pluralize
+
+        [:edit, :index, :new, :show].each do |action|
+          object = "#{resource}_#{action}_#{type}".camelize
+          template "test/#{type}.es6", File.join('test', type.pluralize, "#{resource}/#{action}_test.es6"), object: object, action: action
         end
       end
 
@@ -49,4 +64,3 @@ module Ember
     end
   end
 end
-
