@@ -18,6 +18,7 @@
 * Generate test automatically when running scaffold.
 * Add option to get custom Ember builds.
 * jj-abrams-resolver now lives under the module name ember/resolver per [here](https://github.com/stefanpenner/ember-jj-abrams-resolver/pull/27).
+* Add suport for latest serializer alpha
 
 ## 0.4.0
 
