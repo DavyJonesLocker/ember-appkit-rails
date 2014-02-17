@@ -42,6 +42,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
     arel (4.0.1)
     ast (1.1.0)
     atomic (1.1.14)
@@ -62,6 +63,8 @@ GEM
     cliver (0.2.2)
     coderay (1.1.0)
     columnize (0.3.6)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     debugger-linecache (1.2.0)
     ember-data-source (1.0.0.beta.6)
       ember-source
@@ -120,6 +123,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
+    safe_yaml (1.0.1)
     slop (3.4.7)
     sprockets (2.10.1)
       hike (~> 1.2)
@@ -140,6 +144,10 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    vcr (2.8.0)
+    webmock (1.13.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
     websocket-driver (0.3.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -154,3 +162,5 @@ DEPENDENCIES
   m
   poltergeist
   pry
+  vcr
+  webmock (< 1.14.0)
