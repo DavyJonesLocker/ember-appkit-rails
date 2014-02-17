@@ -22,7 +22,7 @@ module Ember
       end
 
       def create_tests
-        ["route", "controller"].each do |type|
+        ["route"].each do |type|
           create_test_files_for(type)
         end
       end

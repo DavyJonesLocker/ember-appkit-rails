@@ -93,22 +93,5 @@ JS
       assert_match(/^import PostsShowRoute from 'app\/routes\/posts\/show';/, content)
       assert_match(/'Unit - PostsShowRoute'/, content)
     end
-
-    assert_file "test/controllers/posts/edit_test.es6" do |content|
-      assert_match(/^import PostsEditController from 'app\/controllers\/posts\/edit';/, content)
-      assert_match(/'Unit - PostsEditController'/, content)
-    end
-    assert_file "test/controllers/posts/index_test.es6" do |content|
-      assert_match(/^import PostsIndexController from 'app\/controllers\/posts\/index';/, content)
-      assert_match(/'Unit - PostsIndexController'/, content)
-    end
-    assert_file "test/controllers/posts/new_test.es6" do |content|
-      assert_match(/^import PostsNewController from 'app\/controllers\/posts\/new';/, content)
-      assert_match(/'Unit - PostsNewController'/, content)
-    end
-    assert_file "test/controllers/posts/show_test.es6" do |content|
-      assert_match(/^import PostsShowController from 'app\/controllers\/posts\/show';/, content)
-      assert_match(/'Unit - PostsShowController'/, content)
-    end
   end
 end
