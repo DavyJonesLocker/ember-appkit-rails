@@ -68,6 +68,11 @@ library these should go into `vendor/assets/javascripts/`.
 Testing is built-in with [Teaspoon](https://github.com/modeset/teaspoon)
 and [QUnit](http://qunitjs.com).
 
+**By default Teaspoon runs within the development environment.**
+
+If you want to run on `test` you'll have to set it up explicitly e.g.
+`RAILS_ENV=test rake teaspoon`.
+
 #### Resolving ####
 
 In order for the resolver to work properly Ember application files need to go into
