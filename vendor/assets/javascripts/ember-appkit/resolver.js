@@ -1,5 +1,5 @@
 // Fetched from: https://raw.github.com/stefanpenner/ember-jj-abrams-resolver/master/dist/ember-resolver.js
-// Fetched on: 2014-01-20T04:38:35
+// Fetched on: 2014-02-20T05:12:42
 // ==========================================================================
 // Project:   Ember - JavaScript Application Framework
 // Copyright: Copyright 2013 Stefan Penner and Ember App Kit Contributors
@@ -13,7 +13,7 @@
 (function() {
 /*globals define registry requirejs */
 
-define("resolver",
+define("ember/resolver",
   [],
   function() {
     "use strict";
@@ -76,7 +76,23 @@ define("resolver",
     } else if (seen[underscoredModuleName]) {
       return underscoredModuleName;
     } else {
-      return moduleName;
+      var parts = moduleName.split('/'),
+          lastPart = parts[parts.length - 1],
+          partializedModuleName;
+
+      parts[parts.length - 1] = lastPart.replace(/^-/, '_');
+      partializedModuleName = parts.join('/');
+
+      if (seen[partializedModuleName]) {
+        Ember.deprecate('Modules should not contain underscores. ' +
+                        'Attempted to lookup "'+moduleName+'" which ' +
+                        'was not found. Please rename "'+partializedModuleName+'" '+
+                        'to "'+moduleName+'" instead.', false);
+
+        return partializedModuleName;
+      } else {
+        return moduleName;
+      }
     }
   }
 
@@ -181,6 +197,12 @@ define("resolver",
   return Resolver;
 });
 
+define("resolver",
+  ["ember/resolver"],
+  function (Resolver) {
+    Ember.deprecate('Importing/requiring Ember Resolver as "resolver" is deprecated, please use "ember/resolver" instead');
+    return Resolver;
+  });
 })();
 
 
