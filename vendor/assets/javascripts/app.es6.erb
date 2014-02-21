@@ -1,5 +1,5 @@
 <% config = Rails.application.config.ember %>
-import Resolver from 'resolver';
+import Resolver from 'ember/resolver';
 
 if (typeof Turbolinks !== 'undefined') {
   throw new Error("Turbolinks has been detected. Ember Appkit Rails will not function properly alongside Turbolinks.");
