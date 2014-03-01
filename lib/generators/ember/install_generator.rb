@@ -46,47 +46,38 @@ module Ember
 
 
       def ember
-        begin
-          unless options.ember_data_only?
-            get_ember_js_for(:development)
-            get_ember_js_for(:production)
-          end
-        rescue Thor::Error
-          say('WARNING: no ember files on this channel or tag' , :yellow)
-        end
+        return if options.ember_data_only?
+
+        get_ember_for(:development)
+        get_ember_for(:production)
+      rescue Thor::Error
+        say('WARNING: no ember files on this channel or tag' , :yellow)
       end
 
       def ember_data
-        begin
-          unless options.ember_only?
-            get_ember_data_for(:development)
-            get_ember_data_for(:production)
-          end
-        rescue Thor::Error
-          say('WARNING: no ember-data files on this channel or tag' , :yellow)
+        return if options.ember_only?
+
+        get_ember_for(:development, ember_data_channel, 'ember-data')
+        get_ember_for(:production, ember_data_channel, 'ember-data')
+      rescue Thor::Error
+        say('WARNING: no ember-data files on this channel or tag' , :yellow)
+      end
+
+      private
+
+      def get_ember_for(environment, chan = channel, name = 'ember')
+        file_name = environment == :production ? "#{name}.prod.js" : "#{name}.js"
+        create_file "vendor/assets/javascripts/#{file_name}" do
+          fetch "#{base_url}/#{chan}/#{file_name_for(name, environment)}", "vendor/assets/javascripts/#{file_name}"
         end
       end
 
-    private
-
-
-      def get_ember_data_for(environment)
-        chan = if channel == :release
+      def ember_data_channel
+        if channel == :release
           say_status("warning:", 'Ember Data is not available on the :release channel. Falling back to beta channel.' , :yellow)
           :beta
         else
           channel
-        end
-        file_name = environment == :production ? "ember-data.prod.js" : "ember-data.js"
-        create_file "vendor/assets/javascripts/#{file_name}" do
-          fetch "#{base_url}/#{chan}/#{file_name_for('ember-data', environment)}", "vendor/assets/javascripts/#{file_name}"
-        end
-      end
-
-      def get_ember_js_for(environment)
-        file_name = environment === :production ? "ember.prod.js" : "ember.js"
-        create_file "vendor/assets/javascripts/#{file_name}" do
-          fetch "#{base_url}/#{channel}/#{file_name_for('ember', environment)}", "vendor/assets/javascripts/#{file_name}"
         end
       end
 
