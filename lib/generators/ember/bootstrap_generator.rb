@@ -3,6 +3,9 @@ require 'generators/ember/generator_helpers'
 module Ember
   module Generators
     class BootstrapGenerator < ::Rails::Generators::Base
+      APP_FOLDERS = %W{models controllers views routes components templates templates/components mixins}
+      CONFIG_FOLDERS = %W{serializers}
+
       include Ember::Generators::GeneratorHelpers
 
       source_root File.expand_path("../../templates", __FILE__)
@@ -14,17 +17,11 @@ module Ember
       class_option :app_name, :type => :string, :aliases => "-n", :default => false, :desc => "Custom ember app name"
 
       def create_app_dir_layout
-        %W{models controllers views routes components templates templates/components mixins}.each do |dir|
-          empty_directory "#{app_path}/#{dir}"
-          create_file "#{app_path}/#{dir}/.gitkeep" unless options[:skip_git]
-        end
+        create_layout(APP_FOLDERS)
       end
 
       def create_config_dir_layout
-        %W{serializers}.each do |dir|
-          empty_directory "#{config_path}/#{dir}"
-          create_file "#{config_path}/#{dir}/.gitkeep" unless options[:skip_git]
-        end
+        create_layout(CONFIG_FOLDERS, config_path)
       end
 
       def create_router_file
@@ -89,6 +86,13 @@ module Ember
       end
 
       private
+
+      def create_layout(directories, path = app_path)
+        directories.each do |dir|
+          empty_directory "#{path}/#{dir}"
+          create_file "#{path}/#{dir}/.gitkeep" unless options[:skip_git]
+        end
+      end
 
       def remove_turbolinks_from_layout
         path = Pathname.new(destination_root).join('app','views','layouts','application.html.erb')
