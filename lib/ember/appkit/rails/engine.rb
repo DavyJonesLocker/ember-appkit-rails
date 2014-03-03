@@ -68,7 +68,7 @@ class Ember::Appkit::Rails::Engine < ::Rails::Engine
     precompile_index = config.assets.precompile.index { |i| i =~ File.join(Rails.root, 'app/assets/javascripts/application.js') }
     config.assets.precompile[precompile_index] = /(?<!assets\/javascripts)(?:\/|\\|\A)application\.(css|js)$/
 
-    assets_javascript = assets.paths.delete(::Rails.root.join('app','assets','javascripts').to_s)
+    assets.paths.delete(::Rails.root.join('app','assets','javascripts').to_s)
     assets.paths.delete(::Rails.root.join('lib', 'assets','javascript').to_s)
 
     index_of_last_app_assets = assets.paths.rindex { |path| path.to_s.start_with?(::Rails.root.join('app').to_s) } + 1
