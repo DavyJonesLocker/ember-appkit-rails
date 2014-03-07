@@ -1,6 +1,6 @@
 ## 0.5.0
 
-* Update to latest resolver. Removes need for monkey-patch.
+* Update to latest resolver. Removes need for monkey-patch and fixes the Ember Inspector's data panel.
 * Update to Ember 1.4 to resolve issue with loading and error substates.
 * Add a default value for `window.config` to prevent errors if the environment configuration is not present.
 * Ensure that the `config/serializers/` directory is mounted properly by Sprockets.
