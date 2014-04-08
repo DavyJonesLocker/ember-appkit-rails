@@ -79,7 +79,7 @@ class ScaffoldOverrideTest < Rails::Generators::TestCase
 
   test 'destroy removes matching resources and namespaces' do
     copy_routes_with_api_version_namespaces_and_route
-    config_content = File.read(File.expand_path('config/routes.rb', destination_root))
+    File.read(File.expand_path('config/routes.rb', destination_root))
     run_generator ['dogs'], behavior: :revoke
 
     assert_file 'config/routes.rb' do |content|
