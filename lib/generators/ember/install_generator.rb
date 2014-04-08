@@ -143,7 +143,7 @@ module Ember
           raise Thor::Error
         end
         output.rewind
-        content = output.read
+        output.read
       end
     end
   end
