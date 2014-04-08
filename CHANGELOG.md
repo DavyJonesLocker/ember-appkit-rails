@@ -11,14 +11,16 @@
 * Scaffold, put `input` inside `label` instead of having an empty `for` (#a85bde2).
 * Scaffold, add default classes to templates.
 * Scaffold: use quoted action names (prepare for bound action lookup added [here](https://github.com/emberjs/ember.js/pull/3936)).
-* [fixed] generator error for custum app and config path
+* [fixed] generator error for custom app and config path
 * Bootstrap generates all necessary directories when using a custom app-path
 * Make sure attributes are camelized in scaffold templates.
 * Add Teaspoon integration by default https://github.com/modeset/teaspoon.
 * Generate test automatically when running scaffold.
 * Add option to get custom Ember builds.
 * jj-abrams-resolver now lives under the module name ember/resolver per [here](https://github.com/stefanpenner/ember-jj-abrams-resolver/pull/27).
-* Add suport for latest serializer alpha
+* Add support for latest serializer alpha
+* Add debug flags for Thor generator tests.
+* Use `minitest/pride`
 
 ## 0.4.0
 
