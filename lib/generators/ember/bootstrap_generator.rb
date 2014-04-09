@@ -15,6 +15,7 @@ module Ember
       class_option :app_path, :type => :string, :aliases => "-a", :default => false, :desc => "Custom ember app path"
       class_option :config_path, :type => :string, :aliases => "-c", :default => false, :desc => "Custom ember config path"
       class_option :app_name, :type => :string, :aliases => "-n", :default => false, :desc => "Custom ember app name"
+      class_option :skip_teaspoon, :type => :boolean, :aliases => "-T", :default => false, :desc => "Opt-out of Teaspoon setup"
 
       def create_app_dir_layout
         create_layout(APP_FOLDERS)
@@ -78,14 +79,18 @@ module Ember
         end
       end
 
+      def teaspoon_requested?
+        add_teaspoon_files unless options[:skip_teaspoon]
+      end
+
+      private
+
       def add_teaspoon_files
         copy_file "initializers/teaspoon.rb", "config/initializers/teaspoon.rb"
         copy_file "test/teaspoon_env.rb", "test/teaspoon_env.rb"
         copy_file "test/test_helper.js", "test/test_helper.js"
         empty_directory "test/integration"
       end
-
-      private
 
       def create_layout(directories, path = app_path)
         directories.each do |dir|

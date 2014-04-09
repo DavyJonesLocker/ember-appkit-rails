@@ -44,6 +44,13 @@ class BootstrapGeneratorTest < Rails::Generators::TestCase
     assert_files
   end
 
+  test 'Creates bootstrap without Teaspoon' do
+    run_generator ['-T']
+    assert_no_file 'config/initializers/teaspoon.rb'
+    assert_no_file 'test/teaspoon_env.rb'
+    assert_no_file 'test/test_helper.js'
+  end
+
   test "Uses config.ember.app_name" do
     with_config app_name: 'Blazorz' do
       run_generator
