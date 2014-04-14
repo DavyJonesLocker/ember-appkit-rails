@@ -161,6 +161,7 @@ Ember Appkit Rails provides the following generators:
   * `--config-path` - This is the root path for your configuration files
     used by your Ember Application. Default value: `config/`
   * `--app-name` - This will be used to name the global variable referencing your application. Default value: `App`.
+  * `--skip-teaspoon`, `-T` - This will skip the generation of Teaspoon.
 
 * `ember:route NAME`
 
