@@ -380,7 +380,7 @@ Please do! We are always looking to improve this gem.
 
 ## Legal ##
 
-[DockYard](http://dockyard.com), LLC &copy; 2013
+[DockYard](http://dockyard.com) Inc. &copy; 2014
 
 [@dockyard](http://twitter.com/dockyard)
 
