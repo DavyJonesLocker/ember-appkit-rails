@@ -2,3 +2,4 @@
 log/*.log
 pkg/
 test/dummy
+Gemfile.lock
