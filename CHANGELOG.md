@@ -1,3 +1,9 @@
+## Upcoming Release
+
+* Add debug flags for Thor generator tests.
+* Use `minitest/pride`
+* Update `es6_module_transpiler-rails ~> 0.4.0`
+
 ## 0.5.0
 
 * Update to latest resolver. Removes need for monkey-patch and fixes the Ember Inspector's data panel.
@@ -19,8 +25,6 @@
 * Add option to get custom Ember builds.
 * jj-abrams-resolver now lives under the module name ember/resolver per [here](https://github.com/stefanpenner/ember-jj-abrams-resolver/pull/27).
 * Add support for latest serializer alpha
-* Add debug flags for Thor generator tests.
-* Use `minitest/pride`
 
 ## 0.4.0
 
