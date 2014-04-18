@@ -16,9 +16,9 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency 'rails', '~>4.0'
+  s.add_dependency 'rails', '~> 4.0'
   s.add_dependency 'parser'
-  s.add_dependency 'es6_module_transpiler-rails', '~> 0.3.0'
+  s.add_dependency 'es6_module_transpiler-rails', '~> 0.4.0'
   s.add_dependency 'ember-source', '~> 1.4.beta'
   s.add_dependency 'ember-data-source', '~> 1.0.0.beta.6'
   s.add_dependency 'handlebars-source'
