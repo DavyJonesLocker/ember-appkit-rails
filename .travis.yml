@@ -13,6 +13,5 @@ matrix:
       gemfile: gemfiles/Gemfile.rails-4.0.x
       env: UPDATE_RESOLVER=true
 notifications:
-  hipchat:
-    rooms:
-      secure: godUSQsUQ3WSNt4ec2DYTRXvJzzjgUPcfrQfDVS5lI25eH2zMSHkPreDYTRreoE8Ce3vACkw4aFR5KuP79wBNGptBX48XvsyG55UMvUVfQnfNY5a/DXaMLfnkeoGXCDKoH/JjEQWjVaizGhYVKLjbhEF6iPECxkc9qRiqMJ8H38=
+  slack:
+    secure: Gk6UyzsTeb5Sn4hMjiIzUWdN6V18O0s69by2ZNJLic+vOA5igNdqFOj5CfRPeklJR5D+m43Ngx2kquOYUhyH9D4+UZpHGnXOZkJiIU9dFJoUxEhkECE8KVjMQstqCoz/OGtQHQegHupNX5mVHQZOwL4WgzP66+xevKwbVtotc1U=
