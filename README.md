@@ -1,3 +1,5 @@
+## We have sunset this gem. Patches will continue to be applied but no new features will be added. If you wish to fork and maintain please feel free.
+
 # EmberAppkitRails
 
 Ember Appkit for the Asset Pipeline
